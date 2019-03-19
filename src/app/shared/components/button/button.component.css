@@ -1,0 +1,21 @@
+.cc-btn-primary{
+    color: #fff;
+    background-color: rgb(var(--color-primary));
+}
+
+.cc-btn-primary:hover{
+    filter:brightness(90%);
+}
+
+.cc-btn-secondary{
+    color: #fff;
+    background-color: rgb(var(--color-secondary));
+}
+
+.cc-btn-secondary:hover{
+    filter:brightness(90%);
+}
+
+.btn:disabled{
+    cursor: no-drop !important;
+}

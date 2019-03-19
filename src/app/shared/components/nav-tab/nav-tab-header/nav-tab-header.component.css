@@ -1,0 +1,18 @@
+.tab-close {
+    color: gray;
+    text-align: right;
+    cursor: pointer;
+}
+
+.cc-pedding-nav{
+    padding: 0.25rem;
+}
+
+.active:hover{
+    color: #495057 !important;
+}
+
+.cc-border-left{
+    border: solid 1px rgb(var(--color-gray));
+    border-left: solid .25rem rgb(var(--color-secondary));
+}

@@ -1,0 +1,9 @@
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: rgb(var(--color-primary));
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(var(--color-primary),0.25);
+}

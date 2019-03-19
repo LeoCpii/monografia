@@ -1,0 +1,10 @@
+<div class="dropdown">
+    <button (click)="open()" class="btn dropdown-toggle shadow-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    [ngClass]="getClass()"
+    [disabled]="disabled">
+      {{ label }}
+    </button>
+    <div *ngIf="isOpen" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <ng-content></ng-content>
+    </div>
+</div>

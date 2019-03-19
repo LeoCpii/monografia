@@ -1,0 +1,25 @@
+.item {
+    display: block;
+}
+
+.item-label {
+    opacity: 0.4;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.item-value {
+    line-height: 1.125rem;
+    margin-bottom: 1rem;
+    word-break: break-all;
+}
+
+@media (min-width: 900px) {
+    .item-value {
+        font-size: 1.125rem;
+        line-height: 1.375rem;
+        margin-bottom: 1.5rem;
+    }
+}

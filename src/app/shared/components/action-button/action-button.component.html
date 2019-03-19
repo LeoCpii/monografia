@@ -1,0 +1,8 @@
+<button [type]="type" class="btn shadow-sm"
+[disabled]="isLoading || disabled"
+(click)="onClick()"
+size="size"
+[ngClass]="getClass()">
+    <i *ngIf="isLoading" class="fa fa-refresh fa-spin mr-2" aria-hidden="true"></i>
+    <span class="button-label">{{ isLoading ? labelLoading : label }}</span>
+</button>

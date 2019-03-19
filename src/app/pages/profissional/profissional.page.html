@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <cc-form [formGroup]="form" (submit)="submit()" label="Dados do Profissional">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <cc-field label="Nome" [required]="true" formControlName="nome"></cc-field>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <cc-field label="Sobrenome" [required]="true" formControlName="sobrenome"></cc-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <p>Sexo:</p>
+                        <cc-field-radio label="Masculino" name="sexo" value="M" inline="true" formControlName="sexo">
+                        </cc-field-radio>
+                        <cc-field-radio label="Feminino" name="sexo" value="F" inline="true" formControlName="sexo">
+                        </cc-field-radio>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <cc-field label="Data de nascimento" [required]="true" formControlName="dataNascimento"
+                            type="date"></cc-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <cc-field-select label="Profissao" [data]="profissao.data" [required]="true" formControlName="profissao"></cc-field-select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <cc-field label="Tempo de mercado (anos)" [required]="true" formControlName="tempo"></cc-field>
+                    </div>
+                </div>
+                <cc-alert *ngIf="feedback" type="danger"></cc-alert>
+                <cc-button label="Confirmar" type="submit" [disabled]="!form.valid"></cc-button>
+            </cc-form>
+            <br>
+            <cc-form-log [form]="form"></cc-form-log>
+        </div>
+    </div>
+</div>

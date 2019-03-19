@@ -1,0 +1,6 @@
+<div class="custom-control custom-checkbox">
+    <input #input type="checkbox" class="custom-control-input"
+    (input)="onChange($event.target.checked)" (blur)="onBlur($event.target.checked)"
+    [disabled]="disabled" [value]="value" [name]="name" [id]="id">
+    <label class="custom-control-label" [for]="id">{{ label }}</label>
+</div>

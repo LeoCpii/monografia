@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label>{{label}} <span *ngIf="required" class="text-danger">*</span></label>
+    
+    <div class="input-group">
+        <select #input class="form-control" (input)="onChange($event.target.value)"
+            (blur)="onBlur($event.target.value)">
+            <option value="" disabled>Selecione</option>
+            <option [value]="item.value" *ngFor="let item of data">{{ item.label }}</option>
+        </select>
+    </div>
+    <div class="invalid-feedback" *ngIf="shouldDisplayError()">{{ getErrorMessage() }}</div>
+</div>

@@ -1,0 +1,8 @@
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(var(--color-primary),.25);
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: rgb(var(--color-primary));
+    background-color: rgb(var(--color-primary));
+}

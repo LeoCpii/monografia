@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label>{{label}} <span *ngIf="required" class="text-danger">*</span></label>
+
+    <div class="input-group">
+        <input #input class="form-control" [class.cc-is-invalid]="shouldDisplayError()"
+            (input)="onChange($event.target.value)" (blur)="onBlur($event.target.value)"
+            [type]="getType()" [placeholder]="placeholder" autocomplete="off"
+            [disabled]="disabled" [required]="required" [name]="name"
+            [mask]="getMask()"/>
+    </div>
+
+    <div class="invalid-feedback" *ngIf="shouldDisplayError()">{{ getErrorMessage() }}</div>
+</div>

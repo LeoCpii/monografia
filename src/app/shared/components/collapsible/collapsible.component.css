@@ -1,0 +1,45 @@
+
+
+.collapsible {
+    border: solid 1px rgb(var(--color-gray));
+    border-left: solid .25rem rgb(var(--color-secondary));
+    border-radius: .25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.collapsible-header {
+    display: flex;
+    align-items: center;
+}
+
+.collapsible-header-icon {
+    margin-left: auto;
+    transform: rotate(180deg);
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.collapsible-header .fa-chevron-down:hover{
+    opacity: .75;
+}
+
+.collapsible-header-label {
+    font-size: .875rem;
+}
+
+.collapsible-header-desc {
+    font-size: 1.125rem;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s;
+}
+
+.collapsible-content-spacing {
+    padding-top: 1.5rem;
+}

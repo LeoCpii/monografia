@@ -1,0 +1,69 @@
+th {
+    font-weight: normal;
+    font-size: 1.275rem;
+}
+
+.page-item.active .page-link {
+    background-color: rgb(var(--color-secondary));
+    border-color: rgb(var(--color-secondary));
+}
+
+.page-item.active:hover {
+    color: #fff;
+}
+
+.table-emptymessage {
+    text-align: center;
+    font-style: italic;
+    opacity: .4;
+    font-size: .875rem;
+}
+
+.cc-load-table{
+    widows: 350px;
+    height: 350px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 899.98px) {
+    /* Force table to not be like tables anymore */
+    .responsive .table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr, thead th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none !important;
+        position: relative;
+        padding-left: 50% !important;
+        min-height: 56px;
+        word-break: break-all;
+    }
+    tr>td:last-child {
+        border-bottom: 1px solid #e9e9e9 !important;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 1rem;
+        left: 4px;
+        width: 45%;
+        padding-right: 10px;
+        font-weight: bold;
+        font-size: .75rem;
+        text-align: left;
+    }
+    td:before {
+        content: attr(data-header);
+    }
+    th:first-child, td:first-child {
+        padding-left: 50% !important;
+    }
+}
