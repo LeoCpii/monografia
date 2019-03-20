@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormatterService } from './../../shared/services/formatter.service';
+import { FormatterService } from '../../../shared/services/formatter.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 import { ValidatorService } from 'src/app/shared/services/validator.service';
 import * as Moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'profissional-page',
-    templateUrl: './profissional.page.html',
-    styleUrls: ['./profissional.page.css']
+    selector: 'profissional-form-page',
+    templateUrl: './profissional-form.page.html',
+    styleUrls: ['./profissional-form.page.css']
 })
 
-export class ProfissionalPage implements OnInit {
+export class ProfissionalFormPage implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private validator: ValidatorService
+        private validator: ValidatorService,
+        private location: Location,
+        private router: Router
     ) { }
 
     public feedback;
@@ -60,19 +64,15 @@ export class ProfissionalPage implements OnInit {
         let status: boolean;
 
         const maiorQueHoje = (hoje <= dtNascimento);
-        console.log('sem formato', dataSemFormato);
-        console.log(c.value.dataNascimento);
-        console.log(hoje);
-        console.log(dtNascimento);
-
-        console.log(maiorQueHoje);
         if (maiorQueHoje) {
-
             status = false;
-            console.log('ta errado');
         }
 
         return status ? null : { validarSenhas: { valid: false } };
+    }
+
+    ir() {
+        this.router.navigate(['profissional/grafico']);
     }
 
     submit() {

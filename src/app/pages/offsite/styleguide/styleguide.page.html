@@ -360,7 +360,7 @@
       <div class="card shadow-sm">
         <div class="card-body">
           <cc-chart-bar label="Cliente editando" [datasets]="editChart.datasets" [labels]="editChart.labels"
-            chartType="radar"></cc-chart-bar>
+            chartType="radar" [legend]="true"></cc-chart-bar>
           {{ editChart.datasets | json }}
         </div>
       </div>

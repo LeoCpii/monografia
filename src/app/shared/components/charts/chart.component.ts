@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core'
-import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
+import { Component, Input } from '@angular/core';
+import { ChartDataSets, ChartType, ChartOptions, RadialChartOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 
 @Component({
@@ -8,16 +8,16 @@ import { Label, Color } from 'ng2-charts';
 })
 
 export class ChartComponent {
-    @Input() datasets: ChartDataSets[];
-    @Input() labels: Label[];
-    @Input() legend ?= false;
-    @Input() chartType: ChartType;
-    @Input() colors: Color[];
-    @Input() label: string;
+  @Input() datasets: ChartDataSets[];
+  @Input() labels: Label[];
+  @Input() legend?= false;
+  @Input() chartType: ChartType;
+  @Input() colors: Color[];
+  @Input() label: string;
 
-    public barChartOptions: ChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        responsiveAnimationDuration: 800
-    };
+  public barChartOptions: RadialChartOptions ={
+    responsive: true,
+    maintainAspectRatio: false,
+    responsiveAnimationDuration: 800,
+  }
 }

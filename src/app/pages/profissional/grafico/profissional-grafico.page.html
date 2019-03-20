@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <cc-alert>Ajude-nos indicando com uma pontuação de 0 a 100 qual a relevância das habilidades abaixo para sua área.
+    </cc-alert>
+    <div class="row">
+        <div class="col-lg-6 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div style="display: block; position: relative; min-height: 300px">
+                        <canvas baseChart [datasets]="editChart.datasets" [options]="barChartOptions"
+                            [labels]="editChart.labels" chartType="radar">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <cc-form [formGroup]="form" (submit)="submit()" label="Gráfico Editável">
+                        <cc-field-range label="Corrida" formControlName="corrida"></cc-field-range>
+                        <cc-field-range label="Natação" formControlName="natacao"></cc-field-range>
+                        <cc-field-range label="Futebol" formControlName="futebol"></cc-field-range>
+                        <cc-field-range label="Ciclismo" formControlName="ciclismo"></cc-field-range>
+                        <cc-button type="submit" label="Enviar"></cc-button>
+                    </cc-form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

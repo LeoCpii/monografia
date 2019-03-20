@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { peopleData, barChart, lineChart, radarChart, donutPieChart } from './../../../shared/models/elements';
 import { FormatterService } from './../../../shared/services/formatter.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-styleguide',
