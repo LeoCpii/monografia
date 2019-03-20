@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="card shadow-sm">
         <div class="card-body">
             <cc-form [formGroup]="form" (submit)="submit()" label="Dados do Profissional">
@@ -31,7 +31,7 @@
                         <cc-field label="Tempo de mercado (anos)" [required]="true" formControlName="tempo"></cc-field>
                     </div>
                 </div>
-                <cc-alert *ngIf="feedback" type="danger"></cc-alert>
+                <cc-alert *ngIf="feedback" type="danger">Erro</cc-alert>
                 <cc-button label="Confirmar" type="submit" [disabled]="!form.valid"></cc-button>
             </cc-form>
             <br>

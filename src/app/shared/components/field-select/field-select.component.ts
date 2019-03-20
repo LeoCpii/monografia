@@ -11,6 +11,21 @@ export class FieldSelectComponent implements OnInit, ControlValueAccessor {
     public onChangeFn!: (valid: string) => void;
     public onTouched!: () => void;
 
+    public messages = {
+        required: 'Campo obrigatório',
+        cpf: 'CPF inválido',
+        cnpj: 'CNPJ inválido',
+        cnpjcpf: 'CPF ou CNPJ inválido',
+        date: 'Data inválida',
+        datetime: 'Data inválida',
+        month: 'Data inválida',
+        number: 'Valor inválido',
+        email: 'Email inválido',
+        maxLength: 'Máximo de X caracteres',
+        tel: 'Telefone inválido',
+        ddd: 'DDD inválido'
+    };
+
     @ViewChild('input') private input: ElementRef;
 
     constructor(
@@ -59,10 +74,6 @@ export class FieldSelectComponent implements OnInit, ControlValueAccessor {
         }
 
         const key = Object.keys(this.control.errors).find(k => this.control.errors[k]);
-
-        if (key === 'maxLength') {
-            return this.messages.maxLength.replace('X', this.maxLength.toString());
-        }
 
         return key ? this.messages[key] : '';
     }

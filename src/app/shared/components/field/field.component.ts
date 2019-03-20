@@ -27,7 +27,6 @@ export class FieldComponent implements OnInit, ControlValueAccessor {
         tel: 'Telefone inválido',
         ddd: 'DDD inválido'
     };
-    public teste = document.getElementById('input')
 
     @Input() label: string;
     @Input() disabled = false;
