@@ -1,2 +1,2 @@
-<p class="pagetitle-section text-black-50" *ngIf="section"><small>{{ section }}</small></p>
+<p class="pagetitle-section" [ngClass]="getColor()" *ngIf="section"><small>{{ section }}</small></p>
 <h1 [ngClass]="getClass()"><ng-content></ng-content></h1>

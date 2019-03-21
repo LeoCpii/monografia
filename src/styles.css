@@ -13,7 +13,7 @@
 html {
     font-family: 'Oswald', sans-serif;
     margin: 0px;
-    background-color: rgb(var(--color-default));
+    background-color: transparent;
 }
 
 .fmk-transition {
@@ -27,6 +27,10 @@ html {
 /*BACKGROUND*/
 
 .fmk-bg-default {
+    background-color: transparent;
+}
+
+.fmk-bg-gray {
     background-color: rgb(var(--color-default));
 }
 
@@ -41,7 +45,7 @@ html {
 /*COLOR*/
 
 .fmk-color-default {
-    color: rgb(var(--color-default)) !important;
+    color: transparent !important;
 }
 
 .fmk-color-primary {
@@ -66,6 +70,7 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
 }
 
 /*MEDIA*/

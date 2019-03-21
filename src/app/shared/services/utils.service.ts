@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { colors } from "./../models/elements";
 
 @Injectable({
     providedIn: 'root'
@@ -29,8 +30,18 @@ export class UtilsService {
         return window;
     }
 
-    public getColor(): string[] {
-        return [];
+    numeroAleatorio(min: number, max: number): number {
+        const random = Math.random() * (max - min) + min;
+        const number = Math.trunc(random);
+        return number;
     }
 
+    corAleatoria() {
+        const min = 0;
+        const max = colors.length;
+
+        const number = this.numeroAleatorio(min, max);
+
+        return colors[number];
+    }
 }

@@ -357,3 +357,63 @@ export const donutPieChart: any = {
         data: [10, 20, 30]
     }],
 };
+
+export const colors: any = [
+    '#3b5999', '#0084ff', '#55acee', '#0077B5', '#00AFF0', '#007ee5', '#21759b', '#0077b5', '#4c75a3',
+    '#34465d', '#bd081c', '#cd201f', '#eb4924', '#ff3300', '#ff5700', '#ff6600', '#1abc9c', '#6B69D6',
+    '#00b489', '#3aaf85', '#e4405f'
+];
+
+export const perguntas: any = [
+    {
+        pergunta: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ip',
+        respostas: [
+            {
+                resposta: 'Resposta A',
+                pontos: [1, 0, 3, -2, 4, -1]
+            },
+            {
+                resposta: 'Resposta B',
+                pontos: [-2, -2, -5, 2, 5, 0]
+            },
+            {
+                resposta: 'Resposta C',
+                pontos: [0, 1, 5, -3, 3, -2]
+            }
+        ]
+    },
+    {
+        pergunta: 'Pergunta 2',
+        respostas: [
+            {
+                resposta: 'Resposta D',
+                pontos: [1, 0, 3, -2, 4, -1]
+            },
+            {
+                resposta: 'Resposta E',
+                pontos: [-2, -2, -5, 2, 5, 0]
+            },
+            {
+                resposta: 'Resposta F',
+                pontos: [0, 1, 5, -3, 3, -2]
+            }
+        ]
+    },
+    {
+        pergunta: 'Pergunta 3',
+        respostas: [
+            {
+                resposta: 'Resposta G',
+                pontos: [1, 0, 3, -2, 4, -1]
+            },
+            {
+                resposta: 'Resposta H',
+                pontos: [-2, -2, -5, 2, 5, 0]
+            },
+            {
+                resposta: 'Resposta I',
+                pontos: [0, 1, 5, -3, 3, -2]
+            }
+        ]
+    }
+];

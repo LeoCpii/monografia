@@ -1,6 +1,7 @@
 .cc-btn-primary{
     color: #fff;
     background-color: rgb(var(--color-primary));
+    border-color: rgb(var(--color-primary));
 }
 
 .cc-btn-primary:hover{
@@ -10,6 +11,7 @@
 .cc-btn-secondary{
     color: #fff;
     background-color: rgb(var(--color-secondary));
+    border-color: rgb(var(--color-secondary));
 }
 
 .cc-btn-secondary:hover{

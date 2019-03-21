@@ -9,6 +9,19 @@ import { Component, Input } from '@angular/core';
 export class TitlePageComponent {
   @Input() section?: string;
   @Input() size?: string;
+  @Input() colorSection?: string;
+
+  public getColor(): string {
+    const cssClass: any = {};
+
+    if (this.colorSection === 'white') {
+      cssClass[`text-white`] = true;
+    } else {
+      cssClass[`text-black-50`] = true;
+    }
+
+    return cssClass;
+  }
 
   public getClass(): string {
     const cssClass: any = {};

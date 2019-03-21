@@ -1,381 +1,387 @@
-<div class="container mt-3 mb-3">
-  <cc-title-page section="Sessão da página">Título da Página</cc-title-page>
-  <hr>
-  <br>
+<div class="fmk-bg-gray" style="padding-top: 20px">
+  <div class="container">
+    <cc-title-page section="Sessão da página">Título da Página</cc-title-page>
+    <hr>
+    <br>
 
-  <cc-title>Formatos de textos</cc-title>
-  <hr>
-  <cc-text>Eu sou um texto normal.</cc-text>
-  <cc-text type='desc'>Eu sou um texto para descrição para descrição de página ou contexto.</cc-text>
-  <br>
-  <cc-text>
-    <p>Eu sou um texto com três parágrafos.</p>
-    <p>Eu sou um texto com três parágrafos.</p>
-    <p>Eu sou um texto com três parágrafos.</p>
-  </cc-text>
-  <br>
+    <cc-title>Formatos de textos</cc-title>
+    <hr>
+    <cc-text>Eu sou um texto normal.</cc-text>
+    <cc-text type='desc'>Eu sou um texto para descrição para descrição de página ou contexto.</cc-text>
+    <br>
+    <cc-text>
+      <p>Eu sou um texto com três parágrafos.</p>
+      <p>Eu sou um texto com três parágrafos.</p>
+      <p>Eu sou um texto com três parágrafos.</p>
+    </cc-text>
+    <br>
 
-  <cc-title>Itens</cc-title>
-  <hr>
-  <div class="row">
-    <div class="col-3">
-      <cc-item label="Dinheiro" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Data" [value]="date"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-    <div class="col-3">
-      <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-    </div>
-  </div>
-  <br>
-
-
-  <cc-title class="d-inline">Tipos de botões</cc-title>
-  <cc-button class="d-inline" (click)="buttonActionActive()" size="sm" class="mr-2" label="Carregar"></cc-button>
-
-  <hr>
-  <cc-text>Botões grandes.</cc-text>
-
-  <br>
-  <div class="row">
-    <div class="col-md-3">
-      <cc-button label="Botão 1" size="lg" [block]="buttonBlock"></cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-button label="Botão 2" size="lg" styleButton="secondary" [block]="buttonBlock"></cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-button label="Disabled" size="lg" styleButton="secondary" [disabled]="true" [block]="buttonBlock">
-      </cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-action-button label="Action Button" labelLoading="Carregando..." size="lg" [isLoading]="actionButtonIsLoading"
-        [block]="buttonBlock"></cc-action-button>
-    </div>
-  </div>
-  <br>
-
-  <cc-text>Botões normais.</cc-text>
-
-  <br>
-  <div class="row">
-    <div class="col-md-3">
-      <cc-button label="Botão 1" [block]="buttonBlock"></cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-button label="Botão 2" styleButton="secondary" [block]="buttonBlock"></cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-button label="Disabled" styleButton="secondary" [disabled]="true" [block]="buttonBlock"></cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-action-button label="Action Button" labelLoading="Carregando..." [isLoading]="actionButtonIsLoading"
-        [block]="buttonBlock"></cc-action-button>
-    </div>
-  </div>
-  <br>
-
-  <cc-text>Botões pequenos.</cc-text>
-
-  <br>
-  <div class="row">
-    <div class="col-md-3">
-      <cc-button label="Botão 1" size="sm" [block]="buttonBlock"></cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-button label="Botão 2" size="sm" styleButton="secondary" [block]="buttonBlock"></cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-button label="Disabled" size="sm" styleButton="secondary" [disabled]="true" [block]="buttonBlock">
-      </cc-button>
-    </div>
-    <div class="col-md-3">
-      <cc-action-button label="Action Button" labelLoading="Carregando..." size="sm" [isLoading]="actionButtonIsLoading"
-        [block]="buttonBlock"></cc-action-button>
-    </div>
-  </div>
-  <br>
-
-  <br>
-  <cc-title>Formulários</cc-title>
-  <hr>
-
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <cc-form [formGroup]="form" (submit)="submit()" label="Título do formulário">
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <cc-field label="Primeiro Nome" [required]="true" formControlName="firstName" type="text"></cc-field>
-          </div>
-          <div class="col-md-6 mb-3">
-            <cc-field label="Último Nome" [required]="true" formControlName="lastName" type="text"></cc-field>
-          </div>
-        </div>
-        <div class="form-row mb-5">
-          <div class="col-md-6">
-            <p>Sexo:</p>
-            <cc-field-radio label="Masculino" name="sexo" value="M" inline="true" formControlName="sex">
-            </cc-field-radio>
-            <cc-field-radio label="Feminino" name="sexo" value="F" inline="true" formControlName="sex"></cc-field-radio>
-          </div>
-          <div class="col-md-6">
-              <cc-field-select label="Profissão" [required]="true" [data]="fieldSelect.data" formControlName="profissao" type="text"></cc-field-select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-12 mb-3">
-            <cc-field label="CPF" [required]="true" formControlName="cpf" type="cpf"></cc-field>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-12 mb-3">
-            <cc-field label="Digite o e-mail" [required]="true" formControlName="email" type="email"></cc-field>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <cc-field label="Senha" [required]="true" formControlName="password" type="password"></cc-field>
-          </div>
-          <div class="col-md-6 mb-3">
-            <cc-field label="Confirmar senha" [required]="true" formControlName="passwordConfirm" type="password">
-            </cc-field>
-          </div>
-        </div>
-        <div class="form-row mb-4">
-          <div class="col-md-12">
-            <cc-field-checkbox label="Aceito os termos de contrato" name="termos" formControlName="agree">
-            </cc-field-checkbox>
-          </div>
-        </div>
-        <cc-alert type="danger" *ngIf="verificaSenhas(form.value.password, form.value.passwordConfirm)">As senhas devem
-          ser iguais!</cc-alert>
-        <cc-alert type="success" *ngIf="feedback">Solicitação enviada com sucesso!</cc-alert>
-        <cc-action-button label="Confirmar" type="submit" [isLoading]="submitButtonIsLoading" labelLoading="Enviando..."
-          [disabled]="!form.valid"></cc-action-button>
-      </cc-form>
-      <br>
-      <cc-form-log [form]="form"></cc-form-log>
-    </div>
-  </div>
-
-  <br>
-  <cc-title>Collapsible</cc-title>
-  <hr>
-
-  <cc-collapsible label="Pagamento" desc="16086228">
-    <div body>
-      <cc-item label="Status" value="PAGO"></cc-item>
-      <cc-item label="Status" value="PAGO"></cc-item>
-      <cc-item label="Status" value="PAGO"></cc-item>
-      <cc-item label="Status" value="PAGO"></cc-item>
-      <cc-item label="Status" value="PAGO"></cc-item>
-    </div>
-  </cc-collapsible>
-
-  <cc-collapsible label="Recibo" desc="16086228">
-    <div header>
-      <hr>
-      <div class="row">
-        <div class="col-sm-3">
-          <cc-item label="Nº Proposta" value="25252525"></cc-item>
-        </div>
-        <div class="col-sm-3">
-          <cc-item label="Nº Certificado" value="999999999"></cc-item>
-        </div>
-        <div class="col-sm-3">
-          <cc-item label="Valor" [value]="dinheiro | currency"></cc-item>
-        </div>
-        <div class="col-sm-3">
-          <cc-item label="Situação" value="ATIVO"></cc-item>
-        </div>
-      </div>
-    </div>
-    <div body>
-      <cc-text>
-        <p>Eu sou um texto com três parágrafos.</p>
-        <p>Eu sou um texto com três parágrafos.</p>
-        <p>Eu sou um texto com três parágrafos.</p>
-      </cc-text>
-    </div>
-  </cc-collapsible>
-  <br>
-  <cc-title>DropDown</cc-title>
-  <hr>
-  <div class="container-fluid">
+    <cc-title>Itens</cc-title>
+    <hr>
     <div class="row">
-      <cc-dropdown label="DropDown" styleButton="primary">
-        <cc-dropdown-content (valueOutput)="recuperaValorDropDown($event)" label="Opção 1" value="1">
-        </cc-dropdown-content>
-        <cc-dropdown-content (valueOutput)="recuperaValorDropDown($event)" label="Opção 2" value="2">
-        </cc-dropdown-content>
-        <cc-dropdown-content (valueOutput)="recuperaValorDropDown($event)" label="Opção 3" value="3">
-        </cc-dropdown-content>
-      </cc-dropdown>
-      <cc-text class="ml-3">Valor escolhido: {{ valueDropDown }} </cc-text>
+      <div class="col-3">
+        <cc-item label="Dinheiro" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Data" [value]="date"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
+      <div class="col-3">
+        <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+      </div>
     </div>
-  </div>
-  <br>
+    <br>
 
-  <cc-title>Alertas</cc-title>
-  <hr>
-  <cc-alert>Mensagem de Alerta</cc-alert>
-  <cc-alert type="danger">Mensagem de Erro!</cc-alert>
-  <cc-alert type="success">Mensagem de Sucesso!</cc-alert>
-  <cc-alert type="warning">Mensagem de Atenção!</cc-alert>
-  <cc-alert title="Atenção!" type="dark">Mensagem de Alerta!</cc-alert>
-  <br>
 
-  <cc-title>Tabela</cc-title>
-  <hr>
-  <br>
-  <cc-table [data]="tableData" totalRegistros="client">
-    <cc-table-col-checkbox disabled="true" header="Enviado" prop="send"></cc-table-col-checkbox>
-    <cc-table-col header="Nome" prop="name"></cc-table-col>
-    <cc-table-col header="País" prop="country"></cc-table-col>
-    <cc-table-col header="Cidade" prop="city"></cc-table-col>
-    <cc-table-col header="Salário" prop="salary" format="currency"></cc-table-col>
-    <cc-table-tmpl-col header="Status" [tmpl]="statusPessoa"></cc-table-tmpl-col>
-  </cc-table>
-  <br>
+    <cc-title class="d-inline">Tipos de botões</cc-title>
+    <cc-button class="d-inline" (click)="buttonActionActive()" size="sm" class="mr-2" label="Carregar"></cc-button>
 
-  <cc-title>Tab Nav</cc-title>
-  <hr>
-  <cc-nav-tab-header>
-    <cc-nav-tab tabTitle="Primeira">
-      <cc-title>Primeira Aba</cc-title>
-      <hr>
+    <hr>
+    <cc-text>Botões grandes.</cc-text>
+
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <cc-button label="Botão 1" size="lg" [block]="buttonBlock"></cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-button label="Botão 2" size="lg" styleButton="secondary" [block]="buttonBlock"></cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-button label="Disabled" size="lg" styleButton="secondary" [disabled]="true" [block]="buttonBlock">
+        </cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-action-button label="Action Button" labelLoading="Carregando..." size="lg"
+          [isLoading]="actionButtonIsLoading" [block]="buttonBlock"></cc-action-button>
+      </div>
+    </div>
+    <br>
+
+    <cc-text>Botões normais.</cc-text>
+
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <cc-button label="Botão 1" [block]="buttonBlock"></cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-button label="Botão 2" styleButton="secondary" [block]="buttonBlock"></cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-button label="Disabled" styleButton="secondary" [disabled]="true" [block]="buttonBlock"></cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-action-button label="Action Button" labelLoading="Carregando..." [isLoading]="actionButtonIsLoading"
+          [block]="buttonBlock"></cc-action-button>
+      </div>
+    </div>
+    <br>
+
+    <cc-text>Botões pequenos.</cc-text>
+
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <cc-button label="Botão 1" size="sm" [block]="buttonBlock"></cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-button label="Botão 2" size="sm" styleButton="secondary" [block]="buttonBlock"></cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-button label="Disabled" size="sm" styleButton="secondary" [disabled]="true" [block]="buttonBlock">
+        </cc-button>
+      </div>
+      <div class="col-md-3">
+        <cc-action-button label="Action Button" labelLoading="Carregando..." size="sm"
+          [isLoading]="actionButtonIsLoading" [block]="buttonBlock"></cc-action-button>
+      </div>
+    </div>
+    <br>
+
+    <br>
+    <cc-title>Formulários</cc-title>
+    <hr>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <cc-form [formGroup]="form" (submit)="submit()" label="Título do formulário">
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <cc-field label="Primeiro Nome" [required]="true" formControlName="firstName" type="text"></cc-field>
+            </div>
+            <div class="col-md-6 mb-3">
+              <cc-field label="Último Nome" [required]="true" formControlName="lastName" type="text"></cc-field>
+            </div>
+          </div>
+          <div class="form-row mb-5">
+            <div class="col-md-6">
+              <p>Sexo:</p>
+              <cc-field-radio label="Masculino" name="sexo" value="M" inline="true" formControlName="sex">
+              </cc-field-radio>
+              <cc-field-radio label="Feminino" name="sexo" value="F" inline="true" formControlName="sex">
+              </cc-field-radio>
+            </div>
+            <div class="col-md-6">
+              <cc-field-select label="Profissão" [required]="true" [data]="fieldSelect.data" formControlName="profissao"
+                type="text"></cc-field-select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <cc-field label="CPF" [required]="true" formControlName="cpf" type="cpf"></cc-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <cc-field label="Digite o e-mail" [required]="true" formControlName="email" type="email"></cc-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <cc-field label="Senha" [required]="true" formControlName="password" type="password"></cc-field>
+            </div>
+            <div class="col-md-6 mb-3">
+              <cc-field label="Confirmar senha" [required]="true" formControlName="passwordConfirm" type="password">
+              </cc-field>
+            </div>
+          </div>
+          <div class="form-row mb-4">
+            <div class="col-md-12">
+              <cc-field-checkbox label="Aceito os termos de contrato" name="termos" formControlName="agree">
+              </cc-field-checkbox>
+            </div>
+          </div>
+          <cc-alert type="danger" *ngIf="verificaSenhas(form.value.password, form.value.passwordConfirm)">As senhas
+            devem
+            ser iguais!</cc-alert>
+          <cc-alert type="success" *ngIf="feedback">Solicitação enviada com sucesso!</cc-alert>
+          <cc-action-button label="Confirmar" type="submit" [isLoading]="submitButtonIsLoading"
+            labelLoading="Enviando..." [disabled]="!form.valid"></cc-action-button>
+        </cc-form>
+        <br>
+        <cc-form-log [form]="form"></cc-form-log>
+      </div>
+    </div>
+
+    <br>
+    <cc-title>Collapsible</cc-title>
+    <hr>
+
+    <cc-collapsible label="Pagamento" desc="16086228">
+      <div body>
+        <cc-item label="Status" value="PAGO"></cc-item>
+        <cc-item label="Status" value="PAGO"></cc-item>
+        <cc-item label="Status" value="PAGO"></cc-item>
+        <cc-item label="Status" value="PAGO"></cc-item>
+        <cc-item label="Status" value="PAGO"></cc-item>
+      </div>
+    </cc-collapsible>
+
+    <cc-collapsible label="Recibo" desc="16086228">
+      <div header>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <cc-item label="Nº Proposta" value="25252525"></cc-item>
+          </div>
+          <div class="col-sm-3">
+            <cc-item label="Nº Certificado" value="999999999"></cc-item>
+          </div>
+          <div class="col-sm-3">
+            <cc-item label="Valor" [value]="dinheiro | currency"></cc-item>
+          </div>
+          <div class="col-sm-3">
+            <cc-item label="Situação" value="ATIVO"></cc-item>
+          </div>
+        </div>
+      </div>
+      <div body>
+        <cc-text>
+          <p>Eu sou um texto com três parágrafos.</p>
+          <p>Eu sou um texto com três parágrafos.</p>
+          <p>Eu sou um texto com três parágrafos.</p>
+        </cc-text>
+      </div>
+    </cc-collapsible>
+    <br>
+    <cc-title>DropDown</cc-title>
+    <hr>
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-3">
-          <cc-item label="Dinheiro" [value]="dinheiro | currency"></cc-item>
-        </div>
-        <div class="col-3">
-          <cc-item label="Data" [value]="date | date"></cc-item>
-        </div>
-        <div class="col-3">
-          <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-        </div>
-        <div class="col-3">
-          <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
-        </div>
+        <cc-dropdown label="DropDown" styleButton="primary">
+          <cc-dropdown-content (valueOutput)="recuperaValorDropDown($event)" label="Opção 1" value="1">
+          </cc-dropdown-content>
+          <cc-dropdown-content (valueOutput)="recuperaValorDropDown($event)" label="Opção 2" value="2">
+          </cc-dropdown-content>
+          <cc-dropdown-content (valueOutput)="recuperaValorDropDown($event)" label="Opção 3" value="3">
+          </cc-dropdown-content>
+        </cc-dropdown>
+        <cc-text class="ml-3">Valor escolhido: {{ valueDropDown }} </cc-text>
       </div>
-      <cc-alert title="Sucesso!" type="success">Mensagem de Sucesso!</cc-alert>
-    </cc-nav-tab>
-    <cc-nav-tab tabTitle="Segunda">
-      <cc-title>Segunda Aba</cc-title>
-      <hr>
-      <cc-text>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-        electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-        PageMaker including versions of Lorem Ipsum.
-      </cc-text>
-    </cc-nav-tab>
-    <cc-nav-tab tabTitle="Terceira" disabled="true">
-      <cc-title>Terceira Aba</cc-title>
-      <hr>
-      <cc-alert title="Atenção!" type="warning">Mensagem de Alerta!</cc-alert>
-    </cc-nav-tab>
-  </cc-nav-tab-header>
-  <br>
+    </div>
+    <br>
 
-  <cc-title>Lista de dados</cc-title>
-  <hr>
-  <cc-dictlist [data]="dictListValue"></cc-dictlist>
-  <br>
+    <cc-title>Alertas</cc-title>
+    <hr>
+    <cc-alert>Mensagem de Alerta</cc-alert>
+    <cc-alert type="danger">Mensagem de Erro!</cc-alert>
+    <cc-alert type="success">Mensagem de Sucesso!</cc-alert>
+    <cc-alert type="warning">Mensagem de Atenção!</cc-alert>
+    <cc-alert title="Atenção!" type="dark">Mensagem de Alerta!</cc-alert>
+    <br>
 
-  <cc-title>Gráficos</cc-title>
-  <hr>
-  <div class="row">
-    <div class="col-lg-8 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <cc-chart-bar label="Gráfico de Radar" [datasets]="radarChartData.datasets" [labels]="radarChartData.labels"
-            [legend]="true" chartType="radar" [colors]="radarChartData.colors"></cc-chart-bar>
+    <cc-title>Tabela</cc-title>
+    <hr>
+    <br>
+    <cc-table [data]="tableData" totalRegistros="client">
+      <cc-table-col-checkbox disabled="true" header="Enviado" prop="send"></cc-table-col-checkbox>
+      <cc-table-col header="Nome" prop="name"></cc-table-col>
+      <cc-table-col header="País" prop="country"></cc-table-col>
+      <cc-table-col header="Cidade" prop="city"></cc-table-col>
+      <cc-table-col header="Salário" prop="salary" format="currency"></cc-table-col>
+      <cc-table-tmpl-col header="Status" [tmpl]="statusPessoa"></cc-table-tmpl-col>
+    </cc-table>
+    <br>
+
+    <cc-title>Tab Nav</cc-title>
+    <hr>
+    <cc-nav-tab-header>
+      <cc-nav-tab tabTitle="Primeira">
+        <cc-title>Primeira Aba</cc-title>
+        <hr>
+        <div class="row">
+          <div class="col-3">
+            <cc-item label="Dinheiro" [value]="dinheiro | currency"></cc-item>
+          </div>
+          <div class="col-3">
+            <cc-item label="Data" [value]="date | date"></cc-item>
+          </div>
+          <div class="col-3">
+            <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+          </div>
+          <div class="col-3">
+            <cc-item label="Título" [value]="dinheiro | currency"></cc-item>
+          </div>
+        </div>
+        <cc-alert title="Sucesso!" type="success">Mensagem de Sucesso!</cc-alert>
+      </cc-nav-tab>
+      <cc-nav-tab tabTitle="Segunda">
+        <cc-title>Segunda Aba</cc-title>
+        <hr>
+        <cc-text>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+          electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          PageMaker including versions of Lorem Ipsum.
+        </cc-text>
+      </cc-nav-tab>
+      <cc-nav-tab tabTitle="Terceira" disabled="true">
+        <cc-title>Terceira Aba</cc-title>
+        <hr>
+        <cc-alert title="Atenção!" type="warning">Mensagem de Alerta!</cc-alert>
+      </cc-nav-tab>
+    </cc-nav-tab-header>
+    <br>
+
+    <cc-title>Lista de dados</cc-title>
+    <hr>
+    <cc-dictlist [data]="dictListValue"></cc-dictlist>
+    <br>
+
+    <cc-title>Gráficos</cc-title>
+    <hr>
+    <div class="row">
+      <div class="col-lg-8 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <cc-chart-bar label="Gráfico de Radar" [datasets]="radarChartData.datasets" [labels]="radarChartData.labels"
+              [legend]="true" chartType="radar" [colors]="radarChartData.colors"></cc-chart-bar>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <cc-chart-bar label="Gráfico de Donout" [datasets]="donutChartData.datasets" [labels]="donutChartData.labels"
-            [legend]="true" chartType="doughnut" [colors]="donutChartData.colors"></cc-chart-bar>
+      <div class="col-lg-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <cc-chart-bar label="Gráfico de Donout" [datasets]="donutChartData.datasets"
+              [labels]="donutChartData.labels" [legend]="true" chartType="doughnut" [colors]="donutChartData.colors">
+            </cc-chart-bar>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <cc-chart-bar label="Gráfico de Pizza" [datasets]="donutChartData.datasets" [labels]="donutChartData.labels"
-            [legend]="true" chartType="pie" [colors]="donutChartData.colors"></cc-chart-bar>
+      <div class="col-lg-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <cc-chart-bar label="Gráfico de Pizza" [datasets]="donutChartData.datasets" [labels]="donutChartData.labels"
+              [legend]="true" chartType="pie" [colors]="donutChartData.colors"></cc-chart-bar>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-8 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <cc-chart-bar label="Gráfico de Linhas" [datasets]="lineChartData.datasets" [labels]="lineChartData.labels"
-            [legend]="true" chartType="line" [colors]="lineChartData.colors"></cc-chart-bar>
+      <div class="col-lg-8 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <cc-chart-bar label="Gráfico de Linhas" [datasets]="lineChartData.datasets" [labels]="lineChartData.labels"
+              [legend]="true" chartType="line" [colors]="lineChartData.colors"></cc-chart-bar>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-12 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <cc-chart-bar label="Gráfico de Barras" [datasets]="barChartData.datasets" [labels]="barChartData.labels"
-            [legend]="true" chartType="bar" [colors]="barChartData.colors"></cc-chart-bar>
+      <div class="col-lg-12 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <cc-chart-bar label="Gráfico de Barras" [datasets]="barChartData.datasets" [labels]="barChartData.labels"
+              [legend]="true" chartType="bar" [colors]="barChartData.colors"></cc-chart-bar>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <cc-chart-bar label="Cliente editando" [datasets]="editChart.datasets" [labels]="editChart.labels"
-            chartType="radar" [legend]="true"></cc-chart-bar>
-          {{ editChart.datasets | json }}
+      <div class="col-lg-6 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <cc-chart-bar label="Cliente editando" [datasets]="editChart.datasets" [labels]="editChart.labels"
+              chartType="radar" [legend]="true"></cc-chart-bar>
+            {{ editChart.datasets | json }}
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <cc-form [formGroup]="formGraph" label="Gráfico Editável">
-            <cc-field-range label="Corrida" formControlName="corrida"></cc-field-range>
-            <cc-field-range label="Natação" formControlName="natacao"></cc-field-range>
-            <cc-field-range label="Futebol" formControlName="futebol"></cc-field-range>
-            <cc-field-range label="Ciclismo" formControlName="ciclismo"></cc-field-range>
-          </cc-form>
-          <br>
-          <cc-form-log [form]="formGraph"></cc-form-log>
+      <div class="col-lg-6 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <cc-form [formGroup]="formGraph" label="Gráfico Editável">
+              <cc-field-range label="Corrida" formControlName="corrida"></cc-field-range>
+              <cc-field-range label="Natação" formControlName="natacao"></cc-field-range>
+              <cc-field-range label="Futebol" formControlName="futebol"></cc-field-range>
+              <cc-field-range label="Ciclismo" formControlName="ciclismo"></cc-field-range>
+            </cc-form>
+            <br>
+            <cc-form-log [form]="formGraph"></cc-form-log>
+          </div>
         </div>
       </div>
     </div>
