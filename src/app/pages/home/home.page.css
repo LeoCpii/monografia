@@ -29,7 +29,7 @@
 }
 
 .gradient:before {
-    background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
+    background-image: linear-gradient(to bottom right, #002f4b, rgba(var(--color-primary),.5));
 }
 
 .pg-content-bg {

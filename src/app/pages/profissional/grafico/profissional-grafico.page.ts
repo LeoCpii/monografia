@@ -14,11 +14,11 @@ export class ProfissionalGraficoPage implements OnInit {
 
   constructor(private router: Router) {
     this.editChart = {
-      labels: ['Corrida', 'Natação', 'Futebol', 'Ciclismo'],
+      labels: ['Comunicatividade', 'Organização', 'Criatividade', 'Detalhismo', 'Liderança', 'Proatividade'],
       datasets: [
         {
-          data: [50, 50, 50, 50],
-          label: 'Series A',
+          data: [50, 50, 50, 50, 50, 50],
+          label: 'Pontuação de personalidade',
         },
       ]
     };
@@ -39,10 +39,12 @@ export class ProfissionalGraficoPage implements OnInit {
   };
 
   public form = new FormGroup({
-    corrida: new FormControl(50),
-    natacao: new FormControl(50),
-    futebol: new FormControl(50),
-    ciclismo: new FormControl(50),
+    comunicatividade: new FormControl(50),
+    organizacao: new FormControl(50),
+    criatividade: new FormControl(50),
+    detalhismo: new FormControl(50),
+    lideranca: new FormControl(50),
+    proatividade: new FormControl(50),
   });
 
   ngOnInit() {
@@ -54,10 +56,12 @@ export class ProfissionalGraficoPage implements OnInit {
       const data = [];
 
       data.push(
-        Number(response.corrida),
-        Number(response.natacao),
-        Number(response.futebol),
-        Number(response.ciclismo),
+        Number(response.comunicatividade),
+        Number(response.organizacao),
+        Number(response.criatividade),
+        Number(response.detalhismo),
+        Number(response.lideranca),
+        Number(response.proatividade),
       );
 
       const clone = JSON.parse(JSON.stringify(this.editChart.datasets));

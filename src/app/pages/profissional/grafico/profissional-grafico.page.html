@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div style="display: block; position: relative; min-height: 300px">
                         <canvas baseChart [datasets]="editChart.datasets" [options]="barChartOptions"
-                            [labels]="editChart.labels" chartType="radar">
+                            [labels]="editChart.labels" chartType="radar" [legend]="true">
                         </canvas>
                     </div>
                 </div>
@@ -17,10 +17,12 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <cc-form [formGroup]="form" (submit)="submit()" label="Gráfico Editável">
-                        <cc-field-range label="Corrida" formControlName="corrida"></cc-field-range>
-                        <cc-field-range label="Natação" formControlName="natacao"></cc-field-range>
-                        <cc-field-range label="Futebol" formControlName="futebol"></cc-field-range>
-                        <cc-field-range label="Ciclismo" formControlName="ciclismo"></cc-field-range>
+                        <cc-field-range label="Comunicatividade" formControlName="comunicatividade"></cc-field-range>
+                        <cc-field-range label="Organização" formControlName="organizacao"></cc-field-range>
+                        <cc-field-range label="Criatividade" formControlName="criatividade"></cc-field-range>
+                        <cc-field-range label="Detalhismo" formControlName="detalhismo"></cc-field-range>
+                        <cc-field-range label="Liderança" formControlName="lideranca"></cc-field-range>
+                        <cc-field-range label="Proatividade" formControlName="proatividade"></cc-field-range>
                         <cc-button type="submit" label="Enviar"></cc-button>
                     </cc-form>
                 </div>

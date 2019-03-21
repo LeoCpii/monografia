@@ -4,7 +4,7 @@
     <div class="input-group">
         <select #input class="form-control" (input)="onChange($event.target.value)"
             (blur)="onBlur($event.target.value)">
-            <option value="" disabled>Selecione</option>
+            <option value="" selected desabled>Selecione</option>
             <option [value]="item.value" *ngFor="let item of data">{{ item.label }}</option>
         </select>
     </div>

@@ -30,9 +30,11 @@ export class ProfissionalFormPage implements OnInit {
         dataNascimento: new FormControl(),
         profissao: new FormControl(),
         tempo: new FormControl(),
-    }, {
-        validators: this.validaIdade
-    });
+    },
+    // {
+    //     validators: this.validaIdade
+    // }
+    );
 
     public profissao = {
         data: [
@@ -77,5 +79,6 @@ export class ProfissionalFormPage implements OnInit {
 
     submit() {
         console.log(this.form.value);
+        this.ir();
     }
 }
