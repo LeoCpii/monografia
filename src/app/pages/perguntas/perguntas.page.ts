@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from 'src/app/shared/services/utils.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { perguntas } from './../../shared/models/elements';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
     selector: 'perguntas-page',
@@ -11,7 +12,10 @@ import { perguntas } from './../../shared/models/elements';
 
 export class PerguntasPage implements OnInit {
 
-    constructor(private utils: UtilsService) { }
+    constructor(
+        private utils: UtilsService,
+        private storage: StorageService
+    ) { }
 
     public cor: string;
     public contador = 1;
@@ -20,21 +24,19 @@ export class PerguntasPage implements OnInit {
     public perguntasJaRespondidas = [];
 
     public form = new FormGroup({
-        letraA: new FormControl(''),
-        letraB: new FormControl(''),
-        letraC: new FormControl(''),
+        resposta: new FormControl('', Validators.required),
     });
 
     public submitButtonIsLoading = false;
 
-    recuperaCor() {
+    private recuperaCor() {
         const corAtual = this.cor;
         while (corAtual === this.cor) {
             this.cor = this.utils.corAleatoria();
         }
     }
 
-    responder() {
+    private responder() {
         this.contador++;
 
         const corAtual = this.cor;
@@ -42,10 +44,14 @@ export class PerguntasPage implements OnInit {
             this.cor = this.utils.corAleatoria();
         }
 
+        this.salvaResposta();
+
         this.selecionaPergunta();
+
+        this.form.get('resposta').reset();
     }
 
-    selecionaPergunta() {
+    private selecionaPergunta() {
         let perguntaNova = false;
 
         while (!perguntaNova) {
@@ -67,6 +73,34 @@ export class PerguntasPage implements OnInit {
                 this.numero = pergunta;
             }
         }
+    }
+
+    private salvaResposta() {
+        const respostas = this.form.value.resposta;
+        const arr = respostas.split(',').map(response => {
+            return parseInt(response, 10);
+        });
+
+        this.incrementaResposta(arr);
+    }
+
+    private incrementaResposta(value: any): void {
+        console.log(value)
+        const respostas = this.storage.getJson('resultado');
+
+        if (!respostas) {
+            this.storage.setJson('resultado', value);
+            return;
+        }
+
+        respostas.map((response, index) => {
+            response += value[index];
+            console.log(response);
+        });
+
+        console.log(respostas);
+
+        // this.storage.set('resultado', value);
     }
 
     ngOnInit() {

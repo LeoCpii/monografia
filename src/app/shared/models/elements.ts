@@ -366,19 +366,20 @@ export const colors: any = [
 
 export const perguntas: any = [
     {
-        pergunta: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ip',
+// tslint:disable-next-line: max-line-length
+        pergunta: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ip`,
         respostas: [
             {
                 resposta: 'Resposta A',
-                pontos: [1, 0, 3, -2, 4, -1]
+                pontos: [0, 0, 0, 0, 0, 0]
             },
             {
                 resposta: 'Resposta B',
-                pontos: [-2, -2, -5, 2, 5, 0]
+                pontos: [1, 1, 1, 1, 1, 1]
             },
             {
                 resposta: 'Resposta C',
-                pontos: [0, 1, 5, -3, 3, -2]
+                pontos: [2, 2, 2, 2, 2, 2]
             }
         ]
     },
@@ -387,15 +388,15 @@ export const perguntas: any = [
         respostas: [
             {
                 resposta: 'Resposta D',
-                pontos: [1, 0, 3, -2, 4, -1]
+                pontos: [0, 0, 0, 0, 0, 0]
             },
             {
                 resposta: 'Resposta E',
-                pontos: [-2, -2, -5, 2, 5, 0]
+                pontos: [1, 1, 1, 1, 1, 1]
             },
             {
                 resposta: 'Resposta F',
-                pontos: [0, 1, 5, -3, 3, -2]
+                pontos: [2, 2, 2, 2, 2, 2]
             }
         ]
     },
@@ -404,15 +405,15 @@ export const perguntas: any = [
         respostas: [
             {
                 resposta: 'Resposta G',
-                pontos: [1, 0, 3, -2, 4, -1]
+                pontos: [0, 0, 0, 0, 0, 0]
             },
             {
                 resposta: 'Resposta H',
-                pontos: [-2, -2, -5, 2, 5, 0]
+                pontos: [1, 1, 1, 1, 1, 1]
             },
             {
                 resposta: 'Resposta I',
-                pontos: [0, 1, 5, -3, 3, -2]
+                pontos: [2, 2, 2, 2, 2, 2]
             }
         ]
     }

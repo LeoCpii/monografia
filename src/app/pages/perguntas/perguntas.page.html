@@ -14,25 +14,16 @@
             <div class="col-md-12 text-left">
                 <p>Resposta:</p>
                 <hr>
-                <cc-field-radio
-                    label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius consectetur orci. Cras et hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius consectetur orci. Cras et hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius consectetur orci. Cras et hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius consectetur orci. Cras et hendrerit."
-                    name="resposta" value="A" formControlName="letraA">
-                </cc-field-radio>
-                <hr>
-                <cc-field-radio
-                    label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius consectetur orci. Cras et hendrerit."
-                    name="resposta" value="B" formControlName="letraB">
-                </cc-field-radio>
-                <hr>
-                <cc-field-radio
-                    label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius consectetur orci. Cras et hendrerit."
-                    name="resposta" value="C" formControlName="letraC">
-                </cc-field-radio>
-                <hr>
-                <cc-action-button class="mb-3" label="Responder" type="submit" [isLoading]="submitButtonIsLoading"
-                    labelLoading="Enviando..." [disabled]="!form.valid"></cc-action-button>
+                <div *ngFor="let item of perguntas[numero].respostas; let i = index">
+                    <cc-field-radio [label]="item.resposta" name="resposta" [value]="item.pontos"
+                        formControlName="resposta">
+                    </cc-field-radio>
+                    <hr>
+                </div>
+                <cc-action-button styleButton="secondary" type="submit" class="mb-3" label="Responder"
+                    [isLoading]="submitButtonIsLoading" labelLoading="Enviando..." [disabled]="!form.valid">
+                </cc-action-button>
             </div>
         </cc-form>
     </div>
-
 </div>

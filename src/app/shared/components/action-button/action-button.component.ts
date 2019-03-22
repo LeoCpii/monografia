@@ -11,7 +11,7 @@ export class ActionButtonComponent {
     @Input() isLoading = false;
     @Input() type: 'button' | 'submit' = 'button';
     @Input() disabled = false;
-    @Input('styleButton') styleButton?: string;
+    @Input() styleButton?: string;
     @Input('size') size?: string;
     @Input('labelLoading') labelLoading: string;
     @Input() block: boolean = false;
