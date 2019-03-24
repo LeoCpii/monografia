@@ -367,7 +367,7 @@ export const colors: any = [
 export const perguntas: any = [
     {
 // tslint:disable-next-line: max-line-length
-        pergunta: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ip`,
+        pergunta: 'Pergunta 1',
         respostas: [
             {
                 resposta: 'Resposta A',
@@ -418,3 +418,22 @@ export const perguntas: any = [
         ]
     }
 ];
+
+export const perfis = [
+    {
+        perfil: 'Front-End',
+        pontos: [3, 3, 3, 3, 3, 3],
+    },
+    {
+        perfil: 'Back-End',
+        pontos: [1, 3, 4, 3, 1, 2],
+    },
+    {
+        perfil: 'DevOps',
+        pontos: [4, 2, 3, 1, 0, 5],
+    },
+    {
+        perfil: 'Banco de Dados',
+        pontos: [5, 2, 1, 0, 3, 1],
+    }
+]

@@ -3,6 +3,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { perguntas } from './../../shared/models/elements';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'perguntas-page',
@@ -14,13 +15,14 @@ export class PerguntasPage implements OnInit {
 
     constructor(
         private utils: UtilsService,
-        private storage: StorageService
+        private storage: StorageService,
+        private router: Router
     ) { }
 
     public cor: string;
     public contador = 1;
     public perguntas = perguntas;
-    public numero: number;
+    public random: number;
     public perguntasJaRespondidas = [];
 
     public form = new FormGroup({
@@ -54,12 +56,17 @@ export class PerguntasPage implements OnInit {
     private selecionaPergunta() {
         let perguntaNova = false;
 
+        console.log('repondidas: ',this.perguntasJaRespondidas.length )
+        console.log('total: ',this.perguntas.length)
+
+        if (this.perguntasJaRespondidas.length === this.perguntas.length) {
+            this.finalizarPerguntas();
+            return;
+        }
+
         while (!perguntaNova) {
             const pergunta = this.utils.numeroAleatorio(0, this.perguntas.length);
 
-            if (this.perguntasJaRespondidas.length === this.perguntas.length) {
-                return;
-            }
             if (this.perguntasJaRespondidas.length > 0) {
                 if (this.perguntasJaRespondidas.indexOf(pergunta) === -1) {
                     perguntaNova = true;
@@ -70,40 +77,63 @@ export class PerguntasPage implements OnInit {
 
             if (perguntaNova) {
                 this.perguntasJaRespondidas.push(pergunta);
-                this.numero = pergunta;
+                this.random = pergunta;
             }
         }
     }
 
     private salvaResposta() {
         const respostas = this.form.value.resposta;
+        const numerPergunta = this.random;
         const arr = respostas.split(',').map(response => {
             return parseInt(response, 10);
         });
 
-        this.incrementaResposta(arr);
+        this.incrementaResposta(numerPergunta, arr);
     }
 
-    private incrementaResposta(value: any): void {
-        console.log(value)
+    private incrementaResposta(pergunta: number, value: any): void {
         const respostas = this.storage.getJson('resultado');
+        const pontuacaoPorPergunta = this.storage.getJson('pontuacaoPorPergunta');
+
+        let arr = [];
 
         if (!respostas) {
             this.storage.setJson('resultado', value);
+            this.storage.setJson('pontuacaoPorPergunta', [{
+                pergunta: pergunta,
+                reposta: value
+            }]);
+            
             return;
         }
 
+        //Agrega resposta atual com as anteriores
+        pontuacaoPorPergunta.push({
+            pergunta: pergunta,
+            reposta: value
+        });
+        //Soma resposta atual com as anteriores
         respostas.map((response, index) => {
             response += value[index];
-            console.log(response);
+            arr.push(response);
         });
 
-        console.log(respostas);
-
-        // this.storage.set('resultado', value);
+        this.storage.setJson('pontuacaoPorPergunta', pontuacaoPorPergunta);
+        this.storage.setJson('resultado', arr);
     }
 
+    limpaLocalStorage() {
+        this.storage.remove('resultado');
+        this.storage.remove('pontuacaoPorPergunta');
+    }
+
+    finalizarPerguntas() {
+        this.router.navigate(['profissional','agradecimentos']);
+    }
+    
     ngOnInit() {
+        this.limpaLocalStorage();
         this.recuperaCor();
         this.selecionaPergunta();
     }

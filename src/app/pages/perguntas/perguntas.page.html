@@ -1,20 +1,19 @@
-<div class="full" [style.background-color]="cor">
+<div class="fmk-full" [style.background-color]="cor">
 
 </div>
 <div class="container-fluid text-white p-4 w-100">
     <cite title="Source Title">Pergunta {{ contador }}</cite>
 
     <cc-title-page>
-        {{ perguntas[numero].pergunta }}
+        {{ perguntas[random].pergunta }}
     </cc-title-page>
-
 
     <div class="w-100" style="padding-bottom: 30px; padding-top: 30px">
         <cc-form [formGroup]="form" (submit)="responder()">
             <div class="col-md-12 text-left">
                 <p>Resposta:</p>
                 <hr>
-                <div *ngFor="let item of perguntas[numero].respostas; let i = index">
+                <div *ngFor="let item of perguntas[random].respostas; let i = index">
                     <cc-field-radio [label]="item.resposta" name="resposta" [value]="item.pontos"
                         formControlName="resposta">
                     </cc-field-radio>
@@ -26,4 +25,5 @@
             </div>
         </cc-form>
     </div>
+    <cc-form-log [form]="form"></cc-form-log>
 </div>

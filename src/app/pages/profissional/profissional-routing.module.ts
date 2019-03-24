@@ -9,7 +9,7 @@ import { ChartsModule } from 'ng2-charts';
 import { SharedModule } from './../../shared/shared.module';
 import { ProfissionalFormPage } from './formulario/profissional-form.page';
 import { ProfissionalGraficoPage } from './grafico/profissional-grafico.page';
-
+import { AgradecimentosPage } from './agradecimento/agradecimento.page';
 
 const routes: Routes = [
   {
@@ -21,6 +21,11 @@ const routes: Routes = [
     path: 'grafico',
     component: ProfissionalGraficoPage,
     data: { title: 'Grafico' }
+  },
+  {
+    path: 'agradecimentos',
+    component: AgradecimentosPage,
+    data: { title: 'Agradecimentos' }
   },
 ];
 
@@ -36,11 +41,13 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [
     ProfissionalFormPage,
-    ProfissionalGraficoPage
+    ProfissionalGraficoPage,
+    AgradecimentosPage
   ],
   providers: [
     ProfissionalFormPage,
-    ProfissionalGraficoPage
+    ProfissionalGraficoPage,
+    AgradecimentosPage
   ],
 })
 export class ProfissionalRoutingModule { }

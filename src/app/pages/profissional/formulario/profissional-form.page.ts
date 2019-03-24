@@ -74,7 +74,7 @@ export class ProfissionalFormPage implements OnInit {
     }
 
     ir() {
-        this.router.navigate(['profissional/grafico']);
+        this.router.navigate(['profissional','grafico']);
     }
 
     submit() {

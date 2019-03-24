@@ -1,0 +1,25 @@
+<div class="fmk-full fmk-bg-gray">
+
+</div>
+<div class="fmk-bg-primary text-white" style="margin-top: -70px">
+    <div class="container mt-5">
+        <div class="w-100" style="height: 100vh;">
+            <div class="fmk-align-center">
+                <cc-title-page size="2">Obrigado por contribuir!</cc-title-page>
+                <br><br>
+                <cc-button size="lg" styleButton="secondary" label="Pular Estatísticas"></cc-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <cc-title>Estatísticas</cc-title>
+    <hr>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <cc-chart-bar label="Cliente editando" [datasets]="radarChartData.datasets" [labels]="radarChartData.labels"
+                chartType="radar" [legend]="true"></cc-chart-bar>
+        </div>
+    </div>
+</div>
