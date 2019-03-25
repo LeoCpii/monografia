@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormatterService } from '../../../shared/services/formatter.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Location } from '@angular/common';
-import { ValidatorService } from 'src/app/shared/services/validator.service';
-import * as Moment from 'moment';
 import { Router } from '@angular/router';
+
+import { ValidatorService } from 'src/app/shared/services/validator.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
+
+import * as Moment from 'moment';
+
+import { profissoes } from "./../../../shared/models/elements";
 
 @Component({
     selector: 'profissional-form-page',
@@ -17,45 +21,43 @@ export class ProfissionalFormPage implements OnInit {
     constructor(
         private fb: FormBuilder,
         private validator: ValidatorService,
-        private location: Location,
-        private router: Router
+        private router: Router,
+        private storage: StorageService
     ) { }
 
     public feedback;
+    public profissaoEscolhida = true;
 
     public form = new FormGroup({
         nome: new FormControl(),
         sobrenome: new FormControl(),
         sexo: new FormControl(),
         dataNascimento: new FormControl(),
+        area: new FormControl(),
         profissao: new FormControl(),
         tempo: new FormControl(),
     },
-    // {
-    //     validators: this.validaIdade
-    // }
+        // {
+        //     validators: this.validaIdade
+        // }
     );
 
-    public profissao = {
-        data: [
-            { label: 'Desenvolvedor', value: '1' },
-            { label: 'Analista', value: '2' },
-            { label: 'Gerente', value: '3' },
-            { label: 'Diretor', value: '4' },
-        ],
-    };
+    public profissoes: any;
 
     ngOnInit() {
-        // this.form = this.fb.group({
-        //     nome: this.fb.control(''),
-        //     sobrenome: this.fb.control(''),
-        //     sexo: this.fb.control(''),
-        //     dataNascimento: this.fb.control('', Validators.compose([this.validaIdade])),
-        //     profissao: this.fb.control(''),
-        //     tempo: this.fb.control(''),
-        // }, {
-        //      validators: this.validaIdade
-        // });
+        this.profissoes = profissoes;
+    }
+
+    public profissoesDeUmaArea() {
+
+        const area = this.form.value.area;
+
+        if (area) {
+            this.profissaoEscolhida = false;
+            return profissoes.profissao[area].areas;
+        } else {
+            return [];
+        }
     }
 
     public validaIdade(c: FormControl) {
@@ -74,11 +76,11 @@ export class ProfissionalFormPage implements OnInit {
     }
 
     ir() {
-        this.router.navigate(['profissional','grafico']);
+        this.router.navigate(['profissional', 'grafico']);
     }
 
     submit() {
-        console.log(this.form.value);
+        this.storage.setJson('dataProfissao', this.form.value);
         this.ir();
     }
 }

@@ -4,9 +4,9 @@
     border-color: rgb(var(--color-primary));
 }
 
-.cc-btn-primary:hover{
+/* .cc-btn-primary:hover{
     filter:brightness(90%);
-}
+} */
 
 .cc-btn-secondary{
     color: #fff;
@@ -14,10 +14,14 @@
     border-color: rgb(var(--color-secondary));
 }
 
-.cc-btn-secondary:hover{
+/* .cc-btn-secondary:hover{
     filter:brightness(90%);
-}
+} */
 
 .btn:disabled{
     cursor: no-drop !important;
+}
+
+.btn {
+    text-transform: uppercase;
 }

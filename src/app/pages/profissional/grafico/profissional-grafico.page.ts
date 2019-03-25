@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { peopleData, barChart, lineChart, radarChart, donutPieChart } from './../../../shared/models/elements';
 import { ChartDataSets, ChartType, ChartOptions, RadialChartOptions } from 'chart.js';
 import { ChartsModule } from 'ng2-charts';
-import { Router } from '@angular/router';
+
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'profissional-grafico-page',
@@ -12,12 +15,15 @@ import { Router } from '@angular/router';
 
 export class ProfissionalGraficoPage implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private storage: StorageService
+    ) {
     this.editChart = {
       labels: ['Comunicatividade', 'Organização', 'Criatividade', 'Detalhismo', 'Liderança', 'Proatividade'],
       datasets: [
         {
-          data: [50, 50, 50, 50, 50, 50],
+          data: [0, 0, 0, 0, 0, 0],
           label: 'Pontuação de personalidade',
         },
       ]
@@ -39,15 +45,16 @@ export class ProfissionalGraficoPage implements OnInit {
   };
 
   public form = new FormGroup({
-    comunicatividade: new FormControl(50),
-    organizacao: new FormControl(50),
-    criatividade: new FormControl(50),
-    detalhismo: new FormControl(50),
-    lideranca: new FormControl(50),
-    proatividade: new FormControl(50),
+    comunicatividade: new FormControl(0),
+    organizacao: new FormControl(0),
+    criatividade: new FormControl(0),
+    detalhismo: new FormControl(0),
+    lideranca: new FormControl(0),
+    proatividade: new FormControl(0),
   });
 
   ngOnInit() {
+    this.storage.remove('grafico')
     this.getDataGraph();
   }
 
@@ -72,8 +79,12 @@ export class ProfissionalGraficoPage implements OnInit {
     });
   }
 
+  private ir() {
+    this.router.navigate(['perguntas', 'profissional']);
+  }
+
   public submit() {
-    console.log(this.form.value);
-    this.router.navigate(['perguntas']);
+    this.storage.setJson('grafico', this.editChart.datasets[0].data);
+    this.ir();
   }
 }

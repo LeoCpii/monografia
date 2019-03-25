@@ -3,7 +3,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { perguntas } from './../../shared/models/elements';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'perguntas-page',
@@ -16,7 +16,8 @@ export class PerguntasPage implements OnInit {
     constructor(
         private utils: UtilsService,
         private storage: StorageService,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute
     ) { }
 
     public cor: string;
@@ -38,7 +39,7 @@ export class PerguntasPage implements OnInit {
         }
     }
 
-    private responder() {
+    public responder() {
         this.contador++;
 
         const corAtual = this.cor;
@@ -55,9 +56,6 @@ export class PerguntasPage implements OnInit {
 
     private selecionaPergunta() {
         let perguntaNova = false;
-
-        console.log('repondidas: ',this.perguntasJaRespondidas.length )
-        console.log('total: ',this.perguntas.length)
 
         if (this.perguntasJaRespondidas.length === this.perguntas.length) {
             this.finalizarPerguntas();
@@ -93,45 +91,55 @@ export class PerguntasPage implements OnInit {
     }
 
     private incrementaResposta(pergunta: number, value: any): void {
-        const respostas = this.storage.getJson('resultado');
+        const respostas = this.storage.getJson('resultadoPerguntas');
         const pontuacaoPorPergunta = this.storage.getJson('pontuacaoPorPergunta');
 
-        let arr = [];
+        const arr = [];
 
         if (!respostas) {
-            this.storage.setJson('resultado', value);
+            this.storage.setJson('resultadoPerguntas', value);
             this.storage.setJson('pontuacaoPorPergunta', [{
                 pergunta: pergunta,
                 reposta: value
             }]);
-            
+
             return;
         }
 
-        //Agrega resposta atual com as anteriores
+        /*
+        * Agrega resposta atual com as anteriores
+        */
         pontuacaoPorPergunta.push({
             pergunta: pergunta,
             reposta: value
         });
-        //Soma resposta atual com as anteriores
+        /*
+        * Soma resposta atual com as anteriores
+        */
         respostas.map((response, index) => {
             response += value[index];
             arr.push(response);
         });
 
         this.storage.setJson('pontuacaoPorPergunta', pontuacaoPorPergunta);
-        this.storage.setJson('resultado', arr);
+        this.storage.setJson('resultadoPerguntas', arr);
     }
 
     limpaLocalStorage() {
-        this.storage.remove('resultado');
+        this.storage.remove('resultadoPerguntas');
         this.storage.remove('pontuacaoPorPergunta');
     }
 
     finalizarPerguntas() {
-        this.router.navigate(['profissional','agradecimentos']);
+        const url = this.router.url;
+
+        if (url.indexOf('profissional') > -1) {
+            this.router.navigate(['profissional', 'agradecimentos']);
+        } else {
+            this.router.navigate(['estudante', 'estatistica']);
+        }
     }
-    
+
     ngOnInit() {
         this.limpaLocalStorage();
         this.recuperaCor();

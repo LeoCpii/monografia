@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'home', loadChildren: './pages/home/home-routing.module#HomeRoutingModule', data: { title: 'home' } },
     { path: 'estudante', loadChildren: './pages/estudante/estudante-routing.module#EstudanteRoutingModule', data: { title: 'estudante' } },
     { path: 'profissional', loadChildren: './pages/profissional/profissional-routing.module#ProfissionalRoutingModule', data: { title: 'profissional' } },
-    { path: 'perguntas', loadChildren: './pages/perguntas/perguntas-routing.module#PerguntasRoutingModule', data: { title: 'perguntas' } },
+    { path: 'perguntas/:escolha', loadChildren: './pages/perguntas/perguntas-routing.module#PerguntasRoutingModule', data: { title: 'perguntas' } },
     { path: '', loadChildren: './pages/boas-vindas/boas-vindas-routing.module#BoasVindasRoutingModule', data: { title: 'estudante' } },
 ];
 

@@ -1,5 +1,6 @@
 <div class="fmk-bg-gray" style="padding-top: 20px">
   <div class="container">
+
     <cc-title-page section="Sessão da página">Título da Página</cc-title-page>
     <hr>
     <br>
@@ -187,6 +188,12 @@
         </cc-form>
         <br>
         <cc-form-log [form]="form"></cc-form-log>
+        <cc-form [formGroup]="formTeste">
+          <cc-field label="Teste disabled" [required]="true" [disabled]="!state" formControlName="testeDisabled"
+            type="text"></cc-field>
+        </cc-form>
+
+        <cc-button (click)="modifica()" label="Modifica"></cc-button>
       </div>
     </div>
 

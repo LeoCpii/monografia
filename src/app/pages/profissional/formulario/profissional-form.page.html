@@ -1,5 +1,9 @@
-<div class="fmk-bg-gray" style="padding-top: 20px">
-    <div class="container mt-5 mb-5">
+<div class="fmk-full fmk-bg-gray">
+
+</div>
+
+<div class="fmk-bg-gray fmk-align-center">
+    <div class="container mt-5 mb-5 text-left">
         <div class="card shadow-sm">
             <div class="card-body">
                 <cc-form [formGroup]="form" (submit)="submit()" label="Dados do Profissional">
@@ -26,11 +30,16 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <cc-field-select label="Profissao" [data]="profissao.data" [required]="true"
-                                formControlName="profissao"></cc-field-select>
+                        <div class="col-md-4 mb-3">
+                            <cc-field-select label="Área" [data]="profissoes.profissao" [required]="true"
+                                formControlName="area"></cc-field-select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <cc-field-select label="Área" [data]="profissoesDeUmaArea()"
+                                [disabled]="!this.form.value.area" [required]="true" formControlName="profissao">
+                            </cc-field-select>
+                        </div>
+                        <div class="col-md-4 mb-3">
                             <cc-field label="Tempo de mercado (anos)" [required]="true" formControlName="tempo">
                             </cc-field>
                         </div>
@@ -41,7 +50,6 @@
                 <br>
                 <cc-form-log [form]="form"></cc-form-log>
             </div>
-            <cc-button (click)="ir()" label="Avançar"></cc-button>
         </div>
     </div>
 </div>

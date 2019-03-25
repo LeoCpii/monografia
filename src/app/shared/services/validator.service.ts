@@ -57,8 +57,6 @@ export class ValidatorService {
 
     public validaIdade(c: FormControl) {
 
-        console.log(c);
-
         return true ? null : { validarSenhas: { valid: false } };
     }
 }

@@ -1,7 +1,7 @@
 <div class="fmk-full fmk-bg-gray">
 
 </div>
-<div class="fmk-bg-primary text-white" style="margin-top: -70px">
+<div class="fmk-bg-primary text-white" style="margin-top: -48px">
     <div class="container mt-5">
         <div class="w-100" style="height: 100vh;">
             <div class="fmk-align-center">
@@ -13,13 +13,31 @@
     </div>
 </div>
 
-<div class="container mt-3">
+<div class="container mt-4 mb-5">
     <cc-title>Estatísticas</cc-title>
     <hr>
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <cc-chart-bar label="Cliente editando" [datasets]="radarChartData.datasets" [labels]="radarChartData.labels"
-                chartType="radar" [legend]="true"></cc-chart-bar>
+    <cc-alert>Acompanhe suas estatísticas baseadas nas informações da sua área</cc-alert>
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <cc-title size='h5'>Sua Pontuação</cc-title>
+                    <div style="display: block; position: relative; min-height: 300px">
+                        <canvas baseChart [datasets]="radarChartData.datasets" [options]="barChartOptions"
+                            [labels]="radarChartData.labels" chartType="radar" [legend]="true" [colors]="radarChartData.colors">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <cc-chart-bar label="Número de profissionais" [datasets]="barChartData.datasets"
+                        [labels]="barChartData.labels" [legend]="true" chartType="bar" [colors]="barChartData.colors">
+                    </cc-chart-bar>
+                </div>
+            </div>
         </div>
     </div>
 </div>

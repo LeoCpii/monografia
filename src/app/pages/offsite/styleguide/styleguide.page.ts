@@ -47,6 +47,12 @@ export class StyleguidePage implements OnInit {
     ciclismo: new FormControl(50),
   });
 
+  public formTeste = new FormGroup({
+    testeDisabled: new FormControl(),
+  });
+
+  public state = false;
+
   public tableData: any = peopleData;
 
   public editChart: any;
@@ -89,6 +95,11 @@ export class StyleguidePage implements OnInit {
 
     this.getDataGraph();
 
+  }
+
+  public modifica() {
+    this.state = !this.state;
+    return this.state;
   }
 
   buttonActionActive(): void {

@@ -41,7 +41,7 @@ export class FieldSelectComponent implements OnInit, ControlValueAccessor {
     @Input() label: string;
     @Input() disabled: boolean = false;
     @Input() data: any[];
-    @Input() required = false
+    @Input() required = false;
 
     writeValue(value: string) {
         this.input.nativeElement.value = value;
@@ -53,6 +53,10 @@ export class FieldSelectComponent implements OnInit, ControlValueAccessor {
 
     registerOnTouched(fn: () => void) {
         this.onTouched = fn;
+    }
+
+    setDisabledState(disabled: boolean) {
+        this.disabled = disabled;
     }
 
     public onChange(value: string): void {

@@ -318,6 +318,7 @@ export const lineChart: any = {
     colors: [{
         borderColor: 'rgb(255, 54, 54)',
         backgroundColor: 'rgba(255, 54, 54,0.3)',
+
     },
     {
         borderColor: 'rgb(75, 75, 75)',
@@ -358,6 +359,69 @@ export const donutPieChart: any = {
     }],
 };
 
+export const profissoes: any = {
+    profissao: [
+        {
+            label: 'Desenvolvimento',
+            value: 0,
+            areas: [
+                {
+                    label: 'Front-End',
+                    value: 0,
+                    pontos: [85, 76, 30, 58, 30, 55],
+                },
+                {
+                    label: 'Back-End',
+                    value: 1,
+                    pontos: [69, 52, 97, 99, 83, 53]
+                },
+                {
+                    label: 'DevOps',
+                    value: 2,
+                    pontos: [69, 34, 4, 45, 43, 55],
+                },
+                {
+                    label: 'Banco de Dados',
+                    value: 3,
+                    pontos: [72, 63, 63, 86, 51, 14],
+                },
+            ]
+        },
+        {
+            label: 'Infraestrutura',
+            value: 1,
+            areas: [
+                {
+                    label: 'Segurança',
+                    value: 0
+                },
+                {
+                    label: 'Suporte',
+                    value: 1
+                },
+                {
+                    label: 'Redes',
+                    value: 2
+                }
+            ]
+        },
+        {
+            label: 'Gestão',
+            value: 2,
+            areas: [
+                {
+                    label: 'Requisitos',
+                    value: 0
+                },
+                {
+                    label: 'Teste',
+                    value: 1
+                },
+            ]
+        }
+    ]
+};
+
 export const colors: any = [
     '#3b5999', '#0084ff', '#55acee', '#0077B5', '#00AFF0', '#007ee5', '#21759b', '#0077b5', '#4c75a3',
     '#34465d', '#bd081c', '#cd201f', '#eb4924', '#ff3300', '#ff5700', '#ff6600', '#1abc9c', '#6B69D6',
@@ -366,20 +430,20 @@ export const colors: any = [
 
 export const perguntas: any = [
     {
-// tslint:disable-next-line: max-line-length
+        // tslint:disable-next-line: max-line-length
         pergunta: 'Pergunta 1',
         respostas: [
             {
                 resposta: 'Resposta A',
-                pontos: [0, 0, 0, 0, 0, 0]
+                pontos: [6, 4, 11, 5, 4, 9]
             },
             {
                 resposta: 'Resposta B',
-                pontos: [1, 1, 1, 1, 1, 1]
+                pontos: [4, 12, 17, 2, 11, 19]
             },
             {
                 resposta: 'Resposta C',
-                pontos: [2, 2, 2, 2, 2, 2]
+                pontos: [5, 9, 9, 1, 15, 2]
             }
         ]
     },
@@ -388,15 +452,15 @@ export const perguntas: any = [
         respostas: [
             {
                 resposta: 'Resposta D',
-                pontos: [0, 0, 0, 0, 0, 0]
+                pontos: [17, 15, 13, 9, 8, 9]
             },
             {
                 resposta: 'Resposta E',
-                pontos: [1, 1, 1, 1, 1, 1]
+                pontos: [16, 3, 20, 13, 18, 15]
             },
             {
                 resposta: 'Resposta F',
-                pontos: [2, 2, 2, 2, 2, 2]
+                pontos: [11, 9, 4, 10, 16, 12]
             }
         ]
     },
@@ -405,35 +469,16 @@ export const perguntas: any = [
         respostas: [
             {
                 resposta: 'Resposta G',
-                pontos: [0, 0, 0, 0, 0, 0]
+                pontos: [16, 11, 8, 7, 17, 14]
             },
             {
                 resposta: 'Resposta H',
-                pontos: [1, 1, 1, 1, 1, 1]
+                pontos: [16, 18, 3, 5, 1, 16]
             },
             {
                 resposta: 'Resposta I',
-                pontos: [2, 2, 2, 2, 2, 2]
+                pontos: [6, 16, 17, 4, 3, 17]
             }
         ]
     }
 ];
-
-export const perfis = [
-    {
-        perfil: 'Front-End',
-        pontos: [3, 3, 3, 3, 3, 3],
-    },
-    {
-        perfil: 'Back-End',
-        pontos: [1, 3, 4, 3, 1, 2],
-    },
-    {
-        perfil: 'DevOps',
-        pontos: [4, 2, 3, 1, 0, 5],
-    },
-    {
-        perfil: 'Banco de Dados',
-        pontos: [5, 2, 1, 0, 3, 1],
-    }
-]
