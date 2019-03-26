@@ -52,7 +52,7 @@ export class CollapsibleComponent implements OnDestroy {
     public close() {
         const content: HTMLDivElement = this.content.nativeElement;
         this.chevron.nativeElement.style.transform = 'rotate(0deg)';
-        content.style.maxHeight = "0px";
+        content.style.maxHeight = '0px';
         this.isOpen = false;
         this.clearInterval();
     }

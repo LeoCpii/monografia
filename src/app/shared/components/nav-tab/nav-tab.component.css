@@ -1,3 +1,7 @@
 .pane{
-    padding: 0px .25rem .25rem !important;
+    padding: 0px !important;
+}
+
+.card-body {
+    border: 1px solid transparent;
 }

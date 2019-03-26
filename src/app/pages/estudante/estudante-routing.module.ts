@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from './../../shared/shared.module';
 import { EstudantePage } from './apresentacao/estudante.page';
-import { EstatisticaPage } from './estatisticas/estatistica.page';
+import { ResultadoPage } from './resultado/resultado.page';
+import { ProfissaoFragment } from './resultado/profissao/profissao.fragment';
+import { EstatisticaFragment } from './resultado/estatisticas/estatistica.fragment';
 
 const routes: Routes = [
   {
@@ -14,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'estatistica',
-    component: EstatisticaPage,
+    component: ResultadoPage,
     data: { title: 'Estatistica' }
   },
 ];
@@ -28,7 +30,9 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [
     EstudantePage,
-    EstatisticaPage
+    ResultadoPage,
+    ProfissaoFragment,
+    EstatisticaFragment
   ],
   providers: [],
 })

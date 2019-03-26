@@ -1,0 +1,29 @@
+<cc-alert>Estas estatísticas são baseadas nas suas respostas e apresentam suas compatibilidades com algumas áreas de TI
+</cc-alert>
+<div class="row">
+    <div class="col-md-7 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <cc-chart-bar label="Sua pontuação para a MUDAR -- PROFISSAO" [datasets]="data.datasets" [labels]="data.labels"
+                    [legend]="true" chartType="radar"></cc-chart-bar>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <cc-chart-bar label="Outras áreas para o seu perfil" [datasets]="data.datasets" [labels]="data.labels"
+                    [legend]="true" chartType="doughnut"></cc-chart-bar>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <cc-chart-bar label="Média de pessoas com perfil para MUDAR -- PROFISSAO" [datasets]="data.datasets" [labels]="data.labels"
+                    [legend]="true" chartType="bar"></cc-chart-bar>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>

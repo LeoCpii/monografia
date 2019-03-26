@@ -1,12 +1,12 @@
 <div class="collapsible bg-white shadow-sm" [class.is-open]="isOpen">
     <div class="collapsible-header" (click)="toggle()">
         <span class="collapsible-header-label">{{ label }}</span>
-        <span *ngIf="desc" class="collapsible-header-desc">{{ desc }}</span>
+        <span *ngIf="desc" class="collapsible-header-desc w-50">{{ desc }}</span>
         <span class="w-100"><i #chevron class="fa fa-chevron-down float-right fmk-transition fmk-color-secondary fmk-pointer" aria-hidden="true"></i></span>
     </div>
     <ng-content select="[header]"></ng-content>
     <div #content class="collapsible-content">
         <div class="collapsible-content-spacing"></div>
-        <ng-content select="[body]"></ng-content>
+        <ng-content select="[body]" class="ml-2"></ng-content>
     </div>
 </div>

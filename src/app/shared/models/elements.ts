@@ -337,15 +337,7 @@ export const radarChart: any = {
             data: [13, 14, 10, 10],
             label: 'Serie B'
         }
-    ],
-    colors: [{
-        borderColor: 'rgb(255, 54, 54)',
-        backgroundColor: 'rgba(255, 54, 54,0.3)',
-    },
-    {
-        borderColor: 'rgb(75, 75, 75)',
-        backgroundColor: 'rgba(75, 75, 75,0.3)',
-    }]
+    ]
 };
 
 export const donutPieChart: any = {
@@ -357,6 +349,14 @@ export const donutPieChart: any = {
     datasets: [{
         data: [10, 20, 30]
     }],
+    color: [{
+        borderColor: 'rgb(255, 54, 54)',
+        backgroundColor: 'rgba(255, 54, 54,0.3)',
+    },
+    {
+        borderColor: 'rgb(75, 75, 75)',
+        backgroundColor: 'rgba(75, 75, 75,0.3)',
+    }]
 };
 
 export const profissoes: any = {

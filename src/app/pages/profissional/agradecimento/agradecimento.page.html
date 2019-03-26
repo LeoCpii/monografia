@@ -1,15 +1,12 @@
 <div class="fmk-full fmk-bg-gray">
 
 </div>
-<div class="fmk-bg-primary text-white" style="margin-top: -48px">
-    <div class="container mt-5">
-        <div class="w-100" style="height: 100vh;">
-            <div class="fmk-align-center">
-                <cc-title-page size="2">Obrigado por contribuir!</cc-title-page>
-                <br><br>
-                <cc-button size="lg" styleButton="secondary" label="Pular Estatísticas"></cc-button>
-            </div>
-        </div>
+<div class="pg-parent">
+    <div class="pg-img-bg fmk-gradient" id="success">
+    </div>
+    <div class="container pg-content-bg text-white w-100">
+        <cc-title-page size="1">Obrigado por participar!</cc-title-page>
+        <cc-button-style type="transition" label="Estatísticas"></cc-button-style>
     </div>
 </div>
 
@@ -24,7 +21,8 @@
                     <cc-title size='h5'>Sua Pontuação</cc-title>
                     <div style="display: block; position: relative; min-height: 300px">
                         <canvas baseChart [datasets]="radarChartData.datasets" [options]="barChartOptions"
-                            [labels]="radarChartData.labels" chartType="radar" [legend]="true" [colors]="radarChartData.colors">
+                            [labels]="radarChartData.labels" chartType="radar" [legend]="true"
+                            [colors]="radarChartData.colors">
                         </canvas>
                     </div>
                 </div>
