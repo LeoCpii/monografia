@@ -15,9 +15,9 @@ const routes: Routes = [
     data: { title: 'Estudante' }
   },
   {
-    path: 'estatistica',
+    path: 'resultado',
     component: ResultadoPage,
-    data: { title: 'Estatistica' }
+    data: { title: 'Resultado' }
   },
 ];
 

@@ -136,7 +136,7 @@ export class PerguntasPage implements OnInit {
         if (url.indexOf('profissional') > -1) {
             this.router.navigate(['profissional', 'agradecimentos']);
         } else {
-            this.router.navigate(['estudante', 'estatistica']);
+            this.router.navigate(['estudante', 'resultado']);
         }
     }
 

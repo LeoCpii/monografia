@@ -7,11 +7,11 @@
     </div>
     <div class="container pg-content-bg text-white w-100">
         <cc-title-page size="1">Obrigado por participar!</cc-title-page>
-        <cc-button-style type="transition" label="Estatísticas"></cc-button-style>
+        <cc-button-style (click)="scroll(target)" type="transition" label="Estatísticas"></cc-button-style>
     </div>
 </div>
 
-<div class="container mt-4 mb-5">
+<div #target class="container mt-4 mb-5">
     <div class="mt-5">
         <cc-nav-tab-header>
             <cc-nav-tab tabTitle="Estatísticas">

@@ -5,5 +5,7 @@ import { environment } from '../../../environments/environment';
     providedIn: 'root'
 })
 export class ConfigService {
-
+    public get baseUrl(): string {
+        return environment.baseUrl;
+    }
 }

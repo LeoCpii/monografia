@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { donutPieChart } from "./../../../shared/models/elements";
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
     selector: 'resultado-page',
@@ -10,7 +11,10 @@ import { donutPieChart } from "./../../../shared/models/elements";
 
 export class ResultadoPage implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor(
+        private router: Router,
+        private utils: UtilsService
+        ) { }
 
     public dunotChart = donutPieChart;
 
@@ -40,4 +44,8 @@ export class ResultadoPage implements OnInit {
     }
 
     ngOnInit() { }
+
+    scroll(e: HTMLElement) {
+        this.utils.scroll(e);
+      }
 }

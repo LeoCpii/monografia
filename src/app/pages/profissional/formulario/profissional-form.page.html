@@ -35,20 +35,21 @@
                                 formControlName="area"></cc-field-select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <cc-field-select label="Área" [data]="profissoesDeUmaArea()"
+                            <cc-field-select label="Profissão" [data]="profissoesDeUmaArea()"
                                 [disabled]="!this.form.value.area" [required]="true" formControlName="profissao">
                             </cc-field-select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <cc-field label="Tempo de mercado (anos)" [required]="true" formControlName="tempo">
-                            </cc-field>
+                            <cc-field-select label="Nível" [data]="niveis" [required]="true"
+                                formControlName="nivel">
+                            </cc-field-select>
                         </div>
                     </div>
                     <cc-alert *ngIf="feedback" type="danger">Erro</cc-alert>
                     <cc-button label="Confirmar" type="submit" [disabled]="!form.valid"></cc-button>
                 </cc-form>
-                <br>
-                <cc-form-log [form]="form"></cc-form-log>
+                <!-- <br> -->
+                <!-- <cc-form-log [form]="form"></cc-form-log> -->
             </div>
         </div>
     </div>

@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormatterService } from '../../../shared/services/formatter.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { ValidatorService } from 'src/app/shared/services/validator.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 
 import * as Moment from 'moment';
 
-import { profissoes } from "./../../../shared/models/elements";
+import { profissoes, niveis } from './../../../shared/models/elements';
+import { ProfissionalService } from '../profissional.service';
+
+export interface IProfissionalFormPage {
+    niveis: Niveis[];
+}
 
 @Component({
     selector: 'profissional-form-page',
@@ -17,16 +22,19 @@ import { profissoes } from "./../../../shared/models/elements";
 })
 
 export class ProfissionalFormPage implements OnInit {
+    public data: IProfissionalFormPage;
 
     constructor(
-        private fb: FormBuilder,
-        private validator: ValidatorService,
         private router: Router,
-        private storage: StorageService
+        private storage: StorageService,
+        private route: ActivatedRoute,
     ) { }
 
     public feedback;
     public profissaoEscolhida = true;
+
+    public profissoes: any;
+    public niveis = niveis;
 
     public form = new FormGroup({
         nome: new FormControl(),
@@ -35,16 +43,19 @@ export class ProfissionalFormPage implements OnInit {
         dataNascimento: new FormControl(),
         area: new FormControl(),
         profissao: new FormControl(),
-        tempo: new FormControl(),
-    },
-        // {
-        //     validators: this.validaIdade
-        // }
-    );
-
-    public profissoes: any;
+        nivel: new FormControl(),
+    });
 
     ngOnInit() {
+        this.data = this.route.snapshot.data['data'];
+        this.router.events.subscribe((evt) => {
+            if (evt instanceof NavigationEnd) {
+                this.data = this.route.snapshot.data['data'];
+            }
+        });
+
+        console.log(this.data);
+
         this.profissoes = profissoes;
     }
 

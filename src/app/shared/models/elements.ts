@@ -422,6 +422,29 @@ export const profissoes: any = {
     ]
 };
 
+export const niveis: any = [
+    {
+        label: 'Estagiário',
+        value: 1,
+    },
+    {
+        label: 'Trainee',
+        value: 1.01,
+    },
+    {
+        label: 'Júnior',
+        value: 1.03,
+    },
+    {
+        label: 'Pleno',
+        value: 1.05,
+    },
+    {
+        label: 'Sênior',
+        value: 1.1,
+    },
+];
+
 export const colors: any = [
     '#3b5999', '#0084ff', '#55acee', '#0077B5', '#00AFF0', '#007ee5', '#21759b', '#0077b5', '#4c75a3',
     '#34465d', '#bd081c', '#cd201f', '#eb4924', '#ff3300', '#ff5700', '#ff6600', '#1abc9c', '#6B69D6',

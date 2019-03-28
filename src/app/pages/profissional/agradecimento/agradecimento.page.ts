@@ -3,6 +3,7 @@ import { barChart } from './../../../shared/models/elements';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { profissoes } from "./../../../shared/models/elements";
 import { RadialChartOptions } from 'chart.js';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'agradecimento-page',
@@ -12,12 +13,15 @@ import { RadialChartOptions } from 'chart.js';
 
 export class AgradecimentosPage implements OnInit {
 
-  constructor(private storage: StorageService) { }
+  constructor(
+    private storage: StorageService,
+    private utils: UtilsService
+    ) { }
 
   public pontosGrafico = this.storage.getJson('grafico');
   public profissaoUsuario = this.storage.getJson('dataProfissao');
   public resultado = this.storage.getJson('resultadoPerguntas');
-  public anosTrabalhados = this.profissaoUsuario.tempo;
+  public nivel = this.profissaoUsuario.nivel;
   public profissao = profissoes.profissao[this.profissaoUsuario.area].areas[this.profissaoUsuario.profissao];
   public pontuacaoProfissional: any;
 
@@ -70,7 +74,7 @@ export class AgradecimentosPage implements OnInit {
       /*
       * Média Poderada
       */
-      const resultado = this.mediaPonderada(this.resultado[i], this.pontosGrafico[i], this.anosTrabalhados, 1);
+      const resultado = this.mediaPonderada(this.resultado[i], this.pontosGrafico[i], this.nivel, 1);
 
       arr.push(resultado);
 
@@ -81,13 +85,18 @@ export class AgradecimentosPage implements OnInit {
   }
 
   private mediaPonderada(valorGrafico: number, valorResposta: number, valorPesoGrafico: number, ValorPesoResposta: number) {
-    const resposta = ((valorGrafico * valorPesoGrafico) + (valorResposta * ValorPesoResposta) / valorPesoGrafico + ValorPesoResposta);
+    const resposta = (((valorGrafico * valorPesoGrafico) + (valorResposta * ValorPesoResposta)) / valorPesoGrafico + ValorPesoResposta);
 
-    return resposta > 100 ? 100 : resposta;
+
+    return resposta > 100 ? 100 : Math.trunc(resposta);
   }
 
   ngOnInit() {
-    this.retornaPontosProfissonal();
-
+    this.retornaPontosProfissonal()
   }
+
+  scroll(e: HTMLElement) {
+    this.utils.scroll(e);
+  }
+
 }

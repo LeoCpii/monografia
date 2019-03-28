@@ -43,6 +43,7 @@ export class FieldSelectComponent implements OnInit, ControlValueAccessor {
     @Input() data: any[];
     @Input() required = false;
 
+
     writeValue(value: string) {
         this.input.nativeElement.value = value;
     }
@@ -83,7 +84,6 @@ export class FieldSelectComponent implements OnInit, ControlValueAccessor {
     }
 
     ngOnInit() {
-
     }
 
 }

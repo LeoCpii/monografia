@@ -44,4 +44,8 @@ export class UtilsService {
 
         return colors[number];
     }
+
+    scroll(el: HTMLElement) {
+        el.scrollIntoView();
+    }
 }

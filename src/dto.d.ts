@@ -19,3 +19,8 @@
 //     ValorLiquido: number;
 //     ValorPIS: number;
 // }
+
+interface Niveis {
+    label: string;
+    value: number;
+}

@@ -5,7 +5,7 @@
         <select #input class="form-control" [class.cc-is-invalid]="shouldDisplayError()"
         (input)="onChange($event.target.value)" (blur)="onBlur($event.target.value)"
         [disabled]="disabled" [required]="required">
-            <option value="" selected desabled>Selecione</option>
+            <option value="" selected> Selecione</option>
             <option [value]="item.value" *ngFor="let item of data">{{ item.label }}</option>
         </select>
     </div>

@@ -17,6 +17,9 @@ export class ButtonStyleComponent {
       cssClass[`cc-btn-press`] = true;
     } else if (this.type === 'transition') {
       cssClass[`cc-btn-transition`] = true;
+    } else if (this.type === 'line') {
+      cssClass[`cc-btn-line`] = true;
+      cssClass[`cc-btn-line-effect`] = true;
     }
 
     return cssClass;

@@ -6,15 +6,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 
-import { SharedModule } from './../../shared/shared.module';
 import { ProfissionalFormPage } from './formulario/profissional-form.page';
+import { ProfissionalFormResolver } from './formulario/profissional-form.resolver';
+
 import { ProfissionalGraficoPage } from './grafico/profissional-grafico.page';
 import { AgradecimentosPage } from './agradecimento/agradecimento.page';
+
+import { SharedModule } from './../../shared/shared.module';
+import { ProfissionalService } from './profissional.service';
+
 
 const routes: Routes = [
   {
     path: '',
     component: ProfissionalFormPage,
+    resolve: { data: ProfissionalFormResolver },
     data: { title: 'Profissional' }
   },
   {
@@ -47,7 +53,9 @@ const routes: Routes = [
   providers: [
     ProfissionalFormPage,
     ProfissionalGraficoPage,
-    AgradecimentosPage
+    AgradecimentosPage,
+    ProfissionalFormResolver,
+    ProfissionalService
   ],
 })
 export class ProfissionalRoutingModule { }
