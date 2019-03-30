@@ -2,54 +2,56 @@
 
 </div>
 
-<div class="fmk-bg-gray fmk-align-center">
-    <div class="container mt-5 mb-5 text-left">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <cc-form [formGroup]="form" (submit)="submit()" label="Dados do Profissional">
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <cc-field label="Nome" [required]="true" formControlName="nome"></cc-field>
+<div class="position-relative" style="height: 100vh">
+    <div class="fmk-bg-gray fmk-align-center">
+        <div class="container mt-5 mb-5 text-left">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <cc-form [formGroup]="form" (submit)="submit()" label="Dados do Profissional">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <cc-field label="Nome" [required]="true" formControlName="nome"></cc-field>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <cc-field label="Sobrenome" [required]="true" formControlName="sobrenome"></cc-field>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <cc-field label="Sobrenome" [required]="true" formControlName="sobrenome"></cc-field>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <p>Sexo:</p>
+                                <cc-field-radio label="Masculino" name="sexo" value="M" inline="true"
+                                    formControlName="sexo">
+                                </cc-field-radio>
+                                <cc-field-radio label="Feminino" name="sexo" value="F" inline="true"
+                                    formControlName="sexo">
+                                </cc-field-radio>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <cc-field label="Data de nascimento" [required]="true" formControlName="dataNascimento"
+                                    type="date"></cc-field>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <p>Sexo:</p>
-                            <cc-field-radio label="Masculino" name="sexo" value="M" inline="true"
-                                formControlName="sexo">
-                            </cc-field-radio>
-                            <cc-field-radio label="Feminino" name="sexo" value="F" inline="true" formControlName="sexo">
-                            </cc-field-radio>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <cc-field-select label="Área" [data]="data.area['area']" [required]="true"
+                                    formControlName="area"></cc-field-select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <cc-field-select label="Profissão" [data]="profissoesDeUmaArea()"
+                                    [disabled]="!this.form.value.area" [required]="true" formControlName="profissao">
+                                </cc-field-select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <cc-field-select label="Nível" [data]="data.niveis['niveis']" [required]="true"
+                                    formControlName="nivel">
+                                </cc-field-select>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <cc-field label="Data de nascimento" [required]="true" formControlName="dataNascimento"
-                                type="date"></cc-field>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <cc-field-select label="Área" [data]="profissoes.profissao" [required]="true"
-                                formControlName="area"></cc-field-select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <cc-field-select label="Profissão" [data]="profissoesDeUmaArea()"
-                                [disabled]="!this.form.value.area" [required]="true" formControlName="profissao">
-                            </cc-field-select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <cc-field-select label="Nível" [data]="niveis" [required]="true"
-                                formControlName="nivel">
-                            </cc-field-select>
-                        </div>
-                    </div>
-                    <cc-alert *ngIf="feedback" type="danger">Erro</cc-alert>
-                    <cc-button label="Confirmar" type="submit" [disabled]="!form.valid"></cc-button>
-                </cc-form>
-                <!-- <br> -->
-                <!-- <cc-form-log [form]="form"></cc-form-log> -->
+                        <cc-alert *ngIf="feedback" type="danger">Erro</cc-alert>
+                        <cc-button label="Confirmar" type="submit" [disabled]="!form.valid"></cc-button>
+                    </cc-form>
+                    <br>
+                </div>
             </div>
         </div>
     </div>

@@ -13,6 +13,8 @@ import { ProfissionalService } from '../profissional.service';
 
 export interface IProfissionalFormPage {
     niveis: Niveis[];
+    area: Area[];
+    profissao: Profissao[];
 }
 
 @Component({
@@ -28,6 +30,7 @@ export class ProfissionalFormPage implements OnInit {
         private router: Router,
         private storage: StorageService,
         private route: ActivatedRoute,
+        private profissionalService: ProfissionalService,
     ) { }
 
     public feedback;
@@ -54,18 +57,32 @@ export class ProfissionalFormPage implements OnInit {
             }
         });
 
-        console.log(this.data);
+        console.log(this.data.profissao);
 
         this.profissoes = profissoes;
     }
 
     public profissoesDeUmaArea() {
 
-        const area = this.form.value.area;
+        const posicao = this.form.value.area;
 
-        if (area) {
+        console.log(posicao);
+
+        if (posicao) {
             this.profissaoEscolhida = false;
-            return profissoes.profissao[area].areas;
+
+            const areaSelecionada = this.data.area['area'][posicao];
+
+            const areaId = areaSelecionada['_id'];
+            const teste = [];
+
+            this.data.profissao['profissao'].forEach(element => {
+                if (element['area'] === areaId) {
+                    teste.push(element);
+                }
+            });
+
+            return teste;
         } else {
             return [];
         }

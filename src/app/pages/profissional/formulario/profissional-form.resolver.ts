@@ -9,8 +9,14 @@ export class ProfissionalFormResolver implements Resolve<Promise<IProfissionalFo
 
     async resolve(route: ActivatedRouteSnapshot): Promise<IProfissionalFormPage> {
 
+        const niveis = await this.profissionalService.obterNiveis();
+        const area = await this.profissionalService.obterAreas();
+        const profissao = await this.profissionalService.obterProfissoes();
+
         const response: IProfissionalFormPage = {
-            niveis: await this.profissionalService.obterNiveis()
+            niveis: niveis,
+            area: area,
+            profissao: profissao
         };
 
         return response;

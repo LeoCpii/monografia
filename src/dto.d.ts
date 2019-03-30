@@ -24,3 +24,16 @@ interface Niveis {
     label: string;
     value: number;
 }
+
+interface Area {
+    label: string;
+    value: number;
+    profissoes: Profissao[];
+}
+
+interface Profissao {
+    label: string;
+    value: number;
+    pontos: number[];
+    area: Area
+}
