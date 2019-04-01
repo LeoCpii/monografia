@@ -11,10 +11,10 @@ import { ProfissionalFormResolver } from './formulario/profissional-form.resolve
 
 import { ProfissionalGraficoPage } from './grafico/profissional-grafico.page';
 import { AgradecimentosPage } from './agradecimento/agradecimento.page';
+import { ProfissionalAgradecimentoResolver } from './agradecimento/agradecimento.resolver';
 
 import { SharedModule } from './../../shared/shared.module';
 import { ProfissionalService } from './profissional.service';
-
 
 const routes: Routes = [
   {
@@ -31,6 +31,7 @@ const routes: Routes = [
   {
     path: 'agradecimentos',
     component: AgradecimentosPage,
+    resolve: { data: ProfissionalAgradecimentoResolver },
     data: { title: 'Agradecimentos' }
   },
 ];
@@ -55,6 +56,7 @@ const routes: Routes = [
     ProfissionalGraficoPage,
     AgradecimentosPage,
     ProfissionalFormResolver,
+    ProfissionalAgradecimentoResolver,
     ProfissionalService
   ],
 })

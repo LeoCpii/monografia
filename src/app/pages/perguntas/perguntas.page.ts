@@ -134,6 +134,8 @@ export class PerguntasPage implements OnInit {
         const url = this.router.url;
 
         if (url.indexOf('profissional') > -1) {
+            // const currentUser = this.storage.getJson('profissional');
+
             this.router.navigate(['profissional', 'agradecimentos']);
         } else {
             this.router.navigate(['estudante', 'resultado']);

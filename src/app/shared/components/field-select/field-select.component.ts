@@ -41,8 +41,9 @@ export class FieldSelectComponent implements OnInit, ControlValueAccessor {
     @Input() label: string;
     @Input() disabled: boolean = false;
     @Input() data: any[];
+    @Input() keyLabel?: string;
+    @Input() keyValue?: string;
     @Input() required = false;
-
 
     writeValue(value: string) {
         this.input.nativeElement.value = value;

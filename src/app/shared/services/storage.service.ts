@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-type StorageKey = 'resultadoPerguntas' | 'pontuacaoPorPergunta' | 'dataProfissao' | 'grafico';
+type StorageKey = 'resultadoPerguntas' | 'pontuacaoPorPergunta' | 'dataProfissao' | 'grafico' | 'profissional';
 
 @Injectable({
     providedIn: 'root'

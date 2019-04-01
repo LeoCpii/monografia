@@ -35,5 +35,15 @@ interface Profissao {
     label: string;
     value: number;
     pontos: number[];
-    area: Area
+    area: Area;
+}
+
+interface Profissional {
+    nome: string;
+    sobrenome: string;
+    sexo: string;
+    dataNascimento: string;
+    area: Area;
+    profissao: Profissao;
+    nivel: Niveis;
 }

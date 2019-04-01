@@ -33,11 +33,15 @@ export class ProfissionalFormPage implements OnInit {
         private profissionalService: ProfissionalService,
     ) { }
 
-    public feedback;
+    public feedback = false;
+    public mensagemFeedback = '';
     public profissaoEscolhida = true;
 
     public profissoes: any;
     public niveis = niveis;
+
+    public isLoading = false;
+    public response: any = '';
 
     public form = new FormGroup({
         nome: new FormControl(),
@@ -57,32 +61,24 @@ export class ProfissionalFormPage implements OnInit {
             }
         });
 
-        console.log(this.data.profissao);
-
         this.profissoes = profissoes;
     }
 
     public profissoesDeUmaArea() {
+        const idArea = this.form.value.area;
 
-        const posicao = this.form.value.area;
-
-        console.log(posicao);
-
-        if (posicao) {
+        if (idArea) {
             this.profissaoEscolhida = false;
 
-            const areaSelecionada = this.data.area['area'][posicao];
-
-            const areaId = areaSelecionada['_id'];
-            const teste = [];
+            const result = [];
 
             this.data.profissao['profissao'].forEach(element => {
-                if (element['area'] === areaId) {
-                    teste.push(element);
+                if (element['area'] === idArea) {
+                    result.push(element);
                 }
             });
 
-            return teste;
+            return result;
         } else {
             return [];
         }
@@ -103,12 +99,34 @@ export class ProfissionalFormPage implements OnInit {
         return status ? null : { validarSenhas: { valid: false } };
     }
 
-    ir() {
-        this.router.navigate(['profissional', 'grafico']);
+    private async cadastraProfissional() {
+        this.isLoading = false;
+
+        const params = {
+            nome: this.form.value.nome,
+            sobrenome: this.form.value.sobrenome,
+            sexo: this.form.value.sexo,
+            dataNascimento: this.form.value.dataNascimento,
+            areaId: this.form.value.area,
+            profissaoId: this.form.value.profissao,
+            nivelId: this.form.value.nivel,
+        };
+
+        this.response = await this.profissionalService.cadastrarProfissional(params);
+
+        this.isLoading = false;
+
+        if (this.response['response'].status === 200) {
+            this.storage.setJson('profissional', this.response['response'].objeto);
+            this.storage.setJson('dataProfissao', this.form.value);
+            this.ir();
+        } else {
+            this.feedback = true;
+            this.mensagemFeedback = this.response.body;
+        }
     }
 
-    submit() {
-        this.storage.setJson('dataProfissao', this.form.value);
-        this.ir();
+    ir() {
+        this.router.navigate(['profissional', 'grafico']);
     }
 }
