@@ -14,10 +14,11 @@ export class ChartComponent {
   @Input() chartType: ChartType;
   @Input() colors: Color[];
   @Input() label: string;
+  @Input() options?: any;
 
-  public barChartOptions: RadialChartOptions ={
+  public barChartOptions: RadialChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     responsiveAnimationDuration: 800,
-  }
+  };
 }

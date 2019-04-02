@@ -4,7 +4,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 @Component({
   selector: 'cc-field-select',
   templateUrl: './field-select.component.html',
-  styleUrls: ['./field-select.component.css','./../field/field.component.css']
+  styleUrls: ['./field-select.component.css', './../field/field.component.css']
 })
 export class FieldSelectComponent implements OnInit, ControlValueAccessor {
     private static _nextId = 0;

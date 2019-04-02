@@ -1,0 +1,34 @@
+.info-box {
+    height: 180px;
+    max-height: 180px;
+    min-height: 180px;
+    overflow: hidden;
+}
+
+.align-center {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+}
+
+.info-box-icon {
+    top: -60px;
+    right: -30px;
+    font-size: 270px;
+    opacity: .275;
+}
+
+.icon {
+    transform: rotate(-25deg);
+}
+
+/*EXTENDS - BOOTSTRAP*/
+
+.progress {
+    background: rgba(0, 0, 0, .2);
+}
+
+.progress-bar {
+    background-color: #e9e9e9;
+}

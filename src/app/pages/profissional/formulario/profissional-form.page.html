@@ -33,23 +33,37 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
-                                <cc-field-select label="Área" keyLabel="label" keyValue="_id" [data]="data.area['area']" [required]="true"
-                                    formControlName="area"></cc-field-select>
+                                <cc-field-select label="Área" keyLabel="label" keyValue="_id" [data]="data.area['area']"
+                                    [required]="true" formControlName="area"></cc-field-select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <cc-field-select label="Profissão" [data]="profissoesDeUmaArea()"
-                                    [disabled]="!this.form.value.area" keyLabel="label" keyValue="_id" [required]="true" formControlName="profissao">
+                                    [disabled]="!this.form.value.area" keyLabel="label" keyValue="_id" [required]="true"
+                                    formControlName="profissao">
                                 </cc-field-select>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <cc-field-select label="Nível" keyLabel="label" keyValue="_id" [data]="data.niveis['niveis']" [required]="true"
-                                    formControlName="nivel">
+                                <cc-field-select label="Nível" keyLabel="label" keyValue="_id"
+                                    [data]="data.niveis['niveis']" [required]="true" formControlName="nivel">
                                 </cc-field-select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12 mb-4">
+                                <label>Nível de satisfação com a profissão</label>
+                                <br>
+                                <div #arrStar style="font-size: 26px">
+                                    <i (click)="selecionaNota($event)" data-nota="1" class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i (click)="selecionaNota($event)" data-nota="2" class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i (click)="selecionaNota($event)" data-nota="3" class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i (click)="selecionaNota($event)" data-nota="4" class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i (click)="selecionaNota($event)" data-nota="5" class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                         <cc-alert *ngIf="feedback" type="danger">{{ mensagemFeedback }}</cc-alert>
                         <cc-action-button label="Confirmar" type="submit" labelLoading="Carregando..."
-                        [isLoading]="isLoading" [disabled]="!form.valid"></cc-action-button>
+                            [isLoading]="isLoading" [disabled]="!form.valid"></cc-action-button>
                     </cc-form>
                     <br>
                 </div>

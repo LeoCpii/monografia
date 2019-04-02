@@ -14,13 +14,23 @@
     <cc-title>Estatísticas</cc-title>
     <hr>
     <cc-alert>Acompanhe suas estatísticas baseadas nas informações da sua área</cc-alert>
+    <div class="row mb-3">
+        <div class="col-lg-6">
+            <cc-info-box title="Homens nesta profissão" icon="fa-male" bgColor="#55acee" percent="60%" text="999"
+                desc="60% dos profissionais são homens"></cc-info-box>
+        </div>
+        <div class="col-lg-6">
+            <cc-info-box title="Mulheres nesta profissão" icon="fa-female" bgColor="#f94877" percent="40%" text="999"
+                desc="40% dos profissionais são mulheres"></cc-info-box>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-5">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <cc-title size='h5'>Sua Pontuação</cc-title>
                     <div style="display: block; position: relative; min-height: 300px">
-                        <canvas baseChart [datasets]="radarChartData.datasets" [options]="barChartOptions"
+                        <canvas baseChart [datasets]="radarChartData.datasets" [options]="radarChartOptions"
                             [labels]="radarChartData.labels" chartType="radar" [legend]="true"
                             [colors]="radarChartData.colors">
                         </canvas>

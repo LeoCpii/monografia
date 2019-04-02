@@ -1,6 +1,6 @@
 <cc-title size='h5'>{{ label }}</cc-title>
 <div style="display: block; position: relative; min-height: 300px">
-    <canvas baseChart #chart [datasets]="datasets" [labels]="labels" [options]="barChartOptions"
+    <canvas baseChart #chart [datasets]="datasets" [labels]="labels" [options]="options ? options : barChartOptions"
         [legend]="legend" [chartType]="chartType" [colors]="colors">
     </canvas>
 </div>

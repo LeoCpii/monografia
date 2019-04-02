@@ -32,6 +32,7 @@ import { FieldCheckboxComponent } from './field-checkbox/field-checkbox.componen
 import { ChartComponent } from './charts/chart.component';
 import { FieldRangeComponent } from './field-range/field-range.component';
 import { FieldSelectComponent } from './field-select/field-select.component';
+import { InfoBoxComponent } from './info-box/info-box.component';
 
 @NgModule({
     imports: [
@@ -69,6 +70,7 @@ import { FieldSelectComponent } from './field-select/field-select.component';
         ChartComponent,
         FieldRangeComponent,
         FieldSelectComponent,
+        InfoBoxComponent,
     ],
     exports: [
         TitlePageComponent,
@@ -97,6 +99,7 @@ import { FieldSelectComponent } from './field-select/field-select.component';
         ChartComponent,
         FieldRangeComponent,
         FieldSelectComponent,
+        InfoBoxComponent,
     ],
 })
 export class ComponentsModule { }

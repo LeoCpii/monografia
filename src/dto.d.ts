@@ -47,3 +47,9 @@ interface Profissional {
     profissao: Profissao;
     nivel: Niveis;
 }
+
+interface Contribuidores {
+    area: string[],
+    profissao: string[],
+    numeroColaboradores: number[],
+}

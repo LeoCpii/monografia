@@ -10,6 +10,7 @@ export interface IProfissionalAgradecimentoPage {
   profissao: Profissao;
   area: Area;
   profissionais: Profissional;
+  contribuidores: Contribuidores;
 }
 
 @Component({
@@ -62,17 +63,17 @@ export class AgradecimentosPage implements OnInit {
   public barChart: any = {
     labels: [],
     datasets: [
-        {
-            data: [182, 104, 182, 159, 102, 124, 177, 104],
-            label: 'Número de contribuições'
-        },
+      {
+        data: [],
+        label: 'Número de contribuições'
+      },
     ],
     colors: [{
-        backgroundColor: 'rgb(255, 54, 54)',
+      backgroundColor: 'rgb(255, 54, 54)',
     }]
-};
+  };
 
-  public barChartOptions: RadialChartOptions = {
+  public radarChartOptions: RadialChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     scale: {
@@ -103,6 +104,13 @@ export class AgradecimentosPage implements OnInit {
     this.radarChart.datasets[0].label = 'Pontuação da área'; // Pontuação da área
   }
 
+  public atualizaGraficoBarras() {
+    this.barChart.labels = this.data.contribuidores.profissao;
+    this.barChart.datasets[0].data = this.data.contribuidores.numeroColaboradores;
+    /*TODO- Usado para ajustar a escala do grafico de barras*/
+    this.barChart.datasets[0].data.push(0);
+  }
+
   private mediaPonderada(valorGrafico: number, valorResposta: number, valorPesoGrafico: number, ValorPesoResposta: number) {
     const resposta = (((valorGrafico * valorPesoGrafico) + (valorResposta * ValorPesoResposta)) / valorPesoGrafico + ValorPesoResposta);
 
@@ -112,18 +120,20 @@ export class AgradecimentosPage implements OnInit {
   ngOnInit() {
     this.data = this.route.snapshot.data['data'];
     this.router.events.subscribe((evt) => {
-        if (evt instanceof NavigationEnd) {
-            this.data = this.route.snapshot.data['data'];
-        }
+      if (evt instanceof NavigationEnd) {
+        this.data = this.route.snapshot.data['data'];
+      }
     });
 
     this.radarChart.datasets[0] = this.data.profissao['profissao'].pontos;
 
-    // this.barChart.labels = 
+    console.log(this.data);
 
-    console.log(this.data.area['area']);
-
+    /*
+    * Atualiza Graficos
+    */
     this.atualizaGraficoRadar();
+    this.atualizaGraficoBarras();
   }
 
   scroll(e: HTMLElement) {

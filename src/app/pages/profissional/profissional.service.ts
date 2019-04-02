@@ -56,4 +56,13 @@ export class ProfissionalService {
         const url = `/profissional/${id}`;
         return this.ajax.get<Profissional>(url);
     }
+
+    /*
+    * Querys
+    */
+
+    async obterContribuidores() {
+        const url = `/query/contribuidores`;
+        return this.ajax.get<Contribuidores>(url);
+    }
 }

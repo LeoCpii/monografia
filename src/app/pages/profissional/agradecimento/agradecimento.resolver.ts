@@ -15,12 +15,14 @@ export class ProfissionalAgradecimentoResolver implements Resolve<Promise<IProfi
         const area = await this.profissionalService.obterArea(profissionalData.area._id);
         const profissionais = await this.profissionalService.obterProfissionais();
         const profissao = await this.profissionalService.obterProfissao(profissionalData.profissao._id);
+        const contribuidores = await this.profissionalService.obterContribuidores();
 
         const response: IProfissionalAgradecimentoPage = {
             nivel: nivel,
             profissao: profissao,
             area: area,
             profissionais: profissionais,
+            contribuidores: contribuidores,
         };
 
         return response;

@@ -116,7 +116,7 @@ export class ProfissionalFormPage implements OnInit {
 
         this.isLoading = false;
 
-        if (this.response['response'].status === 200) {
+        if (this.response['response'].statusHttp === 200) {
             this.storage.setJson('profissional', this.response['response'].objeto);
             this.storage.setJson('dataProfissao', this.form.value);
             this.ir();
@@ -128,5 +128,16 @@ export class ProfissionalFormPage implements OnInit {
 
     ir() {
         this.router.navigate(['profissional', 'grafico']);
+    }
+
+    public selecionaNota(e): void {
+        e.preventDefault();
+        const nota = e.target.getAttribute('data-nota');
+
+        this.colorirEstrelas(nota);
+    }
+
+    public colorirEstrelas(nota: number) {
+        //aqui
     }
 }
