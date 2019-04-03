@@ -54,7 +54,7 @@ export class ProfissionalGraficoPage implements OnInit {
   });
 
   ngOnInit() {
-    this.storage.remove('grafico')
+    this.storage.remove('grafico');
     this.getDataGraph();
   }
 

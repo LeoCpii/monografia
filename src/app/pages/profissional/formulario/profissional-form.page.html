@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                                <p>Sexo:</p>
+                                <p>Sexo: <span class="text-danger">*</span></p>
                                 <cc-field-radio label="Masculino" name="sexo" value="M" inline="true"
                                     formControlName="sexo">
                                 </cc-field-radio>
@@ -49,8 +49,18 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-12 mb-4">
-                                <cc-field-star formControlName="nota" label="Nível de satisfação com a profissão"></cc-field-star>
+                            <p>Nível de satisfação com a profissão: <span class="text-danger">*</span></p>
+                            <div #arrStar class="col-12 mb-4">
+                                <cc-field-star name="satisfacao" value="1" inline="true" formControlName="satisfacao" [required]="true">
+                                </cc-field-star>
+                                <cc-field-star name="satisfacao" value="2" inline="true" formControlName="satisfacao" [required]="true">
+                                </cc-field-star>
+                                <cc-field-star name="satisfacao" value="3" inline="true" formControlName="satisfacao" [required]="true">
+                                </cc-field-star>
+                                <cc-field-star name="satisfacao" value="4" inline="true" formControlName="satisfacao" [required]="true">
+                                </cc-field-star>
+                                <cc-field-star name="satisfacao" value="5" inline="true" formControlName="satisfacao" [required]="true">
+                                </cc-field-star>
                             </div>
                         </div>
                         <cc-alert *ngIf="feedback" type="danger">{{ mensagemFeedback }}</cc-alert>

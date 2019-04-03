@@ -127,8 +127,6 @@ export class AgradecimentosPage implements OnInit {
 
     this.radarChart.datasets[0] = this.data.profissao['profissao'].pontos;
 
-    console.log(this.data);
-
     /*
     * Atualiza Graficos
     */

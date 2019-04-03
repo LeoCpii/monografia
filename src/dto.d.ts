@@ -46,6 +46,7 @@ interface Profissional {
     area: Area;
     profissao: Profissao;
     nivel: Niveis;
+    satosfacao: number;
 }
 
 interface Contribuidores {

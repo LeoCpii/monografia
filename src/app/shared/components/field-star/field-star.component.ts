@@ -7,11 +7,16 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
     styleUrls: ['./field-star.component.css']
 })
 export class FieldStarComponent implements OnInit, ControlValueAccessor {
+    private static _nextId = 0;
     public onChangeFn!: (valid: string) => void;
     public onTouched!: () => void;
 
+    @Input() id: string = 'fieldstar_' + (++ FieldStarComponent._nextId);
     @Input() label: string;
-    @Input() required = false;
+    @Input() disabled: boolean = false;
+    @Input() name: string;
+    @Input() value: string;
+    @Input() inline?: boolean;
 
     @ViewChild('arrStar') starHtml: ElementRef<HTMLDivElement>;
     @ViewChild('input') private input: ElementRef;
@@ -31,7 +36,6 @@ export class FieldStarComponent implements OnInit, ControlValueAccessor {
         const nota = e.target.getAttribute('data-nota');
 
         this.colorirEstrelas(nota);
-        this.atribuirNota(nota);
     }
 
     public colorirEstrelas(nota: number) {
@@ -49,10 +53,6 @@ export class FieldStarComponent implements OnInit, ControlValueAccessor {
             }
             contador++;
         });
-    }
-
-    public atribuirNota(nota: number) {
-        this.input.nativeElement.value = nota;
     }
 
     writeValue(value: string) {

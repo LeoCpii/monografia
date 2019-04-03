@@ -25,7 +25,7 @@ export class FieldComponent implements OnInit, ControlValueAccessor {
         email: 'Email inválido',
         maxLength: 'Máximo de X caracteres',
         tel: 'Telefone inválido',
-        ddd: 'DDD inválido'
+        ddd: 'DDD inválido',
     };
 
     @Input() label: string;

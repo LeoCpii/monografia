@@ -55,8 +55,12 @@ export class ValidatorService {
         return this.monthRegex.test(value);
     }
 
-    public validaIdade(c: FormControl) {
+    public isValidAge(data: any, idadeMin: number,  idadeMax: number): boolean {
 
-        return true ? null : { validarSenhas: { valid: false } };
+        const teste: boolean = data;
+
+        console.log(data);
+
+        return teste;
     }
 }

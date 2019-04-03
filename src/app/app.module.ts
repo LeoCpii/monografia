@@ -9,7 +9,6 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 import { ComponentsModule } from './shared/components/components.module';
 import { SharedModule } from './shared/shared.module';
 

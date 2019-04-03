@@ -1,11 +1,9 @@
-<label>{{ label }}</label>
-<br>
-<div #arrStar class="fmk-pointer" style="font-size: 26px">
-    <i (click)="selecionaNota($event)" data-nota="1" class="fa fa-star-o" aria-hidden="true"></i>
-    <i (click)="selecionaNota($event)" data-nota="2" class="fa fa-star-o" aria-hidden="true"></i>
-    <i (click)="selecionaNota($event)" data-nota="3" class="fa fa-star-o" aria-hidden="true"></i>
-    <i (click)="selecionaNota($event)" data-nota="4" class="fa fa-star-o" aria-hidden="true"></i>
-    <i (click)="selecionaNota($event)" data-nota="5" class="fa fa-star-o" aria-hidden="true"></i>
+<div class="custom-control custom-radio mr-1" [class.custom-control-inline]="inline">
+    <input #input type="radio" name="customRadio" class="custom-control-input"
+    (input)="onChange($event.target.value)" (blur)="onBlur($event.target.value)"
+    [disabled]="disabled" [value]="value"
+    [name]="name" [id]="id">
+    <label [for]="id">
+        <i data-nota="1" class="fa fa-star-o star" aria-hidden="true" style="font-size: 26px"></i>
+    </label>
 </div>
-
-<input #input (input)="onChange($event.target.value)" (blur)="onBlur($event.target.value)" [required]="required" type="number">

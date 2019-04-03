@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormatterService } from '../../../shared/services/formatter.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
@@ -26,7 +26,10 @@ export interface IProfissionalFormPage {
 export class ProfissionalFormPage implements OnInit {
     public data: IProfissionalFormPage;
 
+    @ViewChild('arrStar') starHtml: ElementRef<HTMLDivElement>;
+
     constructor(
+        private validatorService: ValidatorService,
         private router: Router,
         private storage: StorageService,
         private route: ActivatedRoute,
@@ -51,8 +54,36 @@ export class ProfissionalFormPage implements OnInit {
         area: new FormControl(),
         profissao: new FormControl(),
         nivel: new FormControl(),
-        nota: new FormControl(),
-    });
+        satisfacao: new FormControl(0),
+    }, {
+            validators: this.validaFormulario
+        }
+    );
+
+    private validaFormulario(c: FormControl) {
+        let status = false;
+
+        const notaVazia: boolean = (c.value.nota !== 0);
+        const sexoVazio: boolean = (c.value.sexo);
+
+        /*
+        * Valida idade
+        */
+        // const idadeValida: boolean;
+
+        const data = c.value.dataNascimento ? c.value.dataNascimento : '';
+        const dataSemFormato = new RegExp(data, 'g');
+        // const dtNascimento = Moment(dataSemFormato).toDate();
+        // const hoje = Moment().toDate();
+
+        // const maiorQueHoje = (hoje <= dtNascimento);
+
+        console.log(dataSemFormato);
+
+        status = notaVazia && sexoVazio;
+
+        return status ? null : { validaFormulario: { valid: false } };
+    }
 
     ngOnInit() {
         this.data = this.route.snapshot.data['data'];
@@ -63,6 +94,7 @@ export class ProfissionalFormPage implements OnInit {
         });
 
         this.profissoes = profissoes;
+        this.valorNota();
     }
 
     public profissoesDeUmaArea() {
@@ -111,6 +143,7 @@ export class ProfissionalFormPage implements OnInit {
             areaId: this.form.value.area,
             profissaoId: this.form.value.profissao,
             nivelId: this.form.value.nivel,
+            satisfacao: this.form.value.satisfacao,
         };
 
         this.response = await this.profissionalService.cadastrarProfissional(params);
@@ -131,14 +164,27 @@ export class ProfissionalFormPage implements OnInit {
         this.router.navigate(['profissional', 'grafico']);
     }
 
-    public selecionaNota(e): void {
-        e.preventDefault();
-        const nota = e.target.getAttribute('data-nota');
+    valorNota() {
+        this.form.valueChanges.subscribe(element => {
+            const nota = element.satisfacao;
 
-        this.colorirEstrelas(nota);
+            const partentComponent = this.starHtml.nativeElement;
+            const componentHtml = partentComponent.childNodes;
+            let contador = 0;
+
+            componentHtml.forEach(elementComponent => {
+                const star = partentComponent.children[contador].children[0].children[1].children[0];
+                if (contador < nota) {
+                    star.classList.add('star-active', 'fa-star');
+                    star.classList.remove('fa-star-o');
+                } else {
+                    star.classList.remove('star-active');
+                    star.classList.add('fa-star-o');
+                }
+
+                contador++;
+            });
+        });
     }
 
-    public colorirEstrelas(nota: number) {
-        
-    }
 }
