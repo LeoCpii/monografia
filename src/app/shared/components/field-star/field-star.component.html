@@ -1,0 +1,11 @@
+<label>{{ label }}</label>
+<br>
+<div #arrStar class="fmk-pointer" style="font-size: 26px">
+    <i (click)="selecionaNota($event)" data-nota="1" class="fa fa-star-o" aria-hidden="true"></i>
+    <i (click)="selecionaNota($event)" data-nota="2" class="fa fa-star-o" aria-hidden="true"></i>
+    <i (click)="selecionaNota($event)" data-nota="3" class="fa fa-star-o" aria-hidden="true"></i>
+    <i (click)="selecionaNota($event)" data-nota="4" class="fa fa-star-o" aria-hidden="true"></i>
+    <i (click)="selecionaNota($event)" data-nota="5" class="fa fa-star-o" aria-hidden="true"></i>
+</div>
+
+<input #input (input)="onChange($event.target.value)" (blur)="onBlur($event.target.value)" [required]="required" type="number">

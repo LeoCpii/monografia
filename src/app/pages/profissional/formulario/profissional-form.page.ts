@@ -51,6 +51,7 @@ export class ProfissionalFormPage implements OnInit {
         area: new FormControl(),
         profissao: new FormControl(),
         nivel: new FormControl(),
+        nota: new FormControl(),
     });
 
     ngOnInit() {
@@ -138,6 +139,6 @@ export class ProfissionalFormPage implements OnInit {
     }
 
     public colorirEstrelas(nota: number) {
-        //aqui
+        
     }
 }

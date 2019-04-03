@@ -33,6 +33,7 @@ import { ChartComponent } from './charts/chart.component';
 import { FieldRangeComponent } from './field-range/field-range.component';
 import { FieldSelectComponent } from './field-select/field-select.component';
 import { InfoBoxComponent } from './info-box/info-box.component';
+import { FieldStarComponent } from './field-star/field-star.component';
 
 @NgModule({
     imports: [
@@ -71,6 +72,7 @@ import { InfoBoxComponent } from './info-box/info-box.component';
         FieldRangeComponent,
         FieldSelectComponent,
         InfoBoxComponent,
+        FieldStarComponent,
     ],
     exports: [
         TitlePageComponent,
@@ -100,6 +102,7 @@ import { InfoBoxComponent } from './info-box/info-box.component';
         FieldRangeComponent,
         FieldSelectComponent,
         InfoBoxComponent,
+        FieldStarComponent,
     ],
 })
 export class ComponentsModule { }

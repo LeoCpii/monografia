@@ -50,21 +50,14 @@
                         </div>
                         <div class="form-row">
                             <div class="col-12 mb-4">
-                                <label>Nível de satisfação com a profissão</label>
-                                <br>
-                                <div #arrStar style="font-size: 26px">
-                                    <i (click)="selecionaNota($event)" data-nota="1" class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i (click)="selecionaNota($event)" data-nota="2" class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i (click)="selecionaNota($event)" data-nota="3" class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i (click)="selecionaNota($event)" data-nota="4" class="fa fa-star-o" aria-hidden="true"></i>
-                                    <i (click)="selecionaNota($event)" data-nota="5" class="fa fa-star-o" aria-hidden="true"></i>
-                                </div>
+                                <cc-field-star formControlName="nota" label="Nível de satisfação com a profissão"></cc-field-star>
                             </div>
                         </div>
                         <cc-alert *ngIf="feedback" type="danger">{{ mensagemFeedback }}</cc-alert>
                         <cc-action-button label="Confirmar" type="submit" labelLoading="Carregando..."
                             [isLoading]="isLoading" [disabled]="!form.valid"></cc-action-button>
                     </cc-form>
+                    <cc-form-log [form]="form"></cc-form-log>
                     <br>
                 </div>
             </div>
