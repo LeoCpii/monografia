@@ -7,10 +7,9 @@ import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 
 export interface IProfissionalAgradecimentoPage {
   nivel: Niveis;
-  profissao: Profissao;
-  area: Area;
-  profissionais: Profissional;
   contribuidores: Contribuidores;
+  sexoContribuidor: ContribuidoresSexo;
+  queryContribuidor: QueryContribuidor;
 }
 
 @Component({
@@ -100,7 +99,7 @@ export class AgradecimentosPage implements OnInit {
     }
 
     this.radarChart.datasets[1].data = arr; // Sua pontuação
-    this.radarChart.datasets[0].data = this.data.profissao['profissao'].pontos; // Pontuação da área
+    this.radarChart.datasets[0].data = this.data.queryContribuidor.pontos; // Pontuação da área
     this.radarChart.datasets[0].label = 'Pontuação da área'; // Pontuação da área
   }
 
@@ -125,8 +124,7 @@ export class AgradecimentosPage implements OnInit {
       }
     });
 
-    this.radarChart.datasets[0] = this.data.profissao['profissao'].pontos;
-
+    this.radarChart.datasets[0] = this.data.queryContribuidor.pontos;
     /*
     * Atualiza Graficos
     */

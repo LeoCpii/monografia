@@ -46,11 +46,37 @@ interface Profissional {
     area: Area;
     profissao: Profissao;
     nivel: Niveis;
-    satosfacao: number;
+    satisfacao: number;
 }
 
 interface Contribuidores {
     area: string[],
     profissao: string[],
     numeroColaboradores: number[],
+}
+
+interface ContribuidoresSexo {
+    homens: {
+        quantidade: number,
+        porcentagem: number
+    },
+    mulheres: {
+        quantidade: number,
+        porcentagem: number
+    },
+}
+
+interface QueryContribuidor {
+    nome: string,
+    total: number,
+    satisfacao: number,
+    homens: {
+        quantidade: number,
+        porcentagem: number
+    },
+    mulheres: {
+        quantidade: number,
+        porcentagem: number
+    },
+    pontos: number[],
 }

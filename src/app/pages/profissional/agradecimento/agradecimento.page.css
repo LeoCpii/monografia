@@ -40,3 +40,9 @@
     background-image: url("./../../../../assets/images/agradecimento/sucesso.jpg");
     filter: brightness(70%);
 } 
+
+.position-star {
+    right: 0px;
+    top: 50%;
+    transform: translate(-50%, auto);
+}

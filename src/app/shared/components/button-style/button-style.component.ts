@@ -20,6 +20,7 @@ export class ButtonStyleComponent {
     } else if (this.type === 'line') {
       cssClass[`cc-btn-line`] = true;
       cssClass[`cc-btn-line-effect`] = true;
+      cssClass[`shadow-sm`] = true;
     }
 
     return cssClass;
