@@ -9,7 +9,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 import * as Moment from 'moment';
 
 import { profissoes, niveis } from './../../../shared/models/elements';
-import { ProfissionalService } from '../profissional.service';
+import { ProfissionalService } from '../../../shared/services/business-service/profissional.service';
 
 export interface IProfissionalFormPage {
     niveis: Niveis[];
@@ -105,7 +105,7 @@ export class ProfissionalFormPage implements OnInit {
 
             const result = [];
 
-            this.data.profissao['profissao'].forEach(element => {
+            this.data.profissao.forEach(element => {
                 if (element['area'] === idArea) {
                     result.push(element);
                 }

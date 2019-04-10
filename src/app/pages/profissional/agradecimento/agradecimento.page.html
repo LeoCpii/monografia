@@ -21,11 +21,11 @@
     <div class="row mb-3">
         <div class="col-lg-6">
             <cc-info-box title="Homens nesta profissão" icon="fa-male" bgColor="#55acee" [percent]="data.queryContribuidor.homens.porcentagem+'%'" [text]="data.queryContribuidor.homens.quantidade"
-                desc="60% dos profissionais são homens"></cc-info-box>
+                desc="{{ porcentagemHomens }}% dos profissionais são homens"></cc-info-box>
         </div>
         <div class="col-lg-6">
             <cc-info-box title="Mulheres nesta profissão" icon="fa-female" bgColor="#f94877" [percent]="data.queryContribuidor.mulheres.porcentagem+'%'" [text]="data.queryContribuidor.mulheres.quantidade"
-                desc="40% dos profissionais são mulheres"></cc-info-box>
+                desc="{{ porcentagemMulheres }}% dos profissionais são mulheres"></cc-info-box>
         </div>
     </div>
     <div class="row">

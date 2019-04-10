@@ -8,6 +8,9 @@ import { ResultadoPage } from './resultado/resultado.page';
 import { ProfissaoFragment } from './resultado/profissao/profissao.fragment';
 import { EstatisticaFragment } from './resultado/estatisticas/estatistica.fragment';
 
+import { ResultadoResolver } from './resultado/resultado.resolver';
+import { ProfissaoService } from 'src/app/shared/services/business-service/profissao.service';
+
 const routes: Routes = [
   {
     path: '',
@@ -17,6 +20,7 @@ const routes: Routes = [
   {
     path: 'resultado',
     component: ResultadoPage,
+    resolve: { data: ResultadoResolver },
     data: { title: 'Resultado' }
   },
 ];
@@ -32,9 +36,12 @@ const routes: Routes = [
     EstudantePage,
     ResultadoPage,
     ProfissaoFragment,
-    EstatisticaFragment
+    EstatisticaFragment,
   ],
-  providers: [],
+  providers: [
+    ResultadoResolver,
+    ProfissaoService
+  ],
 })
 
 export class EstudanteRoutingModule { }

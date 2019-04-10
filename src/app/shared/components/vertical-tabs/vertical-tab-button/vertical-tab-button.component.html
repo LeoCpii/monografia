@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-md-6">
+        <button *ngFor="let tab of tabs" class="btn fmk-bg-primary btn-block text-white text-left btn-lg tab-button vertical-tab" (click)="selectTab(tab)" [class.active]="tab.active"
+            [class.disabled]="tab.disabled" style="text-transform: uppercase;">{{ tab.title }}</button>
+    </div>
+    <div class="col-md-6">
+        <ng-content></ng-content>
+    </div>
+</div>

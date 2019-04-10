@@ -36,6 +36,18 @@ interface Profissao {
     value: number;
     pontos: number[];
     area: Area;
+    descricao:{
+        oquefaz: string,
+        oquee: string
+    },
+    salario:{
+        estagiario: number,
+        trainee: number,
+        junior: number,
+        pleno: number,
+        senior: number,
+    },
+    videos:string[]
 }
 
 interface Profissional {

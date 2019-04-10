@@ -45,6 +45,11 @@ export class UtilsService {
         return colors[number];
     }
 
+    public calculaProfissao() {
+
+        return '5cab85db5fdbf809cc8e521d';
+    }
+
     scroll(el: HTMLElement) {
         el.scrollIntoView();
     }

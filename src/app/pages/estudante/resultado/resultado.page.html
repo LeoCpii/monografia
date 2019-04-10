@@ -14,11 +14,12 @@
 <div #target class="container mt-4 mb-5">
     <div class="mt-5">
         <cc-nav-tab-header>
+
+            <cc-nav-tab tabTitle="Profissão">
+                <profissao-fragment [data]="this.data.profissao"></profissao-fragment>
+            </cc-nav-tab>
             <cc-nav-tab tabTitle="Estatísticas">
                 <estatistica-fragment [data]="dunotChart"></estatistica-fragment>
-            </cc-nav-tab>
-            <cc-nav-tab tabTitle="Profissão">
-                <profissao-fragment></profissao-fragment>
             </cc-nav-tab>
             <cc-nav-tab tabTitle="Vagas">
 

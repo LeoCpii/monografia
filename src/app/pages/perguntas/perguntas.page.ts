@@ -42,11 +42,6 @@ export class PerguntasPage implements OnInit {
     public responder() {
         this.contador++;
 
-        const corAtual = this.cor;
-        while (corAtual === this.cor) {
-            this.cor = this.utils.corAleatoria();
-        }
-
         this.salvaResposta();
 
         this.selecionaPergunta();
@@ -60,6 +55,11 @@ export class PerguntasPage implements OnInit {
         if (this.perguntasJaRespondidas.length === this.perguntas.length) {
             this.finalizarPerguntas();
             return;
+        }
+
+        const corAtual = this.cor;
+        while (corAtual === this.cor) {
+            this.cor = this.utils.corAleatoria();
         }
 
         while (!perguntaNova) {
@@ -134,10 +134,11 @@ export class PerguntasPage implements OnInit {
         const url = this.router.url;
 
         if (url.indexOf('profissional') > -1) {
-            // const currentUser = this.storage.getJson('profissional');
-
             this.router.navigate(['profissional', 'agradecimentos']);
         } else {
+            const profissao = this.utils.calculaProfissao();
+
+            this.storage.set('profissaoEstudante', profissao);
             this.router.navigate(['estudante', 'resultado']);
         }
     }
