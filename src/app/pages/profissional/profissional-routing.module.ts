@@ -14,7 +14,12 @@ import { AgradecimentosPage } from './agradecimento/agradecimento.page';
 import { ProfissionalAgradecimentoResolver } from './agradecimento/agradecimento.resolver';
 
 import { SharedModule } from './../../shared/shared.module';
-import { ProfissionalService } from './profissional.service';
+import { ProfissionalService } from './../../shared/services/business-service/profissional.service';
+import { AreaService } from 'src/app/shared/services/business-service/area.service';
+import { ProfissaoService } from 'src/app/shared/services/business-service/profissao.service';
+import { NiveisService } from 'src/app/shared/services/business-service/nivel.service';
+import { QueryService } from 'src/app/shared/services/business-service/query.service';
+
 
 const routes: Routes = [
   {
@@ -57,7 +62,11 @@ const routes: Routes = [
     AgradecimentosPage,
     ProfissionalFormResolver,
     ProfissionalAgradecimentoResolver,
-    ProfissionalService
+    ProfissionalService,
+    AreaService,
+    ProfissaoService,
+    NiveisService,
+    QueryService,
   ],
 })
 export class ProfissionalRoutingModule { }

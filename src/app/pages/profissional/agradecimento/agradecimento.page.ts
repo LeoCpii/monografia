@@ -33,6 +33,21 @@ export class AgradecimentosPage implements OnInit {
   public resultado = this.storage.getJson('resultadoPerguntas');
   public pontuacaoProfissional: any;
 
+  public get porcentagemHomens() {
+    const porcentagem = this.data.queryContribuidor.homens.porcentagem;
+    return Math.floor(porcentagem);
+  }
+
+  public get porcentagemMulheres() {
+    const porcentagem = this.data.queryContribuidor.mulheres.porcentagem;
+    return Math.floor(porcentagem);
+  }
+
+  public get nota() {
+    const nota = this.data.queryContribuidor.satisfacao;
+    return Math.floor(nota);
+  }
+
   public radarChart: any = {
     labels: ['Comunicatividade', 'Organizacao', 'Criatividade', 'Detalhismo', 'Lideranca', 'Proatividade'],
     datasets: [
@@ -125,6 +140,9 @@ export class AgradecimentosPage implements OnInit {
     });
 
     this.radarChart.datasets[0] = this.data.queryContribuidor.pontos;
+
+    console.log(this.data);
+
     /*
     * Atualiza Graficos
     */

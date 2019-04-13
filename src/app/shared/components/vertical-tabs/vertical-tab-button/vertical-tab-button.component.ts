@@ -7,16 +7,16 @@ import {
 } from '@angular/core';
 
 
-import { NavTabComponent } from '../nav-tab.component';
+import { VerticalTabComponent } from '../vertical-tab.component.component';
 
 @Component({
-    selector: 'cc-nav-tab-header',
-    templateUrl: './nav-tab-header.component.html',
-    styleUrls: ['./nav-tab-header.component.css'],
+    selector: 'cp-vertical-tab-button',
+    templateUrl: './vertical-tab-button.component.html',
+    styleUrls: ['./vertical-tab-button.component.css'],
 })
-export class NavTabHeaderComponent implements AfterContentInit {
+export class VerticalTabButtonComponent implements AfterContentInit {
 
-    @ContentChildren(NavTabComponent) tabs: QueryList<NavTabComponent>;
+    @ContentChildren(VerticalTabComponent) tabs: QueryList<VerticalTabComponent>;
     @Output() tab = new EventEmitter();
 
     ngAfterContentInit() {

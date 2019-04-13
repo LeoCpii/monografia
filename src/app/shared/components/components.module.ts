@@ -23,6 +23,8 @@ import { TableColCheckBoxButton } from './table/table-col-checkbox.component';
 import { TableTmplColComponent } from './table/table-col-tmpl.component';
 import { NavTabComponent } from './nav-tab/nav-tab.component';
 import { NavTabHeaderComponent } from './nav-tab/nav-tab-header/nav-tab-header.component';
+import { VerticalTabComponent } from './vertical-tabs/vertical-tab.component.component';
+import { VerticalTabButtonComponent } from './vertical-tabs/vertical-tab-button/vertical-tab-button.component';
 import { DictlistComponent } from './dictlist/dictlist.component';
 import { FieldComponent } from './field/field.component';
 import { FormComponent } from './form/form.component';
@@ -105,7 +107,12 @@ import { LogoComponent } from './logo/logo.component';
         FieldSelectComponent,
         InfoBoxComponent,
         FieldStarComponent,
+<<<<<<< HEAD
         LogoComponent,
+=======
+        VerticalTabComponent,
+        VerticalTabButtonComponent,
+>>>>>>> 1f95d7ba5313960720902d39ef49a10bb82ad165
     ],
 })
 export class ComponentsModule { }

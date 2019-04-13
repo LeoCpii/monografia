@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormatterService } from 'src/app/shared/services/formatter.service';
 
@@ -10,17 +10,29 @@ import { FormatterService } from 'src/app/shared/services/formatter.service';
 
 export class ProfissaoFragment implements OnInit {
 
-    @Input() data: string;
+    @Input() data: Profissao;
 
     constructor(private formatter: FormatterService) { }
 
-    public dictListValue = {
-        'Desenvolvedor Sênior': this.formatter.currency(4730.50),
-        'Desenvolvedor Pleno': this.formatter.currency(4730.50),
-        'Desenvolvedor Junior': this.formatter.currency(4730.50),
-        'Desenvolvedor Trainee': this.formatter.currency(4730.50),
-        'Estagiário': this.formatter.currency(3099.26),
-      };
+    @ViewChild('oquee') oquee: ElementRef<HTMLDivElement>;
+    @ViewChild('oquefaz') oquefaz: ElementRef<HTMLDivElement>;
 
-    ngOnInit() { }
+    public dictListValue: any;
+
+    public retornaUrlVideo(id: string) {
+        return `https://www.youtube.com/embed/${id}?rel=0`;
+    }
+
+    ngOnInit() {
+        this.dictListValue = {
+            'Desenvolvedor Sênior': this.formatter.currency(this.data.salario.estagiario),
+            'Desenvolvedor Pleno': this.formatter.currency(this.data.salario.trainee),
+            'Desenvolvedor Junior': this.formatter.currency(this.data.salario.junior),
+            'Desenvolvedor Trainee': this.formatter.currency(this.data.salario.pleno),
+            'Estagiário': this.formatter.currency(this.data.salario.senior),
+        };
+
+        this.oquee.nativeElement.innerHTML = this.data.descricao.oquee;
+        this.oquefaz.nativeElement.innerHTML = this.data.descricao.oquefaz;
+    }
 }
