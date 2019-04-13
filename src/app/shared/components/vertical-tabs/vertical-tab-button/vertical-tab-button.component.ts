@@ -10,7 +10,7 @@ import {
 import { VerticalTabComponent } from '../vertical-tab.component.component';
 
 @Component({
-    selector: 'cp-vertical-tab-button',
+    selector: 'cc-vertical-tab-button',
     templateUrl: './vertical-tab-button.component.html',
     styleUrls: ['./vertical-tab-button.component.css'],
 })

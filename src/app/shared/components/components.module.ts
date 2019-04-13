@@ -77,6 +77,8 @@ import { LogoComponent } from './logo/logo.component';
         InfoBoxComponent,
         FieldStarComponent,
         LogoComponent,
+        VerticalTabComponent,
+        VerticalTabButtonComponent,
     ],
     exports: [
         TitlePageComponent,
@@ -107,12 +109,9 @@ import { LogoComponent } from './logo/logo.component';
         FieldSelectComponent,
         InfoBoxComponent,
         FieldStarComponent,
-<<<<<<< HEAD
         LogoComponent,
-=======
         VerticalTabComponent,
         VerticalTabButtonComponent,
->>>>>>> 1f95d7ba5313960720902d39ef49a10bb82ad165
     ],
 })
 export class ComponentsModule { }
