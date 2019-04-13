@@ -34,6 +34,7 @@ import { FieldRangeComponent } from './field-range/field-range.component';
 import { FieldSelectComponent } from './field-select/field-select.component';
 import { InfoBoxComponent } from './info-box/info-box.component';
 import { FieldStarComponent } from './field-star/field-star.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
     imports: [
@@ -73,6 +74,7 @@ import { FieldStarComponent } from './field-star/field-star.component';
         FieldSelectComponent,
         InfoBoxComponent,
         FieldStarComponent,
+        LogoComponent,
     ],
     exports: [
         TitlePageComponent,
@@ -103,6 +105,7 @@ import { FieldStarComponent } from './field-star/field-star.component';
         FieldSelectComponent,
         InfoBoxComponent,
         FieldStarComponent,
+        LogoComponent,
     ],
 })
 export class ComponentsModule { }

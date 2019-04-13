@@ -1,0 +1,19 @@
+.cp-logo-xl {
+    width: auto;
+}
+
+.cp-logo-lg {
+    width: 210px;
+}
+
+.cp-logo-md {
+    width: 105px;
+}
+
+.cp-logo-sm {
+    width: 67px;
+}
+
+.cp-logo-inline {
+    display: inline-block;
+}
