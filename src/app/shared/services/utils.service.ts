@@ -50,6 +50,10 @@ export class UtilsService {
         return '5cb20f06c2e9e128c85eec0e';
     }
 
+    public ehNulo(obj: any) {
+        return obj !== 0 && obj !== null && obj !== undefined ? true : false;
+    }
+
     scroll(el: HTMLElement) {
         el.scrollIntoView();
     }

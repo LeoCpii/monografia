@@ -53,9 +53,9 @@ export class ProfissionalFormPage implements OnInit {
     private validaFormulario(c: FormControl) {
         let status = false;
 
-        const notaVazia: boolean = (c.value.nota !== 0 && c.value.nota !== null && c.value.nota !== undefined);
+        const notaVazia: boolean = (c.value.satisfacao !== 0 && c.value.satisfacao !== null && c.value.satisfacao !== undefined);
         const sexoVazio: boolean = (c.value.sexo);
-        console.log(notaVazia);
+
         /*
         * Valida idade
         */
