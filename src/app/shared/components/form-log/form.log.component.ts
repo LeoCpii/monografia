@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core'
 })
 
 export class FormLogComponent {
-    @Input() form: string;
-    @Input() type: string;
+  @Input() form: Formlog;
+  @Input() type: string;
 }

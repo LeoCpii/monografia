@@ -10,6 +10,6 @@ export class NiveisService {
     */
     async obterNiveis() {
         const url = `/niveis`;
-        return this.ajax.get<Niveis>(url);
+        return this.ajax.get<NiveisResponse>(url);
     }
 }

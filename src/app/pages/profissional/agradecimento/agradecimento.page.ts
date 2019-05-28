@@ -108,7 +108,7 @@ export class AgradecimentosPage implements OnInit {
       /*
       * Média Poderada
       */
-      const resultado = this.mediaPonderada(this.resultado[i], this.pontosGrafico[i], this.data.nivel.value, 1);
+      const resultado = '';
 
       arr.push(resultado);
     }

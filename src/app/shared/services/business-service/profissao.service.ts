@@ -10,7 +10,7 @@ export class ProfissaoService {
     */
     async obterProfissoes() {
         const url = `/profissao`;
-        return this.ajax.get<Profissao[]>(url);
+        return this.ajax.get<ProfissaoResponse>(url);
     }
 
     async obterProfissao(id: string) {

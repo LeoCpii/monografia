@@ -10,11 +10,11 @@ export class AreaService {
     */
     async obterAreas() {
         const url = `/area`;
-        return this.ajax.get<Area[]>(url);
+        // return this.ajax.get<Area[]>(url);
     }
 
     async obterArea(id: string) {
         const url = `/area/${id}`;
-        return this.ajax.get<Area>(url);
+        // return this.ajax.get<Area>(url);
     }
 }

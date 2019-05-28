@@ -12,9 +12,9 @@ import { profissoes, niveis } from './../../../shared/models/elements';
 import { ProfissionalService } from '../../../shared/services/business-service/profissional.service';
 
 export interface IProfissionalFormPage {
-    niveis: Niveis;
+    niveis: Niveis[];
     // area: Area[];
-    // profissao: Profissao[];
+    profissao: Profissao[];
 }
 
 @Component({
@@ -36,6 +36,7 @@ export class ProfissionalFormPage implements OnInit {
         private profissionalService: ProfissionalService,
     ) { }
     public isLoading = false;
+
     public form = new FormGroup({
         nome: new FormControl(),
         sobrenome: new FormControl(),
@@ -107,7 +108,11 @@ export class ProfissionalFormPage implements OnInit {
     }
 
     public cadastrarProfissional() {
-        return;
+        this.isLoading = true;
+
+        console.log(this.form.value);
+
+        this.isLoading = false;
     }
 
 }

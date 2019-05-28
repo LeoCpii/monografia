@@ -8,23 +8,33 @@ import { NiveisService } from './../../../shared/services/business-service/nivel
 
 @Injectable()
 export class ProfissionalFormResolver implements Resolve<Promise<IProfissionalFormPage>> {
+    private arrNiveis: Niveis[] = [];
+
     constructor(
         // private profissionalService: ProfissionalService,
         // private areaService: AreaService,
-        // private profissaoService: ProfissaoService,
+        private profissaoService: ProfissaoService,
         private niveisService: NiveisService,
         private route: ActivatedRoute) { }
 
     async resolve(route: ActivatedRouteSnapshot): Promise<IProfissionalFormPage> {
 
         const niveis = await this.niveisService.obterNiveis();
+        const profissoes = await this.profissaoService.obterProfissoes();
+        
+        this.arrNiveis.push(niveis.description.ESTAGIARIO);
+        this.arrNiveis.push(niveis.description.TRAINEE);
+        this.arrNiveis.push(niveis.description.JUNIOR);
+        this.arrNiveis.push(niveis.description.PLENO);
+        this.arrNiveis.push(niveis.description.SENIOR);
+
         // const area = await this.areaService.obterAreas();
         // const profissao = await this.profissaoService.obterProfissoes();
 
         const response: IProfissionalFormPage = {
-            niveis: niveis,
+            niveis: this.arrNiveis,
             // area: area,
-            // profissao: profissao
+            profissao: profissoes.description
         };
 
         return response;

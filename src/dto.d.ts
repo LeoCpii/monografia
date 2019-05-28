@@ -20,17 +20,44 @@
 //     ValorPIS: number;
 // }
 
+interface Formlog {
+    value: string;
+    valid: boolean;
+}
+
+interface NiveisResponse {
+    status: number
+    message: string;
+    description: NiveisService;
+}
+
+interface NiveisService {
+    ESTAGIARIO: Niveis,
+    TRAINEE: Niveis,
+    JUNIOR: Niveis,
+    PLENO: Niveis,
+    SENIOR: Niveis,
+}
+
 interface Niveis {
     nome: string;
     relevancia: number;
 }
 
+
+interface ProfissaoResponse {
+    status: number
+    message: string;
+    description: Profissao[];
+}
+
 interface Profissao {
+    _id: string;
     nome: string;
     pontos: number[];
-    descricao: Descricao
-    salarios: Salario,
-    videos: Video[]
+    descricao: Descricao;
+    salarios: Salario;
+    videos: Video[];
 }
 
 interface Profissional {

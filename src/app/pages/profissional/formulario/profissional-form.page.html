@@ -36,9 +36,17 @@
                                     formControlName="sexo">
                                 </cc-field-radio>
                             </div>
-                             <div class="col-md-6 mb-3">
-                                    <!-- <cc-field-select label="Profissão" [required]="true" [data]="fieldSelect.data" keyLabel="label"
-                                    keyValue="value" formControlName="profissao" type="text"></cc-field-select> -->
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <cc-field-select label="Profissão" [required]="true" [data]="data.profissao" keyLabel="nome"
+                                    keyValue="_id" formControlName="profissao" type="text">
+                                </cc-field-select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <cc-field-select label="Nível" [required]="true" [data]="data.niveis" keyLabel="nome"
+                                    keyValue="relevancia" formControlName="nivel" type="text">
+                                </cc-field-select>
                             </div>
                         </div>
                         <div class="form-row">
