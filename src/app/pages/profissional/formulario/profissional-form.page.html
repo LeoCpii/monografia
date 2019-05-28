@@ -7,13 +7,23 @@
         <div class="container mt-5 mb-5 text-left">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <cc-form [formGroup]="form" (submit)="cadastraProfissional()" label="Dados do Profissional">
+                    <cc-form [formGroup]="form" (submit)="cadastrarProfissional()" label="Dados do Profissional">
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <cc-field label="Nome" [required]="true" formControlName="nome"></cc-field>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <cc-field label="Sobrenome" [required]="true" formControlName="sobrenome"></cc-field>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <cc-field label="Email" [required]="true" formControlName="email" type="email">
+                                </cc-field>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <cc-field label="Data de nascimento" [required]="true" formControlName="dataNascimento"
+                                    type="date"></cc-field>
                             </div>
                         </div>
                         <div class="form-row">
@@ -26,44 +36,31 @@
                                     formControlName="sexo">
                                 </cc-field-radio>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <cc-field label="Data de nascimento" [required]="true" formControlName="dataNascimento"
-                                    type="date"></cc-field>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <cc-field-select label="Área" keyLabel="label" keyValue="_id" [data]="data.area"
-                                    [required]="true" formControlName="area"></cc-field-select>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <cc-field-select label="Profissão" [data]="profissoesDeUmaArea()"
-                                    [disabled]="!this.form.value.area" keyLabel="label" keyValue="_id" [required]="true"
-                                    formControlName="profissao">
-                                </cc-field-select>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <cc-field-select label="Nível" keyLabel="label" keyValue="_id"
-                                    [data]="data.niveis['niveis']" [required]="true" formControlName="nivel">
-                                </cc-field-select>
+                             <div class="col-md-6 mb-3">
+                                    <!-- <cc-field-select label="Profissão" [required]="true" [data]="fieldSelect.data" keyLabel="label"
+                                    keyValue="value" formControlName="profissao" type="text"></cc-field-select> -->
                             </div>
                         </div>
                         <div class="form-row">
                             <p>Nível de satisfação com a profissão: <span class="text-danger">*</span></p>
                             <div #arrStar class="col-12 mb-4">
-                                <cc-field-star name="satisfacao" value="1" inline="true" formControlName="satisfacao" [required]="true">
+                                <cc-field-star name="satisfacao" value="1" inline="true" formControlName="satisfacao"
+                                    [required]="true">
                                 </cc-field-star>
-                                <cc-field-star name="satisfacao" value="2" inline="true" formControlName="satisfacao" [required]="true">
+                                <cc-field-star name="satisfacao" value="2" inline="true" formControlName="satisfacao"
+                                    [required]="true">
                                 </cc-field-star>
-                                <cc-field-star name="satisfacao" value="3" inline="true" formControlName="satisfacao" [required]="true">
+                                <cc-field-star name="satisfacao" value="3" inline="true" formControlName="satisfacao"
+                                    [required]="true">
                                 </cc-field-star>
-                                <cc-field-star name="satisfacao" value="4" inline="true" formControlName="satisfacao" [required]="true">
+                                <cc-field-star name="satisfacao" value="4" inline="true" formControlName="satisfacao"
+                                    [required]="true">
                                 </cc-field-star>
-                                <cc-field-star name="satisfacao" value="5" inline="true" formControlName="satisfacao" [required]="true">
+                                <cc-field-star name="satisfacao" value="5" inline="true" formControlName="satisfacao"
+                                    [required]="true">
                                 </cc-field-star>
                             </div>
                         </div>
-                        <cc-alert *ngIf="feedback" type="danger">{{ mensagemFeedback }}</cc-alert>
                         <cc-action-button label="Confirmar" type="submit" labelLoading="Carregando..."
                             [isLoading]="isLoading" [disabled]="!form.valid"></cc-action-button>
                     </cc-form>

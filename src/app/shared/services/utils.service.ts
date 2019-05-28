@@ -47,7 +47,7 @@ export class UtilsService {
 
     public calculaProfissao() {
 
-        return '5cab85db5fdbf809cc8e521d';
+        return '5cb20f06c2e9e128c85eec0e';
     }
 
     scroll(el: HTMLElement) {

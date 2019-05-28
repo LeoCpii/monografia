@@ -25,11 +25,11 @@ export class ProfissaoFragment implements OnInit {
 
     ngOnInit() {
         this.dictListValue = {
-            'Desenvolvedor Sênior': this.formatter.currency(this.data.salario.estagiario),
-            'Desenvolvedor Pleno': this.formatter.currency(this.data.salario.trainee),
+            'Desenvolvedor Sênior': this.formatter.currency(this.data.salario.senior),
+            'Desenvolvedor Pleno': this.formatter.currency(this.data.salario.pleno),
             'Desenvolvedor Junior': this.formatter.currency(this.data.salario.junior),
-            'Desenvolvedor Trainee': this.formatter.currency(this.data.salario.pleno),
-            'Estagiário': this.formatter.currency(this.data.salario.senior),
+            'Desenvolvedor Trainee': this.formatter.currency(this.data.salario.trainee),
+            'Estagiário': this.formatter.currency(this.data.salario.estagiario),
         };
 
         this.oquee.nativeElement.innerHTML = this.data.descricao.oquee;

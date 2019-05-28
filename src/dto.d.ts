@@ -21,45 +21,47 @@
 // }
 
 interface Niveis {
-    label: string;
-    value: number;
-}
-
-interface Area {
-    label: string;
-    value: number;
-    profissoes: Profissao[];
+    nome: string;
+    relevancia: number;
 }
 
 interface Profissao {
-    label: string;
-    value: number;
+    nome: string;
     pontos: number[];
-    area: Area;
-    descricao:{
-        oquefaz: string,
-        oquee: string
-    },
-    salario:{
-        estagiario: number,
-        trainee: number,
-        junior: number,
-        pleno: number,
-        senior: number,
-    },
-    videos:string[]
+    descricao: Descricao
+    salarios: Salario,
+    videos: Video[]
 }
 
 interface Profissional {
     nome: string;
     sobrenome: string;
     sexo: string;
+    email: string;
     dataNascimento: string;
-    area: Area;
     profissao: Profissao;
     nivel: Niveis;
     satisfacao: number;
 }
+
+interface Descricao {
+    oQueFaz: string;
+    oQueEh:string;
+}
+
+interface Salario {
+    profissao?: Profissao;
+    estagiario: string;
+    trainee: string;
+    junior: string;
+    pleno: string;
+    senior: string;
+}
+
+interface Video {
+    url: string;
+}
+
 
 interface Contribuidores {
     area: string[],

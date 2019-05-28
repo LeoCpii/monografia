@@ -12,9 +12,9 @@ import { profissoes, niveis } from './../../../shared/models/elements';
 import { ProfissionalService } from '../../../shared/services/business-service/profissional.service';
 
 export interface IProfissionalFormPage {
-    niveis: Niveis[];
-    area: Area[];
-    profissao: Profissao[];
+    niveis: Niveis;
+    // area: Area[];
+    // profissao: Profissao[];
 }
 
 @Component({
@@ -35,23 +35,13 @@ export class ProfissionalFormPage implements OnInit {
         private route: ActivatedRoute,
         private profissionalService: ProfissionalService,
     ) { }
-
-    public feedback = false;
-    public mensagemFeedback = '';
-    public profissaoEscolhida = true;
-
-    public profissoes: any;
-    public niveis = niveis;
-
     public isLoading = false;
-    public response: any = '';
-
     public form = new FormGroup({
         nome: new FormControl(),
         sobrenome: new FormControl(),
         sexo: new FormControl(),
+        email: new FormControl(),
         dataNascimento: new FormControl(),
-        area: new FormControl(),
         profissao: new FormControl(),
         nivel: new FormControl(),
         satisfacao: new FormControl(0),
@@ -63,22 +53,13 @@ export class ProfissionalFormPage implements OnInit {
     private validaFormulario(c: FormControl) {
         let status = false;
 
-        const notaVazia: boolean = (c.value.nota !== 0);
+        const notaVazia: boolean = (c.value.nota !== 0 && c.value.nota !== null && c.value.nota !== undefined);
         const sexoVazio: boolean = (c.value.sexo);
-
+        console.log(notaVazia);
         /*
         * Valida idade
         */
         // const idadeValida: boolean;
-
-        const data = c.value.dataNascimento ? c.value.dataNascimento : '';
-        const dataSemFormato = new RegExp(data, 'g');
-        // const dtNascimento = Moment(dataSemFormato).toDate();
-        // const hoje = Moment().toDate();
-
-        // const maiorQueHoje = (hoje <= dtNascimento);
-
-        console.log(dataSemFormato);
 
         status = notaVazia && sexoVazio;
 
@@ -93,78 +74,16 @@ export class ProfissionalFormPage implements OnInit {
             }
         });
 
-        this.profissoes = profissoes;
         this.valorNota();
+
+        console.log(this.data)
     }
 
-    public profissoesDeUmaArea() {
-        const idArea = this.form.value.area;
-
-        if (idArea) {
-            this.profissaoEscolhida = false;
-
-            const result = [];
-
-            this.data.profissao.forEach(element => {
-                if (element['area'] === idArea) {
-                    result.push(element);
-                }
-            });
-
-            return result;
-        } else {
-            return [];
-        }
-    }
-
-    public validaIdade(c: FormControl) {
-        const data = c.value.dataNascimento ? c.value.dataNascimento : '';
-        const dataSemFormato = data.replace('/', '');
-        const dtNascimento = Moment(dataSemFormato).toDate();
-        const hoje = Moment().toDate();
-        let status: boolean;
-
-        const maiorQueHoje = (hoje <= dtNascimento);
-        if (maiorQueHoje) {
-            status = false;
-        }
-
-        return status ? null : { validarSenhas: { valid: false } };
-    }
-
-    private async cadastraProfissional() {
-        this.isLoading = false;
-
-        const params = {
-            nome: this.form.value.nome,
-            sobrenome: this.form.value.sobrenome,
-            sexo: this.form.value.sexo,
-            dataNascimento: this.form.value.dataNascimento,
-            areaId: this.form.value.area,
-            profissaoId: this.form.value.profissao,
-            nivelId: this.form.value.nivel,
-            satisfacao: this.form.value.satisfacao,
-        };
-
-        this.response = await this.profissionalService.cadastrarProfissional(params);
-
-        this.isLoading = false;
-
-        if (this.response['response'].statusHttp === 200) {
-            this.storage.setJson('profissional', this.response['response'].objeto);
-            this.storage.setJson('dataProfissao', this.form.value);
-            this.ir();
-        } else {
-            this.feedback = true;
-            this.mensagemFeedback = this.response.body;
-        }
-    }
-
-    ir() {
+    public ir() {
         this.router.navigate(['profissional', 'grafico']);
     }
 
-    valorNota() {
+    private valorNota() {
         this.form.valueChanges.subscribe(element => {
             const nota = element.satisfacao;
 
@@ -185,6 +104,10 @@ export class ProfissionalFormPage implements OnInit {
                 contador++;
             });
         });
+    }
+
+    public cadastrarProfissional() {
+        return;
     }
 
 }
