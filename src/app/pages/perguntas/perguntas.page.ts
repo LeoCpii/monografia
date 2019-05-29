@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { perguntas } from './../../shared/models/elements';
-import { StorageService } from 'src/app/shared/services/storage.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { PerguntasService } from '../../shared/services/business-service/perguntas.service';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
+
+export interface IPerguntasPage {
+    totalPerguntas: number;
+}
 
 @Component({
     selector: 'perguntas-page',
@@ -12,19 +16,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class PerguntasPage implements OnInit {
+    public data: IPerguntasPage;
+
+    public pergunta: Pergunta;
+    public resultado: Resultado[] = [];
+    public response: PerguntaResponse;
 
     constructor(
-        private utils: UtilsService,
-        private storage: StorageService,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private utils: UtilsService,
+        private location: Location,
+        private perguntasService: PerguntasService
     ) { }
 
     public cor: string;
-    public contador = 1;
-    public perguntas = perguntas;
-    public random: number;
-    public perguntasJaRespondidas = [];
+    public contador = 0;
+    public perguntasRespondidasArr = [];
+    public numeroDePerguntasSessao = 2;
+    public deuErrado = false;
 
     public form = new FormGroup({
         resposta: new FormControl('', Validators.required),
@@ -40,111 +50,55 @@ export class PerguntasPage implements OnInit {
     }
 
     public responder() {
-        this.contador++;
-
-        this.salvaResposta();
-
-        this.selecionaPergunta();
+        this.resultado.push({
+            idPergunta: this.pergunta._id,
+            numeroResposta: this.form.value.resposta
+        });
 
         this.form.get('resposta').reset();
+
+        this.selecionaPergunta();
     }
 
-    private selecionaPergunta() {
-        let perguntaNova = false;
+    public async selecionaPergunta() {
 
-        if (this.perguntasJaRespondidas.length === this.perguntas.length) {
-            this.finalizarPerguntas();
+        if (this.perguntasRespondidasArr.length === this.numeroDePerguntasSessao) {
+            console.log(this.resultado);
             return;
-        }
-
-        const corAtual = this.cor;
-        while (corAtual === this.cor) {
-            this.cor = this.utils.corAleatoria();
-        }
-
-        while (!perguntaNova) {
-            const pergunta = this.utils.numeroAleatorio(0, this.perguntas.length);
-
-            if (this.perguntasJaRespondidas.length > 0) {
-                if (this.perguntasJaRespondidas.indexOf(pergunta) === -1) {
-                    perguntaNova = true;
-                }
-            } else {
-                perguntaNova = true;
-            }
-
-            if (perguntaNova) {
-                this.perguntasJaRespondidas.push(pergunta);
-                this.random = pergunta;
-            }
-        }
-    }
-
-    private salvaResposta() {
-        const respostas = this.form.value.resposta;
-        const numerPergunta = this.random;
-        const arr = respostas.split(',').map(response => {
-            return parseInt(response, 10);
-        });
-
-        this.incrementaResposta(numerPergunta, arr);
-    }
-
-    private incrementaResposta(pergunta: number, value: any): void {
-        const respostas = this.storage.getJson('resultadoPerguntas');
-        const pontuacaoPorPergunta = this.storage.getJson('pontuacaoPorPergunta');
-
-        const arr = [];
-
-        if (!respostas) {
-            this.storage.setJson('resultadoPerguntas', value);
-            this.storage.setJson('pontuacaoPorPergunta', [{
-                pergunta: pergunta,
-                reposta: value
-            }]);
-
-            return;
-        }
-
-        /*
-        * Agrega resposta atual com as anteriores
-        */
-        pontuacaoPorPergunta.push({
-            pergunta: pergunta,
-            reposta: value
-        });
-        /*
-        * Soma resposta atual com as anteriores
-        */
-        respostas.map((response, index) => {
-            response += value[index];
-            arr.push(response);
-        });
-
-        this.storage.setJson('pontuacaoPorPergunta', pontuacaoPorPergunta);
-        this.storage.setJson('resultadoPerguntas', arr);
-    }
-
-    limpaLocalStorage() {
-        this.storage.remove('resultadoPerguntas');
-        this.storage.remove('pontuacaoPorPergunta');
-    }
-
-    finalizarPerguntas() {
-        const url = this.router.url;
-
-        if (url.indexOf('profissional') > -1) {
-            this.router.navigate(['profissional', 'agradecimentos']);
         } else {
-            const profissao = this.utils.calculaProfissao();
+            this.recuperaCor();
+            let posicao = this.utils.numeroAleatorio(0, this.data.totalPerguntas);
 
-            this.storage.set('profissaoEstudante', profissao);
-            this.router.navigate(['estudante', 'resultado']);
+            while (this.perguntasRespondidasArr.indexOf(posicao) !== -1) {
+                posicao = this.utils.numeroAleatorio(0, this.data.totalPerguntas);
+            }
+
+            this.perguntasRespondidasArr.push(posicao);
+
+            this.response = await this.perguntasService.obterPerguntasPosicao(posicao);
+
+            if (this.response.status === 200) {
+                this.contador++;
+                this.pergunta = this.response.description;
+            } else {
+                console.log(this.response);
+                this.deuErrado = true;
+            }
         }
+    }
+
+    voltar() {
+        this.location.back();
     }
 
     ngOnInit() {
-        this.limpaLocalStorage();
+        this.data = this.route.snapshot.data['data'];
+        this.router.events.subscribe((evt) => {
+            if (evt instanceof NavigationEnd) {
+                this.data = this.route.snapshot.data['data'];
+            }
+        });
+
         this.recuperaCor();
         this.selecionaPergunta();
     }

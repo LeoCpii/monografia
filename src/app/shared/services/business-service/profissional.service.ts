@@ -9,7 +9,7 @@ export class ProfissionalService {
     */
     async cadastrarProfissional(params: {
         nome: string, sobrenome: string, sexo: string, dataNascimento: string,
-        areaId: string, profissaoId: string, nivelId: string
+        email: string, profissaoId: string, nivelId: string, satisfacao: number
     }) {
         const url = `/profissional/register`;
         return this.ajax.post<any>(url, params);

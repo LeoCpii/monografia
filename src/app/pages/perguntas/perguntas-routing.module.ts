@@ -8,13 +8,16 @@ import { ChartsModule } from 'ng2-charts';
 
 import { SharedModule } from './../../shared/shared.module';
 import { PerguntasPage } from './perguntas.page';
+import { PerguntasService } from 'src/app/shared/services/business-service/perguntas.service';
+import { PerguntasResolver } from './perguntas.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: PerguntasPage,
+    resolve: { data: PerguntasResolver },
     data: { title: 'Perguntas' }
-  },
+  }
 ];
 
 @NgModule({
@@ -31,7 +34,9 @@ const routes: Routes = [
     PerguntasPage
   ],
   providers: [
-    PerguntasPage
+    PerguntasPage,
+    PerguntasService,
+    PerguntasResolver
   ],
 })
 export class PerguntasRoutingModule { }

@@ -1,19 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormatterService } from '../../../shared/services/formatter.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { ValidatorService } from 'src/app/shared/services/validator.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 
-import * as Moment from 'moment';
-
-import { profissoes, niveis } from './../../../shared/models/elements';
 import { ProfissionalService } from '../../../shared/services/business-service/profissional.service';
 
 export interface IProfissionalFormPage {
     niveis: Niveis[];
-    // area: Area[];
     profissao: Profissao[];
 }
 
@@ -76,8 +71,6 @@ export class ProfissionalFormPage implements OnInit {
         });
 
         this.valorNota();
-
-        console.log(this.data)
     }
 
     public ir() {
@@ -107,12 +100,29 @@ export class ProfissionalFormPage implements OnInit {
         });
     }
 
-    public cadastrarProfissional() {
+    public async cadastrarProfissional() {
         this.isLoading = true;
 
-        console.log(this.form.value);
+        const params = {
+            nome: this.form.value.nome,
+            sobrenome: this.form.value.sobrenome,
+            sexo: this.form.value.sexo,
+            email: this.form.value.email,
+            dataNascimento: this.form.value.dataNascimento,
+            profissaoId: this.form.value.profissao,
+            nivelId: this.form.value.nivel,
+            satisfacao: this.form.value.satisfacao,
+        };
 
-        this.isLoading = false;
+        const response = await this.profissionalService.cadastrarProfissional(params);
+
+        if (response.status === 200) {
+            this.storage.setJson(response.description._id, 'token-profissional');
+
+            this.router.navigate(['perguntas', 'profissional']);
+        } else {
+            this.isLoading = false;
+        }
     }
 
 }

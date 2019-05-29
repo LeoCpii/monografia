@@ -1,11 +1,22 @@
-<div class="fmk-full" [style.background-color]="cor">
+<div class="fmk-full fmk-transition" [style.background-color]="cor">
 
 </div>
-<div class="container-fluid text-white p-4 w-100">
+
+<div *ngIf="deuErrado" class="fmk-align-center text-white" style="height: 100vh;">
+    <div class="d-block text-center">
+        <cc-title-page>{{ response.description }}</cc-title-page>
+        <cc-text>Desculpe o transtorno</cc-text>
+        <br>
+        <cc-button-style (click)="voltar()" type="line" label="Voltar"></cc-button-style>
+    </div>
+
+</div>
+
+<div *ngIf="!deuErrado" class="container-fluid text-white p-4 w-100">
     <cite title="Source Title">Pergunta {{ contador }}</cite>
 
     <cc-title-page>
-        {{ perguntas[random].pergunta }}
+        {{ pergunta?.enunciado }}
     </cc-title-page>
 
     <div class="w-100" style="padding-bottom: 30px; padding-top: 30px">
@@ -13,9 +24,8 @@
             <div class="col-md-12 text-left">
                 <p>Resposta:</p>
                 <hr>
-                <div *ngFor="let item of perguntas[random].respostas; let i = index">
-                    <cc-field-radio [label]="item.resposta" name="resposta" [value]="item.pontos"
-                        formControlName="resposta">
+                <div *ngFor="let item of pergunta?.respostas; let i = index">
+                    <cc-field-radio [label]="item.texto" name="resposta" [value]="i" formControlName="resposta">
                     </cc-field-radio>
                     <hr>
                 </div>

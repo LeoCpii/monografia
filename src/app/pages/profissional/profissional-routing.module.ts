@@ -20,7 +20,6 @@ import { ProfissaoService } from 'src/app/shared/services/business-service/profi
 import { NiveisService } from 'src/app/shared/services/business-service/nivel.service';
 import { QueryService } from 'src/app/shared/services/business-service/query.service';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -38,7 +37,7 @@ const routes: Routes = [
     component: AgradecimentosPage,
     resolve: { data: ProfissionalAgradecimentoResolver },
     data: { title: 'Agradecimentos' }
-  },
+  }
 ];
 
 @NgModule({
@@ -54,7 +53,7 @@ const routes: Routes = [
   declarations: [
     ProfissionalFormPage,
     ProfissionalGraficoPage,
-    AgradecimentosPage
+    AgradecimentosPage,
   ],
   providers: [
     ProfissionalFormPage,

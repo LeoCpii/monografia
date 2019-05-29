@@ -28,22 +28,13 @@ interface Formlog {
 interface NiveisResponse {
     status: number
     message: string;
-    description: NiveisService;
-}
-
-interface NiveisService {
-    ESTAGIARIO: Niveis,
-    TRAINEE: Niveis,
-    JUNIOR: Niveis,
-    PLENO: Niveis,
-    SENIOR: Niveis,
+    description: Niveis[];
 }
 
 interface Niveis {
     nome: string;
     relevancia: number;
 }
-
 
 interface ProfissaoResponse {
     status: number
@@ -89,7 +80,6 @@ interface Video {
     url: string;
 }
 
-
 interface Contribuidores {
     area: string[],
     profissao: string[],
@@ -120,4 +110,37 @@ interface QueryContribuidor {
         porcentagem: number
     },
     pontos: number[],
+}
+
+interface PerguntaResponse {
+    status: number
+    message: string;
+    description: Pergunta;
+}
+
+interface Pergunta {
+    _id?: string;
+    enunciado: string;
+    respostas: Respostas[];
+    caracteristicas: Caractetisticas[];
+}
+
+interface Respostas {
+    texto: string,
+    caracteristicas: Caractetisticas[];
+}
+
+interface Caractetisticas {
+    nome: string;
+}
+
+interface Resultado {
+    idPergunta: string,
+    numeroResposta: number
+}
+
+interface TotalPerguntasResponse {
+    status: number
+    message: string;
+    description: number;
 }
