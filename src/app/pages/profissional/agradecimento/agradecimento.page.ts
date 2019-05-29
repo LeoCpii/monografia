@@ -6,10 +6,10 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 
 export interface IProfissionalAgradecimentoPage {
-  nivel: Niveis;
-  contribuidores: Contribuidores;
-  sexoContribuidor: ContribuidoresSexo;
-  queryContribuidor: QueryContribuidor;
+  // nivel: Niveis;
+  // contribuidores: Contribuidores;
+  // sexoContribuidor: ContribuidoresSexo;
+  // queryContribuidor: QueryContribuidor;
 }
 
 @Component({
@@ -33,20 +33,20 @@ export class AgradecimentosPage implements OnInit {
   public resultado = this.storage.getJson('resultadoPerguntas');
   public pontuacaoProfissional: any;
 
-  public get porcentagemHomens() {
-    const porcentagem = this.data.queryContribuidor.homens.porcentagem;
-    return Math.floor(porcentagem);
-  }
+  // public get porcentagemHomens() {
+  //   const porcentagem = this.data.queryContribuidor.homens.porcentagem;
+  //   return Math.floor(porcentagem);
+  // }
 
-  public get porcentagemMulheres() {
-    const porcentagem = this.data.queryContribuidor.mulheres.porcentagem;
-    return Math.floor(porcentagem);
-  }
+  // public get porcentagemMulheres() {
+  //   const porcentagem = this.data.queryContribuidor.mulheres.porcentagem;
+  //   return Math.floor(porcentagem);
+  // }
 
-  public get nota() {
-    const nota = this.data.queryContribuidor.satisfacao;
-    return Math.floor(nota);
-  }
+  // public get nota() {
+  //   const nota = this.data.queryContribuidor.satisfacao;
+  //   return Math.floor(nota);
+  // }
 
   public radarChart: any = {
     labels: ['Comunicatividade', 'Organizacao', 'Criatividade', 'Detalhismo', 'Lideranca', 'Proatividade'],
@@ -101,29 +101,29 @@ export class AgradecimentosPage implements OnInit {
 
   public radarChartData = this.radarChart;
 
-  public atualizaGraficoRadar() {
-    const arr = [];
+  // public atualizaGraficoRadar() {
+  //   const arr = [];
 
-    for (let i = 0; i < this.resultado.length; i++) {
-      /*
-      * Média Poderada
-      */
-      const resultado = '';
+  //   for (let i = 0; i < this.resultado.length; i++) {
+  //     /*
+  //     * Média Poderada
+  //     */
+  //     const resultado = '';
 
-      arr.push(resultado);
-    }
+  //     arr.push(resultado);
+  //   }
 
-    this.radarChart.datasets[1].data = arr; // Sua pontuação
-    this.radarChart.datasets[0].data = this.data.queryContribuidor.pontos; // Pontuação da área
-    this.radarChart.datasets[0].label = 'Pontuação da área'; // Pontuação da área
-  }
+  //   this.radarChart.datasets[1].data = arr; // Sua pontuação
+  //   this.radarChart.datasets[0].data = this.data.queryContribuidor.pontos; // Pontuação da área
+  //   this.radarChart.datasets[0].label = 'Pontuação da área'; // Pontuação da área
+  // }
 
-  public atualizaGraficoBarras() {
-    this.barChart.labels = this.data.contribuidores.profissao;
-    this.barChart.datasets[0].data = this.data.contribuidores.numeroColaboradores;
-    /*TODO- Usado para ajustar a escala do grafico de barras*/
-    this.barChart.datasets[0].data.push(0);
-  }
+  // public atualizaGraficoBarras() {
+  //   this.barChart.labels = this.data.contribuidores.profissao;
+  //   this.barChart.datasets[0].data = this.data.contribuidores.numeroColaboradores;
+  //   /*TODO- Usado para ajustar a escala do grafico de barras*/
+  //   this.barChart.datasets[0].data.push(0);
+  // }
 
   private mediaPonderada(valorGrafico: number, valorResposta: number, valorPesoGrafico: number, ValorPesoResposta: number) {
     const resposta = (((valorGrafico * valorPesoGrafico) + (valorResposta * ValorPesoResposta)) / valorPesoGrafico + ValorPesoResposta);
@@ -139,15 +139,15 @@ export class AgradecimentosPage implements OnInit {
       }
     });
 
-    this.radarChart.datasets[0] = this.data.queryContribuidor.pontos;
+    // this.radarChart.datasets[0] = this.data.queryContribuidor.pontos;
 
     console.log(this.data);
 
     /*
     * Atualiza Graficos
     */
-    this.atualizaGraficoRadar();
-    this.atualizaGraficoBarras();
+    // this.atualizaGraficoRadar();
+    // this.atualizaGraficoBarras();
   }
 
   scroll(e: HTMLElement) {

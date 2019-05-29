@@ -64,6 +64,7 @@ export class PerguntasPage implements OnInit {
 
         if (this.perguntasRespondidasArr.length === this.numeroDePerguntasSessao) {
             console.log(this.resultado);
+            this.finalizarPerguntas();
             return;
         } else {
             this.recuperaCor();
@@ -84,6 +85,18 @@ export class PerguntasPage implements OnInit {
                 console.log(this.response);
                 this.deuErrado = true;
             }
+        }
+    }
+
+    finalizarPerguntas() {
+        const url = this.router.url;
+
+        if (url.indexOf('profissional') > -1) {
+            this.router.navigate(['profissional', 'agradecimentos']);
+        } else {
+            const profissao = this.utils.calculaProfissao();
+
+            this.router.navigate(['estudante', 'resultado']);
         }
     }
 
