@@ -126,6 +126,7 @@ interface Pergunta {
 }
 
 interface Respostas {
+    id?: string;
     texto: string,
     caracteristicas: Caractetisticas[];
 }
@@ -136,7 +137,7 @@ interface Caractetisticas {
 
 interface Resultado {
     idPergunta: string,
-    numeroResposta: number
+    idResposta: number
 }
 
 interface TotalPerguntasResponse {

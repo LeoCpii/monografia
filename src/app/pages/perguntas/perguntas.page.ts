@@ -33,7 +33,7 @@ export class PerguntasPage implements OnInit {
     public cor: string;
     public contador = 0;
     public perguntasRespondidasArr = [];
-    public numeroDePerguntasSessao = 2;
+    public numeroDePerguntasSessao = 4;
     public deuErrado = false;
 
     public form = new FormGroup({
@@ -52,7 +52,7 @@ export class PerguntasPage implements OnInit {
     public responder() {
         this.resultado.push({
             idPergunta: this.pergunta._id,
-            numeroResposta: this.form.value.resposta
+            idResposta: this.form.value.resposta
         });
 
         this.form.get('resposta').reset();
@@ -82,7 +82,6 @@ export class PerguntasPage implements OnInit {
                 this.contador++;
                 this.pergunta = this.response.description;
             } else {
-                console.log(this.response);
                 this.deuErrado = true;
             }
         }

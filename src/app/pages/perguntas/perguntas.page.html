@@ -25,7 +25,7 @@
                 <p>Resposta:</p>
                 <hr>
                 <div *ngFor="let item of pergunta?.respostas; let i = index">
-                    <cc-field-radio [label]="item.texto" name="resposta" [value]="i" formControlName="resposta">
+                    <cc-field-radio [label]="item.texto" name="resposta" [value]="item._id" formControlName="resposta">
                     </cc-field-radio>
                     <hr>
                 </div>
