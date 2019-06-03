@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=PT+Sans);
 /*BUTTON-STYLE 1*/
 
-.cc-btn-transition {
+.cp-btn-transition {
     width: 15rem;
     height: 5.25rem;
     font-size: 20px;
@@ -16,7 +16,7 @@
     color: rgb(var(--color-primary));
 }
 
-.cc-btn-transition::before, .cc-btn-transition::after {
+.cp-btn-transition::before, .cp-btn-transition::after {
     content: '';
     position: absolute;
     width: inherit;
@@ -26,35 +26,35 @@
     transition: 0.3s;
 }
 
-.cc-btn-transition::before {
+.cp-btn-transition::before {
     background-color: white;
     z-index: -1;
     box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2)
 }
 
-.cc-btn-transition::after {
+.cp-btn-transition::after {
     background-color: rgb(var(--color-primary));
     transform: translate(1.5rem, 1.5rem);
     z-index: -2;
 }
 
-.cc-btn-transition:hover {
+.cp-btn-transition:hover {
     transform: translate(1.5rem, 1.5rem);
     color: white;
 }
 
-.cc-btn-transition:hover::before {
+.cp-btn-transition:hover::before {
     background-color: rgb(var(--color-primary));
 }
 
-.cc-btn-transition:hover::after {
+.cp-btn-transition:hover::after {
     background-color: white;
     transform: translate(-1.5rem, -1.5rem);
 }
 
 /*BUTTON-STYLE 2*/
 
-.cc-btn-press {
+.cp-btn-press {
     text-transform: uppercase;
     border-radius: 5px;
     padding: 15px 25px;
@@ -69,12 +69,12 @@
     transition: all .6s;
 }
 
-.cc-btn-press:hover {
+.cp-btn-press:hover {
     text-decoration: none;
     transform: scale(1.05, 1.05);
 }
 
-.cc-btn-press:active {
+.cp-btn-press:active {
     transform: translate(0px, 5px);
     -webkit-transform: translate(0px, 5px);
     box-shadow: 0px 1px 0px 0px;
@@ -88,7 +88,7 @@
     box-sizing: border-box;
 }
 
-.cc-btn-line {
+.cp-btn-line {
     text-transform: uppercase;
     display: inline-block;
     position: relative;
@@ -101,12 +101,12 @@
     background: rgba(0, 0, 0, 0.2);
 }
 
-.cc-btn-line span {
+.cp-btn-line span {
     display: block;
     padding: 25px 80px;
 }
 
-.cc-btn-line::before, .cc-btn-line::after {
+.cp-btn-line::before, .cp-btn-line::after {
     content: "";
     width: 0;
     height: 2px;
@@ -124,46 +124,46 @@ span::before, span::after {
     background: #fff;
 }
 
-.cc-btn-line:hover::before, .cc-btn-line:hover::after {
+.cp-btn-line:hover::before, .cp-btn-line:hover::after {
     width: 100%;
 }
 
-.cc-btn-line:hover span::before, .cc-btn-line:hover span::after {
+.cp-btn-line:hover span::before, .cp-btn-line:hover span::after {
     height: 100%;
 }
 
-.cc-btn-line-effect::before, .cc-btn-line-effect::after {
+.cp-btn-line-effect::before, .cp-btn-line-effect::after {
     transition-delay: 0s;
 }
 
-.cc-btn-line-effect span::before, .cc-btn-line-effect span::after {
+.cp-btn-line-effect span::before, .cp-btn-line-effect span::after {
     transition-delay: 0.2s;
 }
 
-.cc-btn-line-effect::before {
+.cp-btn-line-effect::before {
     right: 0;
     top: 0;
 }
 
-.cc-btn-line-effect::after {
+.cp-btn-line-effect::after {
     left: 0;
     bottom: 0;
 }
 
-.cc-btn-line-effect span::before {
+.cp-btn-line-effect span::before {
     left: 0;
     top: 0;
 }
 
-.cc-btn-line-effect span::after {
+.cp-btn-line-effect span::after {
     right: 0;
     bottom: 0;
 }
 
-.cc-btn-line-effect:hover::before, .cc-btn-line-effect:hover::after {
+.cp-btn-line-effect:hover::before, .cp-btn-line-effect:hover::after {
     transition-delay: 0.2s;
 }
 
-.cc-btn-line-effect:hover span::before, .cc-btn-line-effect:hover span::after {
+.cp-btn-line-effect:hover span::before, .cp-btn-line-effect:hover span::after {
     transition-delay: 0s;
 }

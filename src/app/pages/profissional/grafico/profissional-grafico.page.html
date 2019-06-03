@@ -3,9 +3,9 @@
 </div>
 <div class="fmk-bg-gray fmk-align-center" style="padding-top: 20px">
     <div class="container mt-5 text-left">
-        <cc-alert>Ajude-nos indicando com uma pontuação de 0 a 100 qual a relevância das habilidades abaixo para sua
+        <cp-alert>Ajude-nos indicando com uma pontuação de 0 a 100 qual a relevância das habilidades abaixo para sua
             área.
-        </cc-alert>
+        </cp-alert>
         <div class="row">
             <div class="col-lg-6 mb-3">
                 <div class="card shadow-sm">
@@ -21,17 +21,12 @@
             <div class="col-lg-6 mb-3">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <cc-form [formGroup]="form" (submit)="submit()" label="Gráfico Editável">
-                            <cc-field-range label="Comunicatividade" formControlName="comunicatividade">
-                            </cc-field-range>
-                            <cc-field-range label="Organização" formControlName="organizacao"></cc-field-range>
-                            <cc-field-range label="Criatividade" formControlName="criatividade"></cc-field-range>
-                            <cc-field-range label="Detalhismo" formControlName="detalhismo"></cc-field-range>
-                            <cc-field-range label="Liderança" formControlName="lideranca"></cc-field-range>
-                            <cc-field-range label="Proatividade" formControlName="proatividade"></cc-field-range>
+                        <cp-form [formGroup]="form" (submit)="submit()" label="Gráfico Editável">
+                            <cp-field-range *ngFor="let item of data.resultado.caracteristicaGrafico; let i = index" [label]="item" [formControlName]="'caracteristica'+i">
+                                </cp-field-range>
                             <br><br>
-                            <cc-button type="submit" label="Enviar"></cc-button>
-                        </cc-form>
+                            <cp-button type="submit" label="Enviar"></cp-button>
+                        </cp-form>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ export class ProfissionalService {
         email: string, profissaoId: string, nivelId: string, satisfacao: number
     }) {
         const url = `/profissional/register`;
-        return this.ajax.post<any>(url, params);
+        return this.ajax.post<ProfissionalResponse>(url, params);
     }
 
     async obterProfissionais() {

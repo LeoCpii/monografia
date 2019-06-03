@@ -6,27 +6,27 @@
     <div class="pg-img-bg fmk-gradient" id="analytics">
     </div>
     <div class="container pg-content-bg text-white w-100">
-        <cc-title-page size="1">Obrigado por participar!</cc-title-page>
-        <cc-button-style (click)="scroll(target)" type="transition" label="Estatísticas"></cc-button-style>
+        <cp-title-page size="1">Obrigado por participar!</cp-title-page>
+        <cp-button-style (click)="scroll(target)" type="transition" label="Estatísticas"></cp-button-style>
     </div>
 </div>
 
 <div #target class="container mt-4 mb-5">
     <div class="mt-5">
-        <cc-nav-tab-header>
+        <cp-nav-tab-header>
 
-            <cc-nav-tab tabTitle="Profissão">
+            <cp-nav-tab tabTitle="Profissão">
                 <profissao-fragment [data]="this.data.profissao"></profissao-fragment>
-            </cc-nav-tab>
-            <cc-nav-tab tabTitle="Estatísticas">
+            </cp-nav-tab>
+            <cp-nav-tab tabTitle="Estatísticas">
                 <estatistica-fragment [data]="dunotChart"></estatistica-fragment>
-            </cc-nav-tab>
-            <cc-nav-tab tabTitle="Vagas">
+            </cp-nav-tab>
+            <cp-nav-tab tabTitle="Vagas">
 
-            </cc-nav-tab>
-            <cc-nav-tab tabTitle="Roadmap">
+            </cp-nav-tab>
+            <cp-nav-tab tabTitle="Roadmap">
 
-            </cc-nav-tab>
-        </cc-nav-tab-header>
+            </cp-nav-tab>
+        </cp-nav-tab-header>
     </div>
 </div>

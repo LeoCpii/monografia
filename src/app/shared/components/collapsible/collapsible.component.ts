@@ -3,7 +3,7 @@ import { UtilsService } from './../../services/utils.service';
 
 
 @Component({
-    selector: 'cc-collapsible',
+    selector: 'cp-collapsible',
     templateUrl: './collapsible.component.html',
     styleUrls: ['./collapsible.component.css'],
 })

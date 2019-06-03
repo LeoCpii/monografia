@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Optional, Self, ViewChild, ElementRef } from 
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
-  selector: 'cc-field-range',
+  selector: 'cp-field-range',
   templateUrl: './field-range.component.html',
   styleUrls: ['./field-range.component.css']
 })

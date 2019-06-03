@@ -3,7 +3,7 @@ import { TableService } from './table.service';
 import { FormatterService } from '../../services/formatter.service';
 
 @Component({
-    selector: 'cc-table-col',
+    selector: 'cp-table-col',
     template: '',
 })
 export class TableColComponent implements OnInit {
@@ -21,11 +21,11 @@ export class TableColComponent implements OnInit {
 
     public ngOnInit() {
         if (typeof this.header !== 'string') {
-            throw new Error('[cc-table-col] header is mandatory');
+            throw new Error('[cp-table-col] header is mandatory');
         }
 
         if (!this.prop) {
-            throw new Error('[cc-table-col] prop is mandatory');
+            throw new Error('[cp-table-col] prop is mandatory');
         }
 
         this.parent.addCol({
@@ -51,7 +51,7 @@ export class TableColComponent implements OnInit {
                 return (row: any) => this.formatter.phoneFormat(this.get(row, this.prop));
         }
 
-        throw new Error(`[cc-table-col] invalid type "${this.format}"`);
+        throw new Error(`[cp-table-col] invalid type "${this.format}"`);
     }
 
     public get(obj: object, path: string): string {

@@ -4,7 +4,7 @@ import { FormatterService } from '../../services/formatter.service';
 import { ValidatorService } from '../../services/validator.service';
 
 @Component({
-    selector: 'cc-field',
+    selector: 'cp-field',
     templateUrl: './field.component.html',
     styleUrls: ['./field.component.css']
 })
@@ -53,7 +53,7 @@ export class FieldComponent implements OnInit, ControlValueAccessor {
 
     ngOnInit() {
         if (this.validTypes.indexOf(this.type) === -1) {
-            throw new Error('[cc-field] Invalid type ' + this.type);
+            throw new Error('[cp-field] Invalid type ' + this.type);
         }
 
         const control = this.controlDir.control;

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'cc-button-style',
+  selector: 'cp-button-style',
   templateUrl: './button-style.component.html',
   styleUrls: ['./button-style.component.css']
 })
@@ -14,12 +14,12 @@ export class ButtonStyleComponent {
     const cssClass: any = {};
 
     if (this.type === 'press') {
-      cssClass[`cc-btn-press`] = true;
+      cssClass[`cp-btn-press`] = true;
     } else if (this.type === 'transition') {
-      cssClass[`cc-btn-transition`] = true;
+      cssClass[`cp-btn-transition`] = true;
     } else if (this.type === 'line') {
-      cssClass[`cc-btn-line`] = true;
-      cssClass[`cc-btn-line-effect`] = true;
+      cssClass[`cp-btn-line`] = true;
+      cssClass[`cp-btn-line-effect`] = true;
       cssClass[`shadow-sm`] = true;
     }
 

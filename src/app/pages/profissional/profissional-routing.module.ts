@@ -10,15 +10,16 @@ import { ProfissionalFormPage } from './formulario/profissional-form.page';
 import { ProfissionalFormResolver } from './formulario/profissional-form.resolver';
 
 import { ProfissionalGraficoPage } from './grafico/profissional-grafico.page';
+import { ProfissionalGraficoResolver } from './grafico/profissional-grafico.resolver';
+
 import { AgradecimentosPage } from './agradecimento/agradecimento.page';
 import { ProfissionalAgradecimentoResolver } from './agradecimento/agradecimento.resolver';
 
 import { SharedModule } from './../../shared/shared.module';
+import { ResultadoService } from 'src/app/shared/services/business-service/resultado.service';
 import { ProfissionalService } from './../../shared/services/business-service/profissional.service';
-import { AreaService } from 'src/app/shared/services/business-service/area.service';
 import { ProfissaoService } from 'src/app/shared/services/business-service/profissao.service';
 import { NiveisService } from 'src/app/shared/services/business-service/nivel.service';
-import { QueryService } from 'src/app/shared/services/business-service/query.service';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
   {
     path: 'grafico',
     component: ProfissionalGraficoPage,
+    resolve: { data: ProfissionalGraficoResolver },
     data: { title: 'Grafico' }
   },
   {
@@ -61,11 +63,11 @@ const routes: Routes = [
     AgradecimentosPage,
     ProfissionalFormResolver,
     ProfissionalAgradecimentoResolver,
+    ProfissionalGraficoResolver,
+    ResultadoService,
     ProfissionalService,
-    AreaService,
     ProfissaoService,
     NiveisService,
-    QueryService,
   ],
 })
 export class ProfissionalRoutingModule { }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Optional, Self, ViewChild, ElementRef } from 
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
-    selector: 'cc-field-star',
+    selector: 'cp-field-star',
     templateUrl: './field-star.component.html',
     styleUrls: ['./field-star.component.css']
 })

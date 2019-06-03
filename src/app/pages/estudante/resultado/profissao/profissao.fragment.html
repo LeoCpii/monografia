@@ -1,25 +1,25 @@
-<cc-title>A partir deste teste, podemos concluir que seu perfil se enquadra na profissão de <span
-        class="font-weight-lighter">{{ data.label }}</span>.</cc-title>
+<cp-title>A partir deste teste, podemos concluir que seu perfil se enquadra na profissão de <span
+        class="font-weight-lighter">{{ data.label }}</span>.</cp-title>
 <br>
-<cc-collapsible desc="Sobre {{ data.label }}">
+<cp-collapsible desc="Sobre {{ data.label }}">
     <div body>
-        <cc-text>
-            <cc-title size="h4">O que é?</cc-title>
+        <cp-text>
+            <cp-title size="h4">O que é?</cp-title>
             <p #oquee class="text-justify"></p>
-            <cc-title size="h4">O que faz?</cc-title>
+            <cp-title size="h4">O que faz?</cp-title>
             <p #oquefaz class="text-justify"></p>
-        </cc-text>
+        </cp-text>
     </div>
-</cc-collapsible>
+</cp-collapsible>
 
-<cc-collapsible desc="Salários">
+<cp-collapsible desc="Salários">
     <div body>
-        <cc-alert>Estás são médias de alguns salários de {{ data.label }}</cc-alert>
-        <cc-dictlist [data]="dictListValue"></cc-dictlist>
+        <cp-alert>Estás são médias de alguns salários de {{ data.label }}</cp-alert>
+        <cp-dictlist [data]="dictListValue"></cp-dictlist>
     </div>
-</cc-collapsible>
+</cp-collapsible>
 
-<cc-collapsible desc="Vídeos" [autoSize]="true">
+<cp-collapsible desc="Vídeos" [autoSize]="true">
     <div body>
         <div class="row">
             <div class="col-md-6 fmk-responsive-md-mb">
@@ -30,4 +30,4 @@
             </div>
         </div>
     </div>
-</cc-collapsible>
+</cp-collapsible>

@@ -3,7 +3,7 @@ import { TableService } from './table.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
-    selector: 'cc-table-col-checkbox',
+    selector: 'cp-table-col-checkbox',
     template: '',
 })
 export class TableColCheckBoxButton implements OnInit {
@@ -22,7 +22,7 @@ export class TableColCheckBoxButton implements OnInit {
 
     public ngOnInit() {
         if (!this.prop) {
-            throw new Error('[cc-table-status-col] prop is mandatory');
+            throw new Error('[cp-table-status-col] prop is mandatory');
         }
 
         const onClick = (row: object, col: object) => {

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'cc-action-button',
+  selector: 'cp-action-button',
   templateUrl: './action-button.component.html',
   styleUrls: ['../button/button.component.css', './action-button.component.css'],
 })
@@ -28,9 +28,9 @@ export class ActionButtonComponent {
         const cssClass: any = {};
 
         if (this.styleButton) {
-            cssClass[`cc-btn-${this.styleButton}`] = true;
+            cssClass[`cp-btn-${this.styleButton}`] = true;
         } else {
-            cssClass[`cc-btn-primary`] = true;
+            cssClass[`cp-btn-primary`] = true;
         }
 
         if(this.size === 'lg'){

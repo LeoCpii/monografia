@@ -10,7 +10,7 @@ import { SharedModule } from './../../shared/shared.module';
 import { PerguntasPage } from './perguntas.page';
 import { PerguntasService } from 'src/app/shared/services/business-service/perguntas.service';
 import { PerguntasResolver } from './perguntas.resolver';
-
+import { ResultadoService } from 'src/app/shared/services/business-service/resultado.service';
 const routes: Routes = [
   {
     path: '',
@@ -36,7 +36,8 @@ const routes: Routes = [
   providers: [
     PerguntasPage,
     PerguntasService,
-    PerguntasResolver
+    PerguntasResolver,
+    ResultadoService
   ],
 })
 export class PerguntasRoutingModule { }

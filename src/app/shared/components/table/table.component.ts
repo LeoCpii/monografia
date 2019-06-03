@@ -5,7 +5,7 @@ import { TableService } from './table.service';
 import { Col } from './col';
 
 @Component({
-    selector: 'cc-table',
+    selector: 'cp-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.css']
 })
@@ -39,7 +39,7 @@ export class TableComponent implements OnInit {
         if (typeof this.totalRegistros === 'string') {
             const hasValidValue = ['none', 'unknown', 'client'].indexOf(this.totalRegistros) >= 0;
             if (!hasValidValue) {
-                throw new Error('[cc-table] Invalid totalRegistros prop: ' + this.totalRegistros);
+                throw new Error('[cp-table] Invalid totalRegistros prop: ' + this.totalRegistros);
             }
         }
 

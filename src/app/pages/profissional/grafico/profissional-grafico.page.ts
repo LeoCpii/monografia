@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
-import { peopleData, barChart, lineChart, radarChart, donutPieChart } from './../../../shared/models/elements';
-import { ChartDataSets, ChartType, ChartOptions, RadialChartOptions } from 'chart.js';
-import { ChartsModule } from 'ng2-charts';
+import { RadialChartOptions } from 'chart.js';
 
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { ResultadoService } from '../../../shared/services/business-service/resultado.service';
+import { ProfissaoService } from '../../../shared/services/business-service/profissao.service';
+
+export interface IProfissionalGraficoPage {
+  resultado: any;
+}
 
 @Component({
   selector: 'profissional-grafico-page',
@@ -14,20 +18,19 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 })
 
 export class ProfissionalGraficoPage implements OnInit {
+  public data: IProfissionalGraficoPage;
+
+  public deuErro: boolean;
+  public mensagem: string;
 
   constructor(
     private router: Router,
-    private storage: StorageService
-    ) {
-    this.editChart = {
-      labels: ['Comunicatividade', 'Organização', 'Criatividade', 'Detalhismo', 'Liderança', 'Proatividade'],
-      datasets: [
-        {
-          data: [0, 0, 0, 0, 0, 0],
-          label: 'Pontuação de personalidade',
-        },
-      ]
-    };
+    private storage: StorageService,
+    private route: ActivatedRoute,
+    private resultadoService: ResultadoService,
+    private profissaoService: ProfissaoService
+  ) {
+
   }
 
   public editChart: any;
@@ -45,15 +48,37 @@ export class ProfissionalGraficoPage implements OnInit {
   };
 
   public form = new FormGroup({
-    comunicatividade: new FormControl(0),
-    organizacao: new FormControl(0),
-    criatividade: new FormControl(0),
-    detalhismo: new FormControl(0),
-    lideranca: new FormControl(0),
-    proatividade: new FormControl(0),
+    caracteristica0: new FormControl(0),
+    caracteristica1: new FormControl(0),
+    caracteristica2: new FormControl(0),
+    caracteristica3: new FormControl(0),
+    caracteristica4: new FormControl(0),
+    caracteristica5: new FormControl(0),
   });
 
+  public montaNomeControl(posicao: number) {
+    const nome = 'caracteristica' + String(posicao);
+    return nome;
+  }
+
   ngOnInit() {
+    this.data = this.route.snapshot.data['data'];
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.data = this.route.snapshot.data['data'];
+      }
+    });
+
+    this.editChart = {
+      labels: this.data.resultado.caracteristicaGrafico,
+      datasets: [
+        {
+          data: [0, 0, 0, 0, 0, 0],
+          label: 'Pontuação de personalidade',
+        },
+      ]
+    };
+
     this.storage.remove('grafico');
     this.getDataGraph();
   }
@@ -63,12 +88,12 @@ export class ProfissionalGraficoPage implements OnInit {
       const data = [];
 
       data.push(
-        Number(response.comunicatividade),
-        Number(response.organizacao),
-        Number(response.criatividade),
-        Number(response.detalhismo),
-        Number(response.lideranca),
-        Number(response.proatividade),
+        Number(response.caracteristica0),
+        Number(response.caracteristica1),
+        Number(response.caracteristica2),
+        Number(response.caracteristica3),
+        Number(response.caracteristica4),
+        Number(response.caracteristica5),
       );
 
       const clone = JSON.parse(JSON.stringify(this.editChart.datasets));
@@ -80,11 +105,53 @@ export class ProfissionalGraficoPage implements OnInit {
   }
 
   private ir() {
-    this.router.navigate(['perguntas', 'profissional']);
+    this.router.navigate(['profissional', 'agradecimentos']);
   }
 
-  public submit() {
-    this.storage.setJson('grafico', this.editChart.datasets[0].data);
+  public async submit() {
+    const relevanciasGrafico = [];
+    const idResultado = this.storage.getJson('token-resultado');
+    const idProfissao = this.storage.getJson('token-profissao');
+
+    relevanciasGrafico.push(
+      Number(this.form.value.caracteristica0),
+      Number(this.form.value.caracteristica1),
+      Number(this.form.value.caracteristica2),
+      Number(this.form.value.caracteristica3),
+      Number(this.form.value.caracteristica4),
+      Number(this.form.value.caracteristica5),
+    );
+
+    const params = {
+      idRelevancia: idResultado,
+      grafico: relevanciasGrafico
+    };
+
+    let response;
+
+    response = await this.resultadoService.atualizarValorSugerido(params);
+
+    if (response.status === 200) {
+        response = await this.resultadoService.atualizarMedia(idResultado);
+
+      if (response.status === 200) {
+        response = await this.profissaoService.atualizarProfissao(idProfissao, idResultado);
+
+        if (response.status === 200) {
+          this.router.navigate(['profissional', 'agradecimentos']);
+        } else {
+          this.deuErro = true;
+          this.mensagem = 'Erro ao atualizar profissão';
+        }
+      } else {
+        this.deuErro = true;
+        this.mensagem = 'Erro ao atualizar media';
+      }
+    } else {
+      this.deuErro = true;
+      this.mensagem = 'Erro ao atualizar valor sugerido';
+    }
+
     this.ir();
   }
 }

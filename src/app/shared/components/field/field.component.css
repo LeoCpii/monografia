@@ -23,11 +23,11 @@
     margin-bottom: 15px;
 }
 
-.cc-is-invalid {
+.cp-is-invalid {
     border-color: #dc3545 !important;
 }
 
-.cc-is-invalid:focus {
+.cp-is-invalid:focus {
     border-color: #dc3545;
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, .25);
 }

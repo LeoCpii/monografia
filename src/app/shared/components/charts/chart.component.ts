@@ -3,7 +3,7 @@ import { ChartDataSets, ChartType, ChartOptions, RadialChartOptions } from 'char
 import { Label, Color } from 'ng2-charts';
 
 @Component({
-  selector: 'cc-chart-bar',
+  selector: 'cp-chart-bar',
   templateUrl: './chart.component.html'
 })
 

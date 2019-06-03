@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-type StorageKey = 'token-profissional' | 'resultadoPerguntas' | 'pontuacaoPorPergunta' | 'dataProfissao' | 'grafico' | 'profissional' | 'profissaoEstudante';
+type StorageKey = 'token-profissional' | 'token-resultado' | 'token-profissao'
+| 'resultadoPerguntas' | 'pontuacaoPorPergunta' | 'dataProfissao' | 'grafico' | 'profissional' | 'profissaoEstudante';
 
 @Injectable({
     providedIn: 'root'
@@ -31,5 +32,9 @@ export class StorageService {
 
     public remove(key: string) {
         localStorage.removeItem(key);
+    }
+
+    public clear() {
+        localStorage.clear();
     }
 }

@@ -20,11 +20,12 @@ export interface IProfissionalFormPage {
 
 export class ProfissionalFormPage implements OnInit {
     public data: IProfissionalFormPage;
+    public response: ProfissionalResponse;
+    public deuErro = false;
 
     @ViewChild('arrStar') starHtml: ElementRef<HTMLDivElement>;
 
     constructor(
-        private validatorService: ValidatorService,
         private router: Router,
         private storage: StorageService,
         private route: ActivatedRoute,
@@ -114,13 +115,15 @@ export class ProfissionalFormPage implements OnInit {
             satisfacao: this.form.value.satisfacao,
         };
 
-        const response = await this.profissionalService.cadastrarProfissional(params);
+        this.response = await this.profissionalService.cadastrarProfissional(params);
 
-        if (response.status === 200) {
-            this.storage.setJson(response.description._id, 'token-profissional');
-
+        if (this.response.status === 200) {
+            this.storage.clear();
+            this.storage.setJson('token-profissional', this.response.description._id);
+            this.storage.setJson('token-profissao', this.form.value.profissao);
             this.router.navigate(['perguntas', 'profissional']);
         } else {
+            this.deuErro = true;
             this.isLoading = false;
         }
     }

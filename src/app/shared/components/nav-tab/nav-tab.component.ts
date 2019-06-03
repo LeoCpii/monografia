@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'cc-nav-tab',
+    selector: 'cp-nav-tab',
     templateUrl: './nav-tab.component.html',
     styleUrls: ['./nav-tab.component.css'],
 })

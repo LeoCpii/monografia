@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'cc-logo',
+    selector: 'cp-logo',
     templateUrl: './logo.component.html',
     styleUrls: ['./logo.component.css']
 })

@@ -22,4 +22,14 @@ export class ProfissaoService {
         const url = `/query/dadosProfissao/${id}`;
         return this.ajax.get<QueryContribuidor>(url);
     }
+
+    async atualizarProfissao(idProfissao: string, idResultado: string) {
+        const url = `/profissao/${idProfissao}/${idResultado}`;
+        return this.ajax.put<any>(url);
+    }
+
+    async obterProfissaoResultado(idProfissao: string, idResultado: string) {
+        const url = `/profissao/relacionaProfissaoResultado/${idProfissao}/${idResultado}`;
+        return this.ajax.get<Profissao>(url);
+    }
 }

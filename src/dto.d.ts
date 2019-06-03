@@ -51,14 +51,21 @@ interface Profissao {
     videos: Video[];
 }
 
+interface ProfissionalResponse {
+    status: number
+    message: string;
+    description: Profissional;
+}
+
 interface Profissional {
+    _id: string;
     nome: string;
     sobrenome: string;
     sexo: string;
     email: string;
     dataNascimento: string;
-    profissao: Profissao;
-    nivel: Niveis;
+    profissao?: Profissao;
+    nivel?: Niveis;
     satisfacao: number;
 }
 
@@ -126,16 +133,17 @@ interface Pergunta {
 }
 
 interface Respostas {
-    id?: string;
+    _id?: string;
     texto: string,
     caracteristicas: Caractetisticas[];
 }
 
 interface Caractetisticas {
+    id?: string;
     nome: string;
 }
 
-interface Resultado {
+interface PerguntaResposta {
     idPergunta: string,
     idResposta: number
 }
@@ -144,4 +152,18 @@ interface TotalPerguntasResponse {
     status: number
     message: string;
     description: number;
+}
+
+interface ResultadoResponse {
+    status: number
+    message: string;
+    description: Resultado[];
+}
+
+interface Resultado {
+    caracteristica: Caractetisticas;
+    relevancia: number;
+    discrepancia: number;
+    totalNasPerguntas: number;
+    totalNasRespostas: number;
 }

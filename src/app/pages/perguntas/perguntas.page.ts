@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PerguntasService } from '../../shared/services/business-service/perguntas.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { ResultadoService } from 'src/app/shared/services/business-service/resultado.service';
 
 export interface IPerguntasPage {
     totalPerguntas: number;
@@ -19,21 +21,23 @@ export class PerguntasPage implements OnInit {
     public data: IPerguntasPage;
 
     public pergunta: Pergunta;
-    public resultado: Resultado[] = [];
-    public response: PerguntaResponse;
+    public resultado: PerguntaResposta[] = [];
+    public perguntaResponse: PerguntaResponse;
 
     constructor(
         private router: Router,
         private route: ActivatedRoute,
         private utils: UtilsService,
         private location: Location,
+        private storage: StorageService,
+        private resultadoService: ResultadoService,
         private perguntasService: PerguntasService
     ) { }
 
     public cor: string;
     public contador = 0;
     public perguntasRespondidasArr = [];
-    public numeroDePerguntasSessao = 4;
+    public numeroDePerguntasSessao = 6;
     public deuErrado = false;
 
     public form = new FormGroup({
@@ -63,7 +67,6 @@ export class PerguntasPage implements OnInit {
     public async selecionaPergunta() {
 
         if (this.perguntasRespondidasArr.length === this.numeroDePerguntasSessao) {
-            console.log(this.resultado);
             this.finalizarPerguntas();
             return;
         } else {
@@ -76,22 +79,33 @@ export class PerguntasPage implements OnInit {
 
             this.perguntasRespondidasArr.push(posicao);
 
-            this.response = await this.perguntasService.obterPerguntasPosicao(posicao);
+            this.perguntaResponse = await this.perguntasService.obterPerguntasPosicao(posicao);
 
-            if (this.response.status === 200) {
+            if (this.perguntaResponse.status === 200) {
                 this.contador++;
-                this.pergunta = this.response.description;
+                this.pergunta = this.perguntaResponse.description;
             } else {
                 this.deuErrado = true;
             }
         }
     }
 
-    finalizarPerguntas() {
+    async finalizarPerguntas() {
+        const idProfissional = this.storage.getJson('token-profissional');
+
+        const params = {
+            idProfissional: idProfissional,
+            resultado: this.resultado
+        };
+        console.log(params);
+        const resultado = await this.resultadoService.registrarResultado(params);
+
+        this.storage.setJson('token-resultado', resultado.description._id);
+
         const url = this.router.url;
 
         if (url.indexOf('profissional') > -1) {
-            this.router.navigate(['profissional', 'agradecimentos']);
+            this.router.navigate(['profissional', 'grafico']);
         } else {
             const profissao = this.utils.calculaProfissao();
 

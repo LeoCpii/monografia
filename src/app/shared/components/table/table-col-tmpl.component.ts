@@ -6,7 +6,7 @@ import { FormatterService } from './../../services/formatter.service';
 export type TmplFn = (row: any) => string;
 
 @Component({
-    selector: 'cc-table-tmpl-col',
+    selector: 'cp-table-tmpl-col',
     template: '',
 })
 export class TableTmplColComponent implements OnInit {
@@ -22,11 +22,11 @@ export class TableTmplColComponent implements OnInit {
 
     public ngOnInit() {
         if (!this.header) {
-            throw new Error('[cc-table-col] header is mandatory');
+            throw new Error('[cp-table-col] header is mandatory');
         }
 
         if (!this.tmpl) {
-            throw new Error('[cc-table-col] tmpl is mandatory');
+            throw new Error('[cp-table-col] tmpl is mandatory');
         }
 
         const fn = typeof this.tmpl === 'function'

@@ -4,10 +4,10 @@
 
 <div *ngIf="deuErrado" class="fmk-align-center text-white" style="height: 100vh;">
     <div class="d-block text-center">
-        <cc-title-page>{{ response.description }}</cc-title-page>
-        <cc-text>Desculpe o transtorno</cc-text>
+        <cp-title-page>{{ perguntaResponse.description }}</cp-title-page>
+        <cp-text>Desculpe o transtorno</cp-text>
         <br>
-        <cc-button-style (click)="voltar()" type="line" label="Voltar"></cc-button-style>
+        <cp-button-style (click)="voltar()" type="line" label="Voltar"></cp-button-style>
     </div>
 
 </div>
@@ -15,25 +15,25 @@
 <div *ngIf="!deuErrado" class="container-fluid text-white p-4 w-100">
     <cite title="Source Title">Pergunta {{ contador }}</cite>
 
-    <cc-title-page>
+    <cp-title-page>
         {{ pergunta?.enunciado }}
-    </cc-title-page>
+    </cp-title-page>
 
     <div class="w-100" style="padding-bottom: 30px; padding-top: 30px">
-        <cc-form [formGroup]="form" (submit)="responder()">
+        <cp-form [formGroup]="form" (submit)="responder()">
             <div class="col-md-12 text-left">
                 <p>Resposta:</p>
                 <hr>
                 <div *ngFor="let item of pergunta?.respostas; let i = index">
-                    <cc-field-radio [label]="item.texto" name="resposta" [value]="item._id" formControlName="resposta">
-                    </cc-field-radio>
+                    <cp-field-radio [label]="item.texto" name="resposta" [value]="item._id" formControlName="resposta">
+                    </cp-field-radio>
                     <hr>
                 </div>
-                <cc-action-button styleButton="secondary" type="submit" class="mb-3" label="Responder"
+                <cp-action-button styleButton="secondary" type="submit" class="mb-3" label="Responder"
                     [isLoading]="submitButtonIsLoading" labelLoading="Enviando..." [disabled]="!form.valid">
-                </cc-action-button>
+                </cp-action-button>
             </div>
-        </cc-form>
+        </cp-form>
     </div>
-    <!-- <cc-form-log [form]="form"></cc-form-log> -->
+    <!-- <cp-form-log [form]="form"></cp-form-log> -->
 </div>

@@ -1,30 +1,33 @@
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { IProfissionalAgradecimentoPage } from './agradecimento.page';
-// import { ProfissionalService } from './../../../shared/services/business-service/profissional.service';
-// import { QueryService } from './../../../shared/services/business-service/query.service';
-// import { StorageService } from 'src/app/shared/services/storage.service';
+import { ResultadoService } from 'src/app/shared/services/business-service/resultado.service';
+import { StorageService } from '../../../shared/services/storage.service';
+import { ProfissaoService } from 'src/app/shared/services/business-service/profissao.service';
 
 @Injectable()
 export class ProfissionalAgradecimentoResolver implements Resolve<Promise<IProfissionalAgradecimentoPage>> {
     constructor(
         // private profissionalService: ProfissionalService,
         // private queryService: QueryService,
-        // private storageService: StorageService,
+        private storage: StorageService,
+        private resultadoService: ResultadoService,
+        private profissaoService: ProfissaoService,
         private route: ActivatedRoute) { }
 
     async resolve(route: ActivatedRouteSnapshot): Promise<IProfissionalAgradecimentoPage> {
 
-        // const profissionalData = this.storageService.getJson('profissional');
-        // const nivel = profissionalData.nivel;
-        // const contribuidores = await this.queryService.obterContribuidores();
-        // const sexoContribuidor = await this.queryService.obterSexoContribuidor();
-        // const queryContribuidor = await this.queryService.queryContribuidor(profissionalData.profissao._id);
+        const idResultado = this.storage.getJson('token-resultado');
+        const idProfissao = this.storage.getJson('token-profissao');
+
+        const resultado = await this.resultadoService.obterResultado(idResultado);
+        const profissao = await this.profissaoService.obterProfissao(idProfissao);
+        const profissaoResultado = await this.profissaoService.obterProfissaoResultado(idProfissao, idResultado);
 
         const response: IProfissionalAgradecimentoPage = {
-            // nivel: nivel,
-            // contribuidores: contribuidores,
-            // sexoContribuidor: sexoContribuidor,
+            resultado: resultado,
+            profissao: profissao,
+            profissaoResultado: profissaoResultado,
             // queryContribuidor: queryContribuidor
         };
 

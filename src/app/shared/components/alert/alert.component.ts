@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'cc-alert',
+  selector: 'cp-alert',
   templateUrl: './alert.component.html'
 })
 

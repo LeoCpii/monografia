@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'cc-dropdown-content',
+  selector: 'cp-dropdown-content',
   templateUrl: './dropdown-content.component.html',
 })
 

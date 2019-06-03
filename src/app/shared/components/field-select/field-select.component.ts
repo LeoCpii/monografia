@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Optional, Self, ViewChild, ElementRef } from 
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
-  selector: 'cc-field-select',
+  selector: 'cp-field-select',
   templateUrl: './field-select.component.html',
   styleUrls: ['./field-select.component.css', './../field/field.component.css']
 })

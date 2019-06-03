@@ -5,34 +5,26 @@
     <div class="pg-img-bg fmk-gradient" id="success">
     </div>
     <div class="container pg-content-bg text-white w-100">
-        <cc-title-page size="1">Obrigado por participar!</cc-title-page>
-        <cc-button-style (click)="scroll(target)" type="transition" label="Estatísticas"></cc-button-style>
+        <cp-title-page size="1">Obrigado por participar!</cp-title-page>
+        <cp-button-style (click)="scroll(target)" type="transition" label="Estatísticas"></cp-button-style>
     </div>
 </div>
 
 <div #target class="container mt-4 mb-5">
-    <!-- <cc-title>Estatísticas</cc-title> -->
+    <!-- <cp-title>Estatísticas</cp-title> -->
     <div class="position-relative">
-        <!-- <cc-title-page section="Sua profissão">{{ data.queryContribuidor.nome }}</cc-title-page>
-        <cc-title class="position-absolute position-star">{{ data.queryContribuidor.satisfacao }} <i class="fa fa-star" aria-hidden="true" style="color: #e9b91b;"></i></cc-title> -->
+        <cp-title-page section="Sua profissão">{{ data.profissao.description.nome }}</cp-title-page>
+        <cp-title class="position-absolute position-star" title="Nível de satisfação">
+            {{ data.profissao.description.satisfacao | number:'1.1-2'}} <i class="fa fa-star" aria-hidden="true"
+                style="color: #e9b91b;"></i></cp-title>
     </div>
     <hr>
-    <cc-alert>Acompanhe suas estatísticas baseadas nas informações da sua área</cc-alert>
+    <cp-alert>Acompanhe suas estatísticas baseadas nas informações da sua área</cp-alert>
     <div class="row mb-3">
-        <div class="col-lg-6">
-            <!-- <cc-info-box title="Homens nesta profissão" icon="fa-male" bgColor="#55acee" [percent]="data.queryContribuidor.homens.porcentagem+'%'" [text]="data.queryContribuidor.homens.quantidade"
-                desc="{{ porcentagemHomens }}% dos profissionais são homens"></cc-info-box> -->
-        </div>
-        <div class="col-lg-6">
-            <!-- <cc-info-box title="Mulheres nesta profissão" icon="fa-female" bgColor="#f94877" [percent]="data.queryContribuidor.mulheres.porcentagem+'%'" [text]="data.queryContribuidor.mulheres.quantidade" -->
-                <!-- desc="{{ porcentagemMulheres }}% dos profissionais são mulheres"></cc-info-box> -->
-        </div>
-    </div>
-    <div class="row">
         <div class="col-lg-5">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <cc-title size='h5'>Sua Pontuação</cc-title>
+                    <cp-title size='h5'>Sua Pontuação</cp-title>
                     <div style="display: block; position: relative; min-height: 300px">
                         <canvas baseChart [datasets]="radarChartData.datasets" [options]="radarChartOptions"
                             [labels]="radarChartData.labels" chartType="radar" [legend]="true"
@@ -43,11 +35,14 @@
             </div>
         </div>
         <div class="col-lg-7">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <cc-chart-bar label="Número de profissionais" [datasets]="barChart.datasets"
-                        [labels]="barChart.labels" [legend]="true" chartType="bar" [colors]="barChart.colors">
-                    </cc-chart-bar>
+            <div class="row">
+                <div class="col-md-6">
+                    <cp-info-box-simple label="Compatibilidade" value="50%">
+                    </cp-info-box-simple>
+                </div>
+                <div class="col-md-6">
+                    <cp-info-box-simple label="Contribuições" value="3">
+                    </cp-info-box-simple>
                 </div>
             </div>
         </div>

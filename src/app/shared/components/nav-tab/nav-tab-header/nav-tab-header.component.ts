@@ -10,7 +10,7 @@ import {
 import { NavTabComponent } from '../nav-tab.component';
 
 @Component({
-    selector: 'cc-nav-tab-header',
+    selector: 'cp-nav-tab-header',
     templateUrl: './nav-tab-header.component.html',
     styleUrls: ['./nav-tab-header.component.css'],
 })

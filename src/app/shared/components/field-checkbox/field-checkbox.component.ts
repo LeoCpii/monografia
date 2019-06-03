@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, Optional, Self, OnInit, ViewChi
 import { NgControl, ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'cc-field-checkbox',
+  selector: 'cp-field-checkbox',
   templateUrl: './field-checkbox.component.html',
   styleUrls: ['./field-checkbox.component.css']
 })

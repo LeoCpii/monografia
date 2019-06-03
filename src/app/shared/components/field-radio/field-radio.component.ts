@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, Optional, Self, ViewChi
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
-  selector: 'cc-field-radio',
+  selector: 'cp-field-radio',
   templateUrl: './field-radio.component.html',
   styleUrls: ['./field-radio.component.css']
 })

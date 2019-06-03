@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cc-title-page',
+  selector: 'cp-title-page',
   templateUrl: './title-page.component.html',
   styleUrls: ['./title-page.component.css']
 })

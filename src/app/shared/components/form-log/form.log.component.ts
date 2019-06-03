@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'cc-form-log',
+  selector: 'cp-form-log',
   templateUrl: './form-log.component.html',
 })
 

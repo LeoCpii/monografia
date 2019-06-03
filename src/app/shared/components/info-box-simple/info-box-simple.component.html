@@ -1,0 +1,17 @@
+<cp-card>
+    <div class="stat-widget-two">
+        <div class="stat-content">
+            <div class="stat-text">{{ label }}</div>
+            <div class="stat-digit">
+                <i *ngIf="icon" class="fa" [ngClass]="getClassIcon()"></i>{{ value ? value : '-' }}
+            </div>
+        </div>
+        <div *ngIf="percent" class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="85%"
+                aria-valuemin="0" aria-valuemax="100"
+                [style.width]="percent"
+                [style.background]="bg">
+            </div>
+        </div>
+    </div>
+</cp-card>

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cc-vertical-tab',
+  selector: 'cp-vertical-tab',
   templateUrl: './vertical-tab.component.html',
   styleUrls: ['./vertical-tab.component.css']
 })

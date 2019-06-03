@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cc-item',
+  selector: 'cp-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })

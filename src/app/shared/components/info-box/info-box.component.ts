@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'cc-info-box',
+  selector: 'cp-info-box',
   templateUrl: './info-box.component.html',
   styleUrls: ['./info-box.component.css']
 })

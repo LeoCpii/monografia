@@ -1,5 +1,5 @@
 <div class="alert fmk-border-bottom shadow-sm" role="alert" 
-[ngClass]="getClass()">
+[ngClass]="getClass()" style="border-radius: 0px">
     <h4 *ngIf="title" class="alert-heading">{{ title }}</h4>
     <i class="fa mr-2" [ngClass]="getClassIcon()" aria-hidden="true"></i>   
     <ng-content></ng-content>

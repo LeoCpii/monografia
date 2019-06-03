@@ -6,10 +6,9 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 
 export interface IProfissionalAgradecimentoPage {
-  // nivel: Niveis;
-  // contribuidores: Contribuidores;
-  // sexoContribuidor: ContribuidoresSexo;
-  // queryContribuidor: QueryContribuidor;
+  resultado: any;
+  profissao: any;
+  profissaoResultado: any;
 }
 
 @Component({
@@ -49,7 +48,7 @@ export class AgradecimentosPage implements OnInit {
   // }
 
   public radarChart: any = {
-    labels: ['Comunicatividade', 'Organizacao', 'Criatividade', 'Detalhismo', 'Lideranca', 'Proatividade'],
+    labels: [''],
     datasets: [
       {
         data: [0, 0, 0, 0, 0, 0],
@@ -98,25 +97,13 @@ export class AgradecimentosPage implements OnInit {
       },
     }
   };
-
   public radarChartData = this.radarChart;
 
-  // public atualizaGraficoRadar() {
-  //   const arr = [];
-
-  //   for (let i = 0; i < this.resultado.length; i++) {
-  //     /*
-  //     * Média Poderada
-  //     */
-  //     const resultado = '';
-
-  //     arr.push(resultado);
-  //   }
-
-  //   this.radarChart.datasets[1].data = arr; // Sua pontuação
-  //   this.radarChart.datasets[0].data = this.data.queryContribuidor.pontos; // Pontuação da área
-  //   this.radarChart.datasets[0].label = 'Pontuação da área'; // Pontuação da área
-  // }
+  public atualizaGraficoRadar() {
+    this.radarChart.labels = this.data.resultado.description.caracteristicaGrafico;
+    this.radarChart.datasets[1].data = this.data.resultado.description.valorGrafico; // Sua pontuação
+    this.radarChart.datasets[0].data = this.data.profissaoResultado.description; // Pontuação da área
+  }
 
   // public atualizaGraficoBarras() {
   //   this.barChart.labels = this.data.contribuidores.profissao;
@@ -139,15 +126,12 @@ export class AgradecimentosPage implements OnInit {
       }
     });
 
-    // this.radarChart.datasets[0] = this.data.queryContribuidor.pontos;
-
     console.log(this.data);
 
     /*
     * Atualiza Graficos
     */
-    // this.atualizaGraficoRadar();
-    // this.atualizaGraficoBarras();
+    this.atualizaGraficoRadar();
   }
 
   scroll(e: HTMLElement) {

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'cc-button',
+  selector: 'cp-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.css']
 })
@@ -18,9 +18,9 @@ export class ButtonComponent {
         const cssClass: any = {};
 
         if (this.styleButton) {
-            cssClass[`cc-btn-${this.styleButton}`] = true;
+            cssClass[`cp-btn-${this.styleButton}`] = true;
         } else {
-            cssClass[`cc-btn-primary`] = true;
+            cssClass[`cp-btn-primary`] = true;
         }
 
         if (this.size === 'lg') {

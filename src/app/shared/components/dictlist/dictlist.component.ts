@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'cc-dictlist',
+    selector: 'cp-dictlist',
     templateUrl: './dictlist.component.html',
     styleUrls: ['./dictlist.component.css']
 })

@@ -1,0 +1,9 @@
+.card-border {
+    border-left: solid .25rem rgb(var(--color-secondary));
+}
+
+.hover-card-zoom:hover {
+    -moz-transform: scale(1,1);
+    -webkit-transform: scale(1,1);
+    transform: scale(1.02,1.02);  
+}

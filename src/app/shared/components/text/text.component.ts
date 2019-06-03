@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cc-text',
+  selector: 'cp-text',
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.css']
 })

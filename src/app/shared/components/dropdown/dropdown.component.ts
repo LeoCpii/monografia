@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'cc-dropdown',
+  selector: 'cp-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css', '../button/button.component.css',]
 })
@@ -25,9 +25,9 @@ export class DropdownComponent implements OnInit {
       const cssClass: any = {};
 
       if (this.styleButton) {
-          cssClass[`cc-btn-${this.styleButton}`] = true;
+          cssClass[`cp-btn-${this.styleButton}`] = true;
       } else {
-          cssClass[`cc-btn-primary`] = true;
+          cssClass[`cp-btn-primary`] = true;
       }
 
       if (this.size === 'lg') {
