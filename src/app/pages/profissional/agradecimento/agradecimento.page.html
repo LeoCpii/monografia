@@ -37,11 +37,11 @@
         <div class="col-lg-7">
             <div class="row">
                 <div class="col-md-6">
-                    <cp-info-box-simple label="Compatibilidade" value="50%">
+                    <cp-info-box-simple label="Compatibilidade" value="{{ data.profissaoResultado.description.similaridade | number:'1.1-2' }}%">
                     </cp-info-box-simple>
                 </div>
                 <div class="col-md-6">
-                    <cp-info-box-simple label="Contribuições" value="3">
+                    <cp-info-box-simple label="Idade Média" value="{{ data.profissao.description.idadeMedia | number:'1.0-0' }} anos">
                     </cp-info-box-simple>
                 </div>
             </div>

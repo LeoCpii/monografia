@@ -6,7 +6,7 @@
     <div class="fmk-bg-gray w-50">
         <div class="container mt-5 mb-5 text-left">
             <div *ngIf="deuErro">
-                <cp-alert [title]="response.message" type="danger">
+                <cp-alert type="danger">
                     {{ response.description }}
                 </cp-alert>
             </div>
@@ -80,6 +80,10 @@
                     </cp-form>
                     <br>
                 </div>
+            </div>
+            <br>
+            <div class="w-100 text-right">
+                <a routerLink="revisita" class="fmk-transition fmk-link">Já esteve por aqui?</a>
             </div>
         </div>
     </div>

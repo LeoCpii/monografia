@@ -10,6 +10,7 @@ export class FieldRangeComponent implements OnInit, ControlValueAccessor {
     private static _nextId = 0;
     public onChangeFn!: (valid: string) => void;
     public onTouched!: () => void;
+    public inputValue: any;
 
     @ViewChild('input') private input: ElementRef;
 
@@ -43,6 +44,7 @@ export class FieldRangeComponent implements OnInit, ControlValueAccessor {
 
     public onChange(value: string): void {
         this.onChangeFn(value);
+        this.inputValue = value;
     }
 
     public onBlur(value: string) {

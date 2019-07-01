@@ -11,8 +11,12 @@ import { PerguntasPage } from './perguntas.page';
 import { PerguntasService } from 'src/app/shared/services/business-service/perguntas.service';
 import { PerguntasResolver } from './perguntas.resolver';
 import { ResultadoService } from 'src/app/shared/services/business-service/resultado.service';
+import { SessaoService } from 'src/app/shared/services/business-service/sessao.service';
+import { AuthGuardService } from 'src/app/shared/services/auth/auth.guard';
+
 const routes: Routes = [
   {
+    canActivate: [AuthGuardService],
     path: '',
     component: PerguntasPage,
     resolve: { data: PerguntasResolver },
@@ -37,7 +41,9 @@ const routes: Routes = [
     PerguntasPage,
     PerguntasService,
     PerguntasResolver,
-    ResultadoService
+    ResultadoService,
+    SessaoService,
+    AuthGuardService
   ],
 })
 export class PerguntasRoutingModule { }

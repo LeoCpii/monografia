@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 
 import { ComponentsModule } from './shared/components/components.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthService } from './shared/services/auth/auth.service';
+import { SessaoService } from './shared/services/business-service/sessao.service';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,16 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     NgProgressModule.withConfig({
       spinnerPosition: 'right',
-      color: '#ff3636'
+      color: '#ff4a3b'
     }),
     NgProgressRouterModule,
     AppRoutingModule,
     ComponentsModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    SessaoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

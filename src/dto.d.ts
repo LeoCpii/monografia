@@ -167,3 +167,14 @@ interface Resultado {
     totalNasPerguntas: number;
     totalNasRespostas: number;
 }
+
+interface SessaoResponse {
+    status: number
+    message: string;
+    description: Sessao;
+}
+
+interface Sessao {
+    profissional?: Profissional;
+    status: number;
+}

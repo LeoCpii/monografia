@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { ResultadoService } from 'src/app/shared/services/business-service/resultado.service';
+import { SessaoService } from 'src/app/shared/services/business-service/sessao.service';
 
 export interface IPerguntasPage {
     totalPerguntas: number;
@@ -31,7 +32,8 @@ export class PerguntasPage implements OnInit {
         private location: Location,
         private storage: StorageService,
         private resultadoService: ResultadoService,
-        private perguntasService: PerguntasService
+        private perguntasService: PerguntasService,
+        private sessaoService: SessaoService
     ) { }
 
     public cor: string;
@@ -92,19 +94,31 @@ export class PerguntasPage implements OnInit {
 
     async finalizarPerguntas() {
         const idProfissional = this.storage.getJson('token-profissional');
+        const idSessao = this.storage.getJson('token-sessao');
+        const idProfissao = this.storage.getJson('token-profissao');
 
         const params = {
             idProfissional: idProfissional,
             resultado: this.resultado
         };
-        console.log(params);
+
         const resultado = await this.resultadoService.registrarResultado(params);
+
+        const response = await this.sessaoService.atualizarSessao(idSessao, 2);
 
         this.storage.setJson('token-resultado', resultado.description._id);
 
         const url = this.router.url;
 
         if (url.indexOf('profissional') > -1) {
+            const paramsAtt = {
+                idSessao: idSessao,
+                idResultado: resultado.description._id,
+                idProfissao: idProfissao
+            };
+
+            await this.sessaoService.atualizarSessaoResultado(paramsAtt);
+
             this.router.navigate(['profissional', 'grafico']);
         } else {
             const profissao = this.utils.calculaProfissao();

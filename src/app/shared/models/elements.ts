@@ -327,17 +327,29 @@ export const lineChart: any = {
 };
 
 export const radarChart: any = {
-    labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
+    labels: ['Característica 1', 'Característica 2', 'Característica 3', 'Característica 4'],
     datasets: [
         {
-            data: [20, 10, 4, 2],
-            label: 'Serie A'
+            data: [25, 70, 12, 59],
+            label: 'Pontuação da Profissão'
         },
         {
-            data: [13, 14, 10, 10],
-            label: 'Serie B'
+            data: [35, 50, 89, 58],
+            label: 'Pontuação do Usuário'
         }
-    ]
+    ],
+    colors: [{
+        borderColor: 'rgb(255, 54, 54)',
+        backgroundColor: 'rgba(255, 54, 54, 0.3)',
+        pointBackgroundColor: 'rgba(255, 54, 54, 0.3)',
+        pointBorderColor: 'rgb(255, 54, 54)',
+      },
+      {
+        borderColor: 'rgb(75, 75, 75)',
+        backgroundColor: 'rgba(75, 75, 75, 0.3)',
+        pointBackgroundColor: 'rgba(75, 75, 75, 0.3)',
+        pointBorderColor: 'rgb(75, 75, 75)',
+      }]
 };
 
 export const donutPieChart: any = {

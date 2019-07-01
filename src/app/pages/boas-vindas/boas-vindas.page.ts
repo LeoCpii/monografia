@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'boas-vindas-page',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 
 export class BoasVindasPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private storage: StorageService
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.storage.clear();
+  }
 }

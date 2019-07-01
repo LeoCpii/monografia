@@ -1,10 +1,13 @@
 <div class="fmk-full fmk-bg-gray">
 
 </div>
+
 <div class="fmk-bg-gray fmk-align-center" style="padding-top: 20px">
     <div class="container mt-5 text-left">
-        <cp-alert>Ajude-nos indicando com uma pontuação de 0 a 100 qual a relevância das habilidades abaixo para sua
-            área.
+        <cp-alert>Ajude-nos indicando com uma pontuação de 0 a 100 qual seu nível de identificação com as características abaixo.
+        </cp-alert>
+        <cp-alert *ngIf="deuErro" type="danger">
+            {{ mensagem }}
         </cp-alert>
         <div class="row">
             <div class="col-lg-6 mb-3">
@@ -22,8 +25,11 @@
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <cp-form [formGroup]="form" (submit)="submit()" label="Gráfico Editável">
-                            <cp-field-range *ngFor="let item of data.resultado.caracteristicaGrafico; let i = index" [label]="item" [formControlName]="'caracteristica'+i">
+                            <div *ngFor="let item of data.resultado.caracteristicaGrafico; let i = index">
+                                <cp-field-range *ngIf="i < 6"
+                                    [label]="item" [formControlName]="'caracteristica'+i">
                                 </cp-field-range>
+                            </div>
                             <br><br>
                             <cp-button type="submit" label="Enviar"></cp-button>
                         </cp-form>

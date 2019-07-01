@@ -27,62 +27,29 @@ export class AgradecimentosPage implements OnInit {
     private router: Router,
   ) { }
 
-  public pontosGrafico = this.storage.getJson('grafico');
-  public profissaoUsuario = this.storage.getJson('dataProfissao');
-  public resultado = this.storage.getJson('resultadoPerguntas');
-  public pontuacaoProfissional: any;
-
-  // public get porcentagemHomens() {
-  //   const porcentagem = this.data.queryContribuidor.homens.porcentagem;
-  //   return Math.floor(porcentagem);
-  // }
-
-  // public get porcentagemMulheres() {
-  //   const porcentagem = this.data.queryContribuidor.mulheres.porcentagem;
-  //   return Math.floor(porcentagem);
-  // }
-
-  // public get nota() {
-  //   const nota = this.data.queryContribuidor.satisfacao;
-  //   return Math.floor(nota);
-  // }
-
   public radarChart: any = {
     labels: [''],
     datasets: [
       {
         data: [0, 0, 0, 0, 0, 0],
-        label: 'Pontuação da área'
+        label: 'Sua pontuação'
       },
       {
         data: [0, 0, 0, 0, 0, 0],
-        label: 'Sua pontuação'
+        label: 'Pontuação da área'
       }
     ],
     colors: [{
-      borderColor: 'rgb(255, 54, 54)',
-      backgroundColor: 'rgba(255, 54, 54, 0.3)',
-      pointBackgroundColor: 'rgba(255, 54, 54, 0.3)',
-      pointBorderColor: 'rgb(255, 54, 54)',
+      borderColor: 'rgb(255, 74, 59)',
+      backgroundColor: 'rgba(255, 74, 59, 0.3)',
+      pointBackgroundColor: 'rgba(255, 74, 59, 0.3)',
+      pointBorderColor: 'rgb(255, 74, 59)',
     },
     {
       borderColor: 'rgb(75, 75, 75)',
       backgroundColor: 'rgba(75, 75, 75, 0.3)',
       pointBackgroundColor: 'rgba(75, 75, 75, 0.3)',
       pointBorderColor: 'rgb(75, 75, 75)',
-    }]
-  };
-
-  public barChart: any = {
-    labels: [],
-    datasets: [
-      {
-        data: [],
-        label: 'Número de contribuições'
-      },
-    ],
-    colors: [{
-      backgroundColor: 'rgb(255, 54, 54)',
     }]
   };
 
@@ -100,22 +67,9 @@ export class AgradecimentosPage implements OnInit {
   public radarChartData = this.radarChart;
 
   public atualizaGraficoRadar() {
-    this.radarChart.labels = this.data.resultado.description.caracteristicaGrafico;
-    this.radarChart.datasets[1].data = this.data.resultado.description.valorGrafico; // Sua pontuação
-    this.radarChart.datasets[0].data = this.data.profissaoResultado.description; // Pontuação da área
-  }
-
-  // public atualizaGraficoBarras() {
-  //   this.barChart.labels = this.data.contribuidores.profissao;
-  //   this.barChart.datasets[0].data = this.data.contribuidores.numeroColaboradores;
-  //   /*TODO- Usado para ajustar a escala do grafico de barras*/
-  //   this.barChart.datasets[0].data.push(0);
-  // }
-
-  private mediaPonderada(valorGrafico: number, valorResposta: number, valorPesoGrafico: number, ValorPesoResposta: number) {
-    const resposta = (((valorGrafico * valorPesoGrafico) + (valorResposta * ValorPesoResposta)) / valorPesoGrafico + ValorPesoResposta);
-
-    return resposta > 100 ? 100 : Math.trunc(resposta);
+    this.radarChart.labels = this.data.resultado.description.caracteristicaGrafico.slice(0, 6);
+    this.radarChart.datasets[1].data = this.data.profissaoResultado.description.relevanciaProfissao.slice(0, 6); // Pontuação da área
+    this.radarChart.datasets[0].data = this.data.resultado.description.valorGrafico.slice(0, 6); // Sua pontuação
   }
 
   ngOnInit() {
@@ -125,8 +79,6 @@ export class AgradecimentosPage implements OnInit {
         this.data = this.route.snapshot.data['data'];
       }
     });
-
-    console.log(this.data);
 
     /*
     * Atualiza Graficos

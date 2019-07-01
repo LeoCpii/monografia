@@ -9,8 +9,8 @@ import { Component, Input } from '@angular/core'
 export class ButtonComponent {
     @Input() label: string;
     @Input() type: string;
-    @Input('styleButton') styleButton?: string;
-    @Input('size') size?: string;
+    @Input() styleButton?: string;
+    @Input() size?: string;
     @Input() disabled: boolean = false;
     @Input() block: boolean = false;
 
@@ -25,7 +25,7 @@ export class ButtonComponent {
 
         if (this.size === 'lg') {
             cssClass[`btn-lg`] = true;
-        } else if(this.size === 'sm'){
+        } else if(this.size === 'sm') {
             cssClass[`btn-sm`] = true;
         }
 

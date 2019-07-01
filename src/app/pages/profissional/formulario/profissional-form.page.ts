@@ -6,6 +6,7 @@ import { ValidatorService } from 'src/app/shared/services/validator.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 
 import { ProfissionalService } from '../../../shared/services/business-service/profissional.service';
+import { SessaoService } from 'src/app/shared/services/business-service/sessao.service';
 
 export interface IProfissionalFormPage {
     niveis: Niveis[];
@@ -20,7 +21,7 @@ export interface IProfissionalFormPage {
 
 export class ProfissionalFormPage implements OnInit {
     public data: IProfissionalFormPage;
-    public response: ProfissionalResponse;
+    public response: any;
     public deuErro = false;
 
     @ViewChild('arrStar') starHtml: ElementRef<HTMLDivElement>;
@@ -30,6 +31,7 @@ export class ProfissionalFormPage implements OnInit {
         private storage: StorageService,
         private route: ActivatedRoute,
         private profissionalService: ProfissionalService,
+        private sessaoService: SessaoService
     ) { }
     public isLoading = false;
 
@@ -121,7 +123,16 @@ export class ProfissionalFormPage implements OnInit {
             this.storage.clear();
             this.storage.setJson('token-profissional', this.response.description._id);
             this.storage.setJson('token-profissao', this.form.value.profissao);
-            this.router.navigate(['perguntas', 'profissional']);
+            this.response = await this.sessaoService.criarSessao(this.response.description._id);
+
+            if (this.response.status === 200) {
+                this.storage.setJson('token-sessao', this.response.description._id);
+                this.router.navigate(['perguntas', 'profissional']);
+            } else {
+                this.deuErro = true;
+                this.isLoading = false;
+            }
+
         } else {
             this.deuErro = true;
             this.isLoading = false;

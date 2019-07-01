@@ -12,13 +12,9 @@ export class ProfissionalGraficoResolver implements Resolve<Promise<IProfissiona
         private route: ActivatedRoute) { }
 
     async resolve(route: ActivatedRouteSnapshot): Promise<IProfissionalGraficoPage> {
-        const caracteristicas = [];
+
         const idResultado = this.storage.getJson('token-resultado');
         const resultado = await this.resultadoService.obterResultado(idResultado);
-        console.log(resultado)
-        resultado.description.relevancia.map( item => {
-            caracteristicas.push(item.caracteristica.nome);
-        });
 
         const response: IProfissionalGraficoPage = {
             resultado: resultado.description,

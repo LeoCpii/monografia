@@ -20,6 +20,9 @@ import { ResultadoService } from 'src/app/shared/services/business-service/resul
 import { ProfissionalService } from './../../shared/services/business-service/profissional.service';
 import { ProfissaoService } from 'src/app/shared/services/business-service/profissao.service';
 import { NiveisService } from 'src/app/shared/services/business-service/nivel.service';
+import { SessaoService } from 'src/app/shared/services/business-service/sessao.service';
+import { AuthGuardService } from 'src/app/shared/services/auth/auth.guard';
+import { RevisitaPage } from './revisita/revisita.page';
 
 const routes: Routes = [
   {
@@ -29,16 +32,23 @@ const routes: Routes = [
     data: { title: 'Profissional' }
   },
   {
+    canActivate: [AuthGuardService],
     path: 'grafico',
     component: ProfissionalGraficoPage,
     resolve: { data: ProfissionalGraficoResolver },
     data: { title: 'Grafico' }
   },
   {
+    canActivate: [AuthGuardService],
     path: 'agradecimentos',
     component: AgradecimentosPage,
     resolve: { data: ProfissionalAgradecimentoResolver },
     data: { title: 'Agradecimentos' }
+  },
+  {
+    path: 'revisita',
+    component: RevisitaPage,
+    data: { title: 'Revisita' }
   }
 ];
 
@@ -56,11 +66,13 @@ const routes: Routes = [
     ProfissionalFormPage,
     ProfissionalGraficoPage,
     AgradecimentosPage,
+    RevisitaPage,
   ],
   providers: [
     ProfissionalFormPage,
     ProfissionalGraficoPage,
     AgradecimentosPage,
+    RevisitaPage,
     ProfissionalFormResolver,
     ProfissionalAgradecimentoResolver,
     ProfissionalGraficoResolver,
@@ -68,6 +80,8 @@ const routes: Routes = [
     ProfissionalService,
     ProfissaoService,
     NiveisService,
+    SessaoService,
+    AuthGuardService,
   ],
 })
 export class ProfissionalRoutingModule { }

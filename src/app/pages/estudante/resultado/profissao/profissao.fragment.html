@@ -1,7 +1,7 @@
 <cp-title>A partir deste teste, podemos concluir que seu perfil se enquadra na profissão de <span
-        class="font-weight-lighter">{{ data.label }}</span>.</cp-title>
+        class="font-weight-lighter">{{ data.description.nome }}</span>.</cp-title>
 <br>
-<cp-collapsible desc="Sobre {{ data.label }}">
+<cp-collapsible desc="Sobre {{ data.description.nome }}">
     <div body>
         <cp-text>
             <cp-title size="h4">O que é?</cp-title>
@@ -14,7 +14,7 @@
 
 <cp-collapsible desc="Salários">
     <div body>
-        <cp-alert>Estás são médias de alguns salários de {{ data.label }}</cp-alert>
+        <cp-alert>Estás são médias de alguns salários de {{ data.description.nome }}</cp-alert>
         <cp-dictlist [data]="dictListValue"></cp-dictlist>
     </div>
 </cp-collapsible>

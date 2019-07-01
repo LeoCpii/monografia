@@ -1,0 +1,27 @@
+<div class="fmk-full fmk-bg-gray">
+
+</div>
+
+<div class="position-relative fmk-align-center" style="height: 100vh">
+    <div class="container mt-5 mb-5 text-left">
+        <div *ngIf="deuErro">
+            <cp-alert type="danger">
+                {{ response.description }}
+            </cp-alert>
+        </div>
+        <div class="card shadow-sm w-100">
+            <div class="card-body">
+                <cp-form [formGroup]="form" (submit)="obterSessao()" label="Digite seu email">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <cp-field label="Email" [required]="true" formControlName="email" type="email">
+                            </cp-field>
+                        </div>
+                    </div>
+                    <cp-action-button label="Confirmar" type="submit" labelLoading="Carregando..."
+                        [isLoading]="isLoading" [disabled]="!form.valid"></cp-action-button>
+                </cp-form>
+            </div>
+        </div>
+    </div>
+</div>

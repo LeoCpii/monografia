@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class TextComponent {
   @Input() type?: string;
 
-  public getClass(): string { 
+  public getClass(): string {
     return this.type ? 'text-black-50' : '';
   }
 }

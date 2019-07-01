@@ -23,8 +23,8 @@ export class ProfissaoService {
         return this.ajax.get<QueryContribuidor>(url);
     }
 
-    async atualizarProfissao(idProfissao: string, idResultado: string) {
-        const url = `/profissao/${idProfissao}/${idResultado}`;
+    async atualizarProfissao(idProfissao: string, idResultado: string, idProfissional: string) {
+        const url = `/profissao/${idProfissao}/${idResultado}/${idProfissional}`;
         return this.ajax.put<any>(url);
     }
 

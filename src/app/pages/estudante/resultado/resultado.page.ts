@@ -35,6 +35,8 @@ export class ResultadoPage implements OnInit {
                 this.data = this.route.snapshot.data['data'];
             }
         });
+
+        // console.log(this.data)
     }
 
     scroll(e: HTMLElement) {

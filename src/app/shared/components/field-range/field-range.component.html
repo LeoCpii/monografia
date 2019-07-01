@@ -1,4 +1,4 @@
-<label [for]="id">{{ label }}</label>
+<label [for]="id">{{ label }}: {{ inputValue }}</label>
 <input #input type="range" class="custom-range"
 (input)="onChange($event.target.value)" (blur)="onBlur($event.target.value)" 
 [id]="id" [disabled]="disabled">

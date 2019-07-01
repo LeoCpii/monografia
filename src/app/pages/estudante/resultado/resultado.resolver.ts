@@ -14,7 +14,7 @@ export class ResultadoResolver implements Resolve<Promise<IResultado>> {
 
     async resolve(route: ActivatedRouteSnapshot): Promise<IResultado> {
 
-        const idProfissao = this.storageService.get('profissaoEstudante');
+        const idProfissao = '5cfd4cac28e90b3bb8b3bea5';
         const profissao = await this.profissaoService.obterProfissao(idProfissao);
 
         const response: IResultado = {

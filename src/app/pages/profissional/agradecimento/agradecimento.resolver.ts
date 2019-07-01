@@ -28,7 +28,6 @@ export class ProfissionalAgradecimentoResolver implements Resolve<Promise<IProfi
             resultado: resultado,
             profissao: profissao,
             profissaoResultado: profissaoResultado,
-            // queryContribuidor: queryContribuidor
         };
 
         return response;
