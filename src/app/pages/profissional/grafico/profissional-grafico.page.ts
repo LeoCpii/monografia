@@ -149,6 +149,7 @@ export class ProfissionalGraficoPage implements OnInit {
 
     if (response.status === 200) {
       response = await this.profissaoService.atualizarProfissao(idProfissao, idResultado, idProfissional);
+      console.log(response);
     } else {
       this.deuErro = true;
       this.mensagem = 'Erro ao atualizar media';

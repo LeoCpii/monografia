@@ -39,7 +39,7 @@ export class PerguntasPage implements OnInit {
     public cor: string;
     public contador = 0;
     public perguntasRespondidasArr = [];
-    public numeroDePerguntasSessao = 6;
+    public numeroDePerguntasSessao = 4;
     public deuErrado = false;
 
     public form = new FormGroup({
@@ -74,7 +74,7 @@ export class PerguntasPage implements OnInit {
         } else {
             this.recuperaCor();
             let posicao = this.utils.numeroAleatorio(0, this.data.totalPerguntas);
-
+            console.log(this.perguntasRespondidasArr);
             while (this.perguntasRespondidasArr.indexOf(posicao) !== -1) {
                 posicao = this.utils.numeroAleatorio(0, this.data.totalPerguntas);
             }

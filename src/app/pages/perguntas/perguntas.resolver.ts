@@ -12,7 +12,7 @@ export class PerguntasResolver implements Resolve<Promise<IPerguntasPage>> {
     async resolve(route: ActivatedRouteSnapshot): Promise<IPerguntasPage> {
 
         const totalPerguntas = await this.perguntasService.obterTotalPerguntas();
-
+        console.log(totalPerguntas)
         const response: IPerguntasPage = {
             totalPerguntas: totalPerguntas.description,
         };
